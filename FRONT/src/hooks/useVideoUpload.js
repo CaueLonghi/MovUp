@@ -1,83 +1,51 @@
-import { useState, useCallback } from 'react';
+import { useState } from 'react';
 
-export const useVideoUpload = () => {
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  const [videoPreview, setVideoPreview] = useState(null);
-  const [isUploading, setIsUploading] = useState(false);
-  const [uploadProgress, setUploadProgress] = useState(0);
+const useVideoUpload = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const handleFileSelect = useCallback((file) => {
-    if (file && file.type.startsWith('video/')) {
-      setSelectedVideo(file);
-      const url = URL.createObjectURL(file);
-      setVideoPreview(url);
-      return { success: true, file };
+  const uploadVideo = async (videoFile) => {
+    if (!videoFile) {
+      setError('Nenhum arquivo de vídeo selecionado');
+      return null;
     }
-    return { success: false, error: 'Please select a valid video file' };
-  }, []);
 
-  const uploadVideo = useCallback(async (file, onProgress) => {
-    if (!file) return { success: false, error: 'No file selected' };
-
-    setIsUploading(true);
-    setUploadProgress(0);
+    setIsLoading(true);
+    setError(null);
 
     try {
-      // Simulate upload progress
-      const progressInterval = setInterval(() => {
-        setUploadProgress(prev => {
-          if (prev >= 100) {
-            clearInterval(progressInterval);
-            return 100;
-          }
-          return prev + 10;
-        });
-      }, 200);
+      const formData = new FormData();
+      formData.append('file', videoFile);
 
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await fetch('http://127.0.0.1:8000/analisar-video/', {
+        method: 'POST',
+        body: formData,
+      });
 
-      clearInterval(progressInterval);
-      setUploadProgress(100);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-      // TODO: Replace with actual API call
-      const result = {
-        success: true,
-        videoId: 'mock-video-id-' + Date.now(),
-        message: 'Video uploaded successfully'
-      };
-
+      const result = await response.json();
+      console.log('API Response:', result);
+      
       return result;
+      
     } catch (error) {
-      return { success: false, error: error.message };
+      console.error('Error uploading video:', error);
+      setError('Erro ao enviar o vídeo. Tente novamente.');
+      throw error;
     } finally {
-      setIsUploading(false);
-      setUploadProgress(0);
+      setIsLoading(false);
     }
-  }, []);
-
-  const clearVideo = useCallback(() => {
-    if (videoPreview) {
-      URL.revokeObjectURL(videoPreview);
-    }
-    setSelectedVideo(null);
-    setVideoPreview(null);
-    setUploadProgress(0);
-  }, [videoPreview]);
-
-  const resetUpload = useCallback(() => {
-    clearVideo();
-    setIsUploading(false);
-  }, [clearVideo]);
+  };
 
   return {
-    selectedVideo,
-    videoPreview,
-    isUploading,
-    uploadProgress,
-    handleFileSelect,
     uploadVideo,
-    clearVideo,
-    resetUpload
+    isLoading,
+    error,
+    setError
   };
 };
+
+export default useVideoUpload;

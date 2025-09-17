@@ -4,16 +4,18 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import biomecanica from '../assets/biomecanica.png'
+import logoLoading from '../assets/movup_loading.png'
+import useVideoUpload from '../hooks/useVideoUpload';
 import 'primeicons/primeicons.css';
 import '../styles/record-page.css'
 
 const Video = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [videoPreview, setVideoPreview] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
+  const { uploadVideo, isLoading, error } = useVideoUpload();
 
   const handleFileSelect = (event) => {
     const file = event.target.files[0];
@@ -35,17 +37,16 @@ const Video = () => {
     navigate('/recording');
   };
 
-  const handleConfirm = () => {
-    setIsLoading(true);
-    // Simulate video processing
-    setTimeout(() => {
-      setIsLoading(false);
-      // TODO: Handle actual video upload to backend
-      alert('Vídeo analisado com sucesso!');
-      setSelectedVideo(null);
-      setVideoPreview(null);
-      setShowConfirm(false);
-    }, 3000);
+  const handleConfirm = async () => {
+    try {
+      const result = await uploadVideo(selectedVideo);
+      // Store the result in localStorage and navigate to report page
+      localStorage.setItem('postureReport', JSON.stringify(result));
+      navigate('/report', { state: { reportData: result } });
+    } catch (error) {
+      // Error is handled by the hook
+      console.error('Upload failed:', error);
+    }
   };
 
   const handleCancel = () => {
@@ -59,9 +60,10 @@ const Video = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-yellow-400 flex align-items-center justify-content-center">
-        <div className="text-center">
-          <ProgressSpinner style={{ width: '50px', height: '50px' }} />
+      <div className="min-h-screen bg-yellow-400 flex align-items-center justify-content-center loading-page">
+        <div className="text-center flex flex-column justify-content-center align-items-center">
+          <img src={logoLoading} style={{width: '50%'}} className='mb-2' />
+          <ProgressSpinner style={{ width: '50px', height: '50px', stroke: 'black' }} strokeWidth="5" />
           <h2 className="text-2xl font-bold text-black mt-3">Analisando Corrida...</h2>
           <p className="text-black-alpha-80 mt-2">Aguarde enquanto analisamos sua técnica</p>
         </div>
@@ -125,6 +127,15 @@ const Video = () => {
         style={{ display: 'none' }}
       />
 
+      {/* Error Display */}
+      {error && (
+        <Card className="mb-4 bg-red-50 border-round">
+          <div className="text-center">
+            <p className="text-red-600 font-semibold">{error}</p>
+          </div>
+        </Card>
+      )}
+
       {/* Video Preview */}
       {videoPreview && (
         <Card className="mb-4 bg-yellow-50 border-round">
@@ -144,12 +155,14 @@ const Video = () => {
                 icon="pi pi-check"
                 className="p-button-success"
                 onClick={handleConfirm}
+                disabled={isLoading}
               />
               <Button 
                 label="Cancelar" 
                 icon="pi pi-times"
                 className="p-button-outlined p-button-secondary"
                 onClick={handleCancel}
+                disabled={isLoading}
               />
             </div>
           </div>

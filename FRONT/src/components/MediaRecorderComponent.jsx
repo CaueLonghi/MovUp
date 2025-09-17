@@ -4,7 +4,7 @@ import { Card } from 'primereact/card';
 import { useState } from 'react';
 import 'primeicons/primeicons.css';
 
-const MediaRecorderComponent = ({ onSave, onRestart, onBack }) => {
+const MediaRecorderComponent = ({ onSave, onRestart, onBack, onSend, isLoading }) => {
   const [showPreview, setShowPreview] = useState(false);
 
   const handleStopRecording = (stopRecording) => {
@@ -24,6 +24,24 @@ const MediaRecorderComponent = ({ onSave, onRestart, onBack }) => {
       
       alert('Vídeo salvo com sucesso!');
       onSave();
+    }
+  };
+
+  const handleSendToAPI = async (mediaBlobUrl) => {
+    if (mediaBlobUrl && onSend) {
+      try {
+        // Convert blob URL to File object
+        const response = await fetch(mediaBlobUrl);
+        const blob = await response.blob();
+        const file = new File([blob], `recording-${new Date().toISOString().slice(0, 19)}.webm`, {
+          type: 'video/webm'
+        });
+        
+        await onSend(file);
+      } catch (error) {
+        console.error('Error converting blob to file:', error);
+        alert('Erro ao processar o vídeo gravado.');
+      }
     }
   };
 
@@ -147,13 +165,23 @@ const MediaRecorderComponent = ({ onSave, onRestart, onBack }) => {
                     icon="pi pi-check"
                     className="p-button-raised p-button-success action-button"
                     onClick={() => handleSave(mediaBlobUrl)}
-                    disabled={!mediaBlobUrl}
+                    disabled={!mediaBlobUrl || isLoading}
                   />
+                  {onSend && (
+                    <Button
+                      label="Enviar para Análise"
+                      icon="pi pi-send"
+                      className="p-button-raised p-button-primary action-button"
+                      onClick={() => handleSendToAPI(mediaBlobUrl)}
+                      disabled={!mediaBlobUrl || isLoading}
+                    />
+                  )}
                   <Button
                     label="Refazer"
                     icon="pi pi-refresh"
                     className="p-button-raised p-button-warning action-button"
                     onClick={() => handleRestart(clearBlobUrl)}
+                    disabled={isLoading}
                   />
                 </div>
               </div>
