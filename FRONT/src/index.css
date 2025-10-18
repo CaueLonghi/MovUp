@@ -1,0 +1,237 @@
+:root {
+  --primary-color: #FFEA00;
+  --text-color: #000000;
+  --text-secondary: rgba(0, 0, 0, 0.7);
+  --text-light: rgba(0, 0, 0, 0.6);
+  --background-primary: #FFEA00;
+  --background-secondary: #FFF59D;
+  --background-light: #FFFDE7;
+  --border-color: rgba(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
+  color: var(--text-color);
+  line-height: 1.6;
+  /* Adicionar padding inferior para o menu fixo */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+/* Button focus styles */
+button:focus {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+/* Input focus styles */
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* PWA specific styles */
+@media (display-mode: standalone) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Bottom Navigation Dock Styles */
+.fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  background: var(--background-primary);
+  border-top: 3px solid var(--text-color);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Page container styles */
+.page-container {
+  background-color: white;
+  height: 100%;
+  margin-bottom: 100px;
+}
+
+/* Icon container styles - Galeria com tamanhos iguais */
+.icon-container {
+  background-color: var(--background-primary);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 95px;
+  width: 95px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+}
+
+.icon-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon-container i {
+  font-size: 2rem;
+}
+
+.icon-container h3 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.icon-container p {
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+/* Logo styles */
+.logo-image {
+  max-height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* Logo temporário estilizado */
+.logo-text {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--background-primary);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+  background: var(--text-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Grid de galeria responsivo */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+  place-items: center;
+}
+
+@media (min-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Animation utilities */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom utility classes */
+.text-black {
+  color: var(--text-color) !important;
+}
+
+.text-black-alpha-70 {
+  color: var(--text-secondary) !important;
+}
+
+.text-black-alpha-80 {
+  color: var(--text-secondary) !important;
+}
+
+.text-black-alpha-60 {
+  color: var(--text-light) !important;
+}
+
+.bg-yellow-400 {
+  background-color: var(--background-primary) !important;
+}
+
+.bg-yellow-100 {
+  background-color: var(--background-secondary) !important;
+}
+
+.bg-yellow-50 {
+  background-color: var(--background-light) !important;
+}
+
+.border-black-alpha-20 {
+  border-color: var(--border-color) !important;
+}
+
+.image-poster{
+  width: 100%;
+}
