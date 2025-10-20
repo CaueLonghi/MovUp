@@ -62,11 +62,7 @@ const AppRoutes = () => {
             <RecordingPage />
           </ProtectedRoute>
         } />
-        <Route path="/report" element={
-          <ProtectedRoute>
-            <ReportPage />
-          </ProtectedRoute>
-        } />
+        <Route path="/report" element={<ReportPage />} />
         <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />

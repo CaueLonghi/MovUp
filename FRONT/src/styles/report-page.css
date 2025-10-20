@@ -1,0 +1,178 @@
+/* Enhanced Report Page Styles */
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  margin-bottom: 100px;
+}
+
+/* Summary Container Styles */
+.summary-container {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.summary-metric-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.summary-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Quality Progress Bar */
+.quality-progress-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.quality-progress-bar {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #28a745 0%, #ffc107 50%, #dc3545 100%);
+}
+
+/* Analysis Section Styles */
+.analysis-section-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.analysis-section-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Export Options Styles */
+.export-options-card {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading States */
+.loading-page {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-container {
+    padding: 0.5rem;
+  }
+  
+  .summary-metric-card {
+    margin-bottom: 0.5rem;
+  }
+  
+  .analysis-section-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Frame Image Styles */
+.frame-thumbnail {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.frame-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+/* Error States */
+.error-state {
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+  border: 1px solid #feb2b2;
+  border-radius: 12px;
+}
+
+/* Success States */
+.success-state {
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+  border: 1px solid #9ae6b4;
+  border-radius: 12px;
+}
+
+/* Custom Button Styles */
+.p-button-raised {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.p-button-raised:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Message Styles */
+.p-message {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Card Enhancements */
+.p-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.p-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Progress Bar Enhancements */
+.p-progressbar {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.p-progressbar-value {
+  border-radius: 6px;
+}
+
+/* Tag Enhancements */
+.p-tag {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Grid Enhancements */
+.grid {
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    gap: 0.5rem;
+  }
+}

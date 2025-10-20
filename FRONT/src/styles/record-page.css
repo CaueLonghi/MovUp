@@ -134,7 +134,10 @@
 
 .video-preview-card {
     margin-bottom: 1rem;
-    background: #f8f9fa;
+}
+.button-preview{
+    padding: 10px;
+    gap: 10px;
 }
 
 .preview-video {
@@ -367,3 +370,5 @@
         font-size: 0.75rem;
     }
 }
+
+.video-preview-card

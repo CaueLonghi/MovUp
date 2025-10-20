@@ -4,6 +4,14 @@ import shutil
 import cv2
 import numpy as np
 from multiprocessing import Pool, cpu_count
+import tempfile
+import json
+from typing import Dict, List, Any
+from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
+import uvicorn
 
 #desabilita threads internas 
 try:
@@ -572,19 +580,381 @@ def process_frames_multiproc(meta):
     print(f"[OK] Análises salvas em: {os.path.abspath(OUT_DIR)}")
 
 
+# ------------------ FASTAPI INTEGRATION ------------------
+app = FastAPI(title="MovUp Video Analysis API", version="1.0.0")
+
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Mount static files for serving worst frame images
+app.mount("/out", StaticFiles(directory=OUT_DIR), name="out")
+
+def analyze_video_file(video_path: str) -> Dict[str, Any]:
+    """
+    Analyzes a video file and returns structured results.
+    This function integrates the existing analysis logic with API response format.
+    """
+    try:
+        # Reset output directories
+        reset_out_dir()
+        
+        # Extract frames from video
+        meta = extract_frames(video_path)
+        
+        # Process frames based on configuration
+        if MULTIPROCESS:
+            process_frames_multiproc(meta)
+        else:
+            process_frames_sequential(meta)
+        
+        # Collect analysis results
+        analysis_results = collect_analysis_results(meta, video_path)
+        
+        return analysis_results
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Video analysis failed: {str(e)}")
+
+def calculate_frame_severity(frame_num: int, error_type: str, total_frames: int) -> float:
+    """
+    Calculates a severity score for a frame based on various factors.
+    This is a simplified implementation - you can enhance it based on your specific needs.
+    """
+    # Base severity calculation
+    base_severity = 0.5
+    
+    # Factor 1: Position in video (later frames might be more indicative of fatigue)
+    position_factor = frame_num / total_frames if total_frames > 0 else 0
+    
+    # Factor 2: Error type specific weights
+    error_weights = {
+        'posture': 0.8,      # Posture issues are generally more serious
+        'overstride': 0.6,   # Overstride is moderate concern
+        'visibility': 0.3    # Visibility issues are less critical
+    }
+    
+    weight = error_weights.get(error_type, 0.5)
+    
+    # Calculate final severity score
+    severity = base_severity + (position_factor * 0.3) + (weight * 0.2)
+    
+    # Ensure severity is between 0 and 1
+    return min(1.0, max(0.0, severity))
+
+def extract_worst_frames(video_path: str, meta: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """
+    Extracts and saves the worst frame for each error type from the video.
+    Returns a list of worst frame information.
+    """
+    worst_frames = []
+    
+    try:
+        # Create output directory for worst frames
+        worst_frames_dir = os.path.join(OUT_DIR, 'worst_frames')
+        os.makedirs(worst_frames_dir, exist_ok=True)
+        
+        # Open video to extract frames
+        cap = cv2.VideoCapture(video_path)
+        if not cap.isOpened():
+            print(f"[WORST_FRAMES] Warning: Could not open video {video_path}")
+            return worst_frames
+        
+        fps = meta['fps']
+        
+        # Define error types and their corresponding directories
+        error_types = {
+            'posture': {
+                'dir': os.path.join(OUT_DIR, 'postura_incorreta'),
+                'description': 'Most severe posture error detected'
+            },
+            'overstride': {
+                'dir': os.path.join(OUT_DIR, 'min_heel'),
+                'description': 'Most severe overstride error detected'
+            },
+            'visibility': {
+                'dir': os.path.join(OUT_DIR, 'baixa_visibilidade'),
+                'description': 'Most severe visibility issue detected'
+            }
+        }
+        
+        for error_type, config in error_types.items():
+            error_dir = config['dir']
+            
+            if not os.path.exists(error_dir):
+                continue
+                
+            # Get all frame files for this error type
+            frame_files = [f for f in os.listdir(error_dir) if f.endswith('.jpg')]
+            
+            if not frame_files:
+                continue
+            
+            # Extract frame numbers and find the worst one
+            frame_numbers = []
+            for file in frame_files:
+                try:
+                    frame_num = int(file.split('_')[1].split('.')[0])
+                    frame_numbers.append(frame_num)
+                except (IndexError, ValueError):
+                    continue
+            
+            if not frame_numbers:
+                continue
+            
+            # Find the frame with the highest severity score
+            worst_frame_num = None
+            max_severity = 0
+            
+            for frame_num in frame_numbers:
+                severity = calculate_frame_severity(frame_num, error_type, meta['frame_count'])
+                if severity > max_severity:
+                    max_severity = severity
+                    worst_frame_num = frame_num
+            
+            # Fallback to highest frame number if no severity calculation
+            if worst_frame_num is None:
+                worst_frame_num = max(frame_numbers)
+                max_severity = 0.7  # Default severity
+            
+            severity_score = max_severity
+            
+            # Extract the frame from video
+            cap.set(cv2.CAP_PROP_POS_FRAMES, worst_frame_num)
+            ret, frame = cap.read()
+            
+            if ret:
+                # Save the worst frame
+                filename = f"{error_type}_worst_frame_{worst_frame_num:06d}.jpg"
+                filepath = os.path.join(worst_frames_dir, filename)
+                
+                # Save with high quality
+                cv2.imwrite(filepath, frame, [cv2.IMWRITE_JPEG_QUALITY, 95])
+                
+                worst_frames.append({
+                    "error_type": error_type,
+                    "frame_number": worst_frame_num,
+                    "severity_score": severity_score,
+                    "image_path": f"out/worst_frames/{filename}",
+                    "description": config['description']
+                })
+                
+                print(f"[WORST_FRAMES] Saved {error_type} worst frame: {filename}")
+            else:
+                print(f"[WORST_FRAMES] Warning: Could not extract frame {worst_frame_num} for {error_type}")
+        
+        cap.release()
+        
+    except Exception as e:
+        print(f"[WORST_FRAMES] Error extracting worst frames: {str(e)}")
+    
+    return worst_frames
+
+def collect_analysis_results(meta: Dict[str, Any], video_path: str = None) -> Dict[str, Any]:
+    """
+    Collects analysis results from the processed frames and formats them for API response.
+    """
+    fps = meta['fps']
+    frame_count = meta['frame_count']
+    
+    # Initialize result structure
+    result = {
+        "status": "success",
+        "analysis": [],
+        "summary": {
+            "total_frames": frame_count,
+            "fps": fps,
+            "total_duration_seconds": frame_count / fps if fps > 0 else 0,
+            "posture_issues_count": 0,
+            "overstride_issues_count": 0,
+            "visibility_issues_count": 0
+        }
+    }
+    
+    # Collect posture issues
+    posture_dir = os.path.join(OUT_DIR, 'postura_incorreta')
+    if os.path.exists(posture_dir):
+        posture_files = [f for f in os.listdir(posture_dir) if f.endswith('.jpg')]
+        result["summary"]["posture_issues_count"] = len(posture_files)
+        
+        for file in posture_files:
+            # Extract frame number from filename
+            frame_num = int(file.split('_')[1].split('.')[0])
+            time_seconds = frame_num / fps if fps > 0 else 0
+            
+            result["analysis"].append({
+                "frame": frame_num,
+                "time_seconds": time_seconds,
+                "issue_type": "posture",
+                "issue": "Back posture angle below threshold"
+            })
+    
+    # Collect overstride issues
+    overstride_dir = os.path.join(OUT_DIR, 'min_heel')
+    if os.path.exists(overstride_dir):
+        overstride_files = [f for f in os.listdir(overstride_dir) if f.endswith('.jpg')]
+        result["summary"]["overstride_issues_count"] = len(overstride_files)
+        
+        for file in overstride_files:
+            frame_num = int(file.split('_')[1].split('.')[0])
+            time_seconds = frame_num / fps if fps > 0 else 0
+            
+            result["analysis"].append({
+                "frame": frame_num,
+                "time_seconds": time_seconds,
+                "issue_type": "overstride",
+                "issue": "Potential overstride detected"
+            })
+    
+    # Collect visibility issues
+    visibility_dir = os.path.join(OUT_DIR, 'baixa_visibilidade')
+    if os.path.exists(visibility_dir):
+        visibility_files = [f for f in os.listdir(visibility_dir) if f.endswith('.jpg')]
+        result["summary"]["visibility_issues_count"] = len(visibility_files)
+        
+        for file in visibility_files:
+            frame_num = int(file.split('_')[1].split('.')[0])
+            time_seconds = frame_num / fps if fps > 0 else 0
+            
+            result["analysis"].append({
+                "frame": frame_num,
+                "time_seconds": time_seconds,
+                "issue_type": "visibility",
+                "issue": "Insufficient landmark visibility"
+            })
+    
+    # Sort analysis by frame number
+    result["analysis"].sort(key=lambda x: x["frame"])
+    
+    # Extract worst frames if video path is provided
+    if video_path:
+        worst_frames = extract_worst_frames(video_path, meta)
+        result["worst_frames"] = worst_frames
+    else:
+        result["worst_frames"] = {}
+    
+    return result
+
+@app.post("/analisar-video/")
+async def analyze_video(file: UploadFile = File(...)):
+    """
+    API endpoint to receive uploaded video and return analysis results.
+    """
+    if not file.content_type or not file.content_type.startswith('video/'):
+        raise HTTPException(status_code=400, detail="File must be a video")
+    
+    # Create temporary file for the uploaded video
+    with tempfile.NamedTemporaryFile(delete=False, suffix='.mp4') as temp_file:
+        try:
+            # Write uploaded file to temporary location
+            content = await file.read()
+            temp_file.write(content)
+            temp_file.flush()
+            
+            # Analyze the video
+            results = analyze_video_file(temp_file.name)
+            
+            return JSONResponse(content=results)
+            
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
+        
+        finally:
+            # Clean up temporary file
+            try:
+                os.unlink(temp_file.name)
+            except:
+                pass
+
+@app.get("/health")
+async def health_check():
+    """
+    Health check endpoint.
+    """
+    return {"status": "healthy", "message": "MovUp API is running"}
+
+@app.post("/api/save_report")
+async def save_report(report_data: dict):
+    """
+    API endpoint to save report data to the backend.
+    """
+    try:
+        # Generate a unique report ID
+        import uuid
+        report_id = str(uuid.uuid4())
+        
+        # Add metadata
+        report_data["report_id"] = report_id
+        report_data["saved_at"] = datetime.now().isoformat()
+        
+        # In a real implementation, you would save this to a database
+        # For now, we'll just save to a JSON file
+        import json
+        reports_dir = "saved_reports"
+        os.makedirs(reports_dir, exist_ok=True)
+        
+        report_file = os.path.join(reports_dir, f"report_{report_id}.json")
+        with open(report_file, 'w', encoding='utf-8') as f:
+            json.dump(report_data, f, indent=2, ensure_ascii=False)
+        
+        return {
+            "status": "success",
+            "message": "Report saved successfully",
+            "report_id": report_id,
+            "saved_at": report_data["saved_at"]
+        }
+        
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to save report: {str(e)}")
+
+@app.get("/api/worst_frame/{error_type}/{filename}")
+async def get_worst_frame_image(error_type: str, filename: str):
+    """
+    API endpoint to serve worst frame images.
+    """
+    try:
+        # Validate error type
+        valid_types = ['posture', 'overstride', 'visibility']
+        if error_type not in valid_types:
+            raise HTTPException(status_code=400, detail="Invalid error type")
+        
+        # Construct file path
+        file_path = os.path.join(OUT_DIR, 'worst_frames', filename)
+        
+        # Check if file exists
+        if not os.path.exists(file_path):
+            raise HTTPException(status_code=404, detail="Image not found")
+        
+        # Return the image file
+        return FileResponse(file_path, media_type="image/jpeg")
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to serve image: {str(e)}")
+
+@app.get("/")
+async def root():
+    """
+    Root endpoint with API information.
+    """
+    return {
+        "message": "MovUp Video Analysis API",
+        "version": "1.0.0",
+        "endpoints": {
+            "analyze": "/analisar-video/",
+            "health": "/health",
+            "save_report": "/api/save_report",
+            "worst_frame": "/api/worst_frame/{error_type}/{filename}"
+        }
+    }
+
 # ------------------ MAIN ------------------
 if __name__ == "__main__":
-    # Limpa pastas de SAÍDA e de FRAMES e cria tudo do zero
-    reset_out_dir()  
-    # a extração de frames já executa reset_frames_dir() por dentro
-
-    # 1) Transformar o vídeo em frames
-    meta = extract_frames(VIDEO_PATH)
-
-    # 2) Analisar frames (sequencial ou em chunks), checando as costas e overstride
-    if MULTIPROCESS:
-        process_frames_multiproc(meta)
-        # 3) Salvar frames conforme a análise
-    else:
-        process_frames_sequential(meta)
-        # 3) Salvar frames conforme a análise
+    # Run the FastAPI server
+    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)

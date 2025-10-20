@@ -1,130 +1,218 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-import { ProgressBar } from 'primereact/progressbar';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { Tag } from 'primereact/tag';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import { Message } from 'primereact/message';
 import 'primeicons/primeicons.css';
 import '../styles/record-page.css';
+import '../styles/report-page.css';
 
+// Import custom components
+import SummaryContainer from '../components/SummaryContainer';
+import AnalysisSection from '../components/AnalysisSection';
+import ExportOptions from '../components/ExportOptions';
+import useReportData from '../hooks/useReportData';
+
+/**
+ * Loading screen component
+ */
+const LoadingScreen = () => (
+  <div className="min-h-screen bg-yellow-400 flex align-items-center justify-content-center">
+    <div className="text-center">
+      <ProgressSpinner 
+        style={{ width: '50px', height: '50px' }} 
+        strokeWidth="5"
+      />
+      <h2 className="text-xl font-bold text-black mt-3">Carregando relatório...</h2>
+      <p className="text-black-alpha-80 mt-2">Processando dados da análise</p>
+    </div>
+  </div>
+);
+
+/**
+ * Error screen component
+ */
+const ErrorScreen = ({ error, onBack }) => (
+  <div className="min-h-screen bg-yellow-400 flex align-items-center justify-content-center">
+    <div className="text-center max-w-md">
+      <div className="text-red-600 text-6xl mb-3">⚠️</div>
+      <h2 className="text-xl font-bold text-black mb-3">Erro ao carregar relatório</h2>
+      <Message 
+        severity="error" 
+        text={error}
+        className="mb-3"
+      />
+      <Button 
+        label="Voltar" 
+        onClick={onBack}
+        className="p-button-outlined"
+      />
+    </div>
+  </div>
+);
+
+/**
+ * No data screen component
+ */
+const NoDataScreen = ({ onBack }) => (
+  <div className="min-h-screen bg-yellow-400 flex align-items-center justify-content-center">
+    <div className="text-center">
+      <div className="text-gray-600 text-6xl mb-3">📄</div>
+      <h2 className="text-xl font-bold text-black mb-3">Nenhum relatório encontrado</h2>
+      <p className="text-black-alpha-70 mb-4">
+        Não foi possível encontrar dados de análise para exibir.
+      </p>
+      <Button 
+        label="Voltar" 
+        onClick={onBack}
+        className="p-button-outlined"
+      />
+    </div>
+  </div>
+);
+
+/**
+ * Success screen component (no errors detected)
+ */
+const SuccessScreen = () => (
+  <Card className="mb-4">
+    <div className="text-center py-6">
+      <div className="text-green-600 text-6xl mb-3">🎉</div>
+      <h3 className="text-xl font-semibold text-green-600 mb-2">
+        Excelente Performance!
+      </h3>
+      <p className="text-black-alpha-70 mb-3">
+        Nenhum problema biomecânico significativo foi detectado durante sua corrida.
+      </p>
+      <p className="text-sm text-black-alpha-60">
+        Continue mantendo essa boa técnica de corrida!
+      </p>
+    </div>
+  </Card>
+);
+
+/**
+ * Analysis sections component
+ */
+const AnalysisSections = ({ analysisSections }) => (
+  <div className="mb-4">
+    <div className="text-center mb-4">
+      <h2 className="text-xl font-semibold text-black mb-2">
+        Análise Detalhada por Tipo de Problema
+      </h2>
+      <p className="text-sm text-black-alpha-70">
+        Detalhes específicos dos problemas detectados durante a análise
+      </p>
+    </div>
+    
+    {analysisSections.map((section, index) => (
+      <AnalysisSection
+        key={`${section.issueType}-${index}`}
+        title={section.title}
+        description={section.description}
+        impact={section.impact}
+        frameCount={section.frameCount}
+        totalSeconds={section.totalSeconds}
+        worstFrameImage={section.worstFrameImage}
+        worstFrameNumber={section.worstFrameNumber}
+        worstFrameSeverity={section.worstFrameSeverity}
+        worstFrameDescription={section.worstFrameDescription}
+        issueType={section.issueType}
+        severity={section.severity}
+      />
+    ))}
+  </div>
+);
+
+/**
+ * Action buttons component
+ */
+const ActionButtons = ({ onNewAnalysis, onBack }) => (
+  <div className="flex justify-content-center gap-3 mt-4">
+    <Button
+      label="Nova Análise"
+      icon="pi pi-refresh"
+      className="p-button-raised p-button-primary p-2 gap-1"
+      onClick={onNewAnalysis}
+    />
+    <Button
+      label="Voltar"
+      icon="pi pi-arrow-left"
+      className="p-button-outlined p-2 gap-1"
+      onClick={onBack}
+    />
+  </div>
+);
+
+/**
+ * Main Report page component
+ */
 const ReportPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [reportData, setReportData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [rawReportData, setRawReportData] = useState(null);
 
-  useEffect(() => {
-    // Get data from location state or localStorage
-    const data = location.state?.reportData || JSON.parse(localStorage.getItem('postureReport') || 'null');
+  // Use custom hook for data processing
+  const { 
+    processedData, 
+    analysisSections, 
+    loading, 
+    error, 
+    hasErrors
+  } = useReportData(rawReportData);
+
+  /**
+   * Loads report data from location state or localStorage
+   */
+  const loadReportData = useCallback(() => {
+    const locationData = location.state?.reportData;
+    const localStorageData = JSON.parse(localStorage.getItem('postureReport') || 'null');
+    const data = locationData || localStorageData;
     
-    if (data) {
-      setReportData(data);
+    if (data && data !== 'null') {
+      setRawReportData(data);
     } else {
-      // If no data, redirect back to video page
       navigate('/video');
     }
-    setLoading(false);
   }, [location.state, navigate]);
 
-  const handleBackToVideo = () => {
+  /**
+   * Handles navigation back to video page
+   */
+  const handleBackToVideo = useCallback(() => {
     navigate('/video');
-  };
+  }, [navigate]);
 
-  const handleNewAnalysis = () => {
+  /**
+   * Handles new analysis navigation
+   */
+  const handleNewAnalysis = useCallback(() => {
     navigate('/video');
-  };
+  }, [navigate]);
 
-  const getAngleSeverity = (angle) => {
-    if (angle < 90) return 'success';
-    if (angle < 110) return 'warning';
-    return 'danger';
-  };
+  // Load data on component mount
+  useEffect(() => {
+    loadReportData();
+  }, [loadReportData]);
 
-  const getAngleSeverityLabel = (angle) => {
-    if (angle < 90) return 'Good';
-    if (angle < 110) return 'Fair';
-    return 'Poor';
-  };
-
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = (seconds % 60).toFixed(1);
-    return mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
-  };
-
-  const formatPercentage = (percentage) => {
-    return `${percentage.toFixed(1)}%`;
-  };
-
-  const formatDirection = (direction) => {
-    const directionMap = {
-      'para frente': 'Forward',
-      'para trás': 'Backward',
-      'para esquerda': 'Left',
-      'para direita': 'Right'
-    };
-    return directionMap[direction] || direction;
-  };
-
-  const angleBodyTemplate = (rowData) => {
-    const severity = getAngleSeverity(rowData.angle);
-    const label = getAngleSeverityLabel(rowData.angle);
-    
-    return (
-      <div className="flex align-items-center gap-2">
-        <span className="font-semibold">{rowData.angle.toFixed(1)}°</span>
-        <Tag 
-          value={label} 
-          severity={severity}
-          className="text-xs"
-        />
-      </div>
-    );
-  };
-
-  const directionBodyTemplate = (rowData) => {
-    return (
-      <span className="capitalize">
-        {formatDirection(rowData.direcao)}
-      </span>
-    );
-  };
-
-  const timeBodyTemplate = (rowData) => {
-    return formatTime(rowData.second);
-  };
-
+  // Loading state
   if (loading) {
-    return (
-      <div className="min-h-screen bg-yellow-400 flex align-items-center justify-content-center">
-        <div className="text-center">
-          <div className="loading-spinner mb-3"></div>
-          <h2>Carregando relatório...</h2>
-        </div>
-      </div>
-    );
+    return <LoadingScreen />;
   }
 
-  if (!reportData) {
-    return (
-      <div className="min-h-screen bg-yellow-400 flex align-items-center justify-content-center">
-        <div className="text-center">
-          <h2>Nenhum relatório encontrado</h2>
-          <Button 
-            label="Voltar" 
-            onClick={handleBackToVideo}
-            className="p-button-outlined mt-3"
-          />
-        </div>
-      </div>
-    );
+  // Error state
+  if (error) {
+    return <ErrorScreen error={error} onBack={handleBackToVideo} />;
+  }
+
+  // No data state
+  if (!processedData) {
+    return <NoDataScreen onBack={handleBackToVideo} />;
   }
 
   return (
     <div className="page-container">
-      {/* Header */}
       <div className="flex justify-content-between align-items-center mb-4">
         <Button
           icon="pi pi-arrow-left"
@@ -132,167 +220,24 @@ const ReportPage = () => {
           onClick={handleBackToVideo}
           tooltip="Voltar"
         />
-        <h1 className="text-xl font-bold text-black">Relatório de Postura</h1>
+        <h1 className="text-xl font-bold text-black">Relatório de Análise Biomecânica</h1>
         <div style={{ width: '40px' }}></div>
       </div>
 
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-        <Card className="summary-card">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-black mb-1">
-              {reportData.total_frames}
-            </div>
-            <div className="text-sm text-black-alpha-70">
-              Total de Frames
-            </div>
-          </div>
-        </Card>
+      <SummaryContainer reportData={processedData} />
 
-        <Card className="summary-card">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-black mb-1">
-              {reportData.fps}
-            </div>
-            <div className="text-sm text-black-alpha-70">
-              FPS (Quadros por Segundo)
-            </div>
-          </div>
-        </Card>
+      {hasErrors ? (
+        <AnalysisSections analysisSections={analysisSections} />
+      ) : (
+        <SuccessScreen />
+      )}
 
-        <Card className="summary-card">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-black mb-1">
-              {formatTime(reportData.tempo_total_errado_segundos)}
-            </div>
-            <div className="text-sm text-black-alpha-70">
-              Tempo com Postura Incorreta
-            </div>
-          </div>
-        </Card>
+      <ExportOptions reportData={processedData} />
 
-        <Card className="summary-card">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-black mb-1">
-              {formatPercentage(reportData.percentual_errado)}
-            </div>
-            <div className="text-sm text-black-alpha-70">
-              % da Corrida com Postura Incorreta
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Progress Visualization */}
-      <Card className="mb-4">
-        <div className="text-center mb-3">
-          <h3 className="text-lg font-semibold text-black mb-2">
-            Qualidade da Postura
-          </h3>
-          <div className="flex align-items-center justify-content-center gap-3 mb-3">
-            <div className="text-sm text-black-alpha-70">
-              Boa: {formatPercentage(100 - reportData.percentual_errado)}
-            </div>
-            <div className="text-sm text-red-600">
-              Incorreta: {formatPercentage(reportData.percentual_errado)}
-            </div>
-          </div>
-        </div>
-        
-        <div className="progress-container">
-          <ProgressBar 
-            value={100 - reportData.percentual_errado} 
-            className="posture-progress"
-            showValue={false}
-          />
-          <div className="progress-labels">
-            <span className="text-xs text-green-600">Boa Postura</span>
-            <span className="text-xs text-red-600">Postura Incorreta</span>
-          </div>
-        </div>
-      </Card>
-
-      {/* Detailed Analysis */}
-      <Card>
-        <div className="text-center mb-3">
-          <h3 className="text-lg font-semibold text-black mb-2">
-            Análise Detalhada
-          </h3>
-          <p className="text-sm text-black-alpha-70">
-            {reportData.posturas_erradas.length} momentos com postura incorreta detectados
-          </p>
-        </div>
-
-        {reportData.posturas_erradas.length > 0 ? (
-          <div className="table-container">
-            <DataTable 
-              value={reportData.posturas_erradas}
-              paginator 
-              rows={10}
-              rowsPerPageOptions={[5, 10, 20]}
-              className="p-datatable-sm"
-              emptyMessage="Nenhuma postura incorreta detectada"
-            >
-              <Column 
-                field="frame" 
-                header="Frame" 
-                sortable 
-                className="text-center"
-                style={{ width: '80px' }}
-              />
-              <Column 
-                field="second" 
-                header="Tempo" 
-                body={timeBodyTemplate}
-                sortable 
-                className="text-center"
-                style={{ width: '100px' }}
-              />
-              <Column 
-                field="angle" 
-                header="Ângulo" 
-                body={angleBodyTemplate}
-                sortable 
-                className="text-center"
-                style={{ width: '120px' }}
-              />
-              <Column 
-                field="direcao" 
-                header="Direção" 
-                body={directionBodyTemplate}
-                sortable 
-                className="text-center"
-                style={{ width: '100px' }}
-              />
-            </DataTable>
-          </div>
-        ) : (
-          <div className="text-center py-4">
-            <div className="text-green-600 font-semibold mb-2">
-              🎉 Excelente!
-            </div>
-            <p className="text-black-alpha-70">
-              Nenhuma postura incorreta foi detectada durante sua corrida.
-            </p>
-          </div>
-        )}
-      </Card>
-
-      {/* Action Buttons */}
-      <div className="flex justify-content-center gap-3 mt-4">
-        <Button
-          label="Nova Análise"
-          icon="pi pi-refresh"
-          className="p-button-raised p-button-primary"
-          onClick={handleNewAnalysis}
-        />
-        <Button
-          label="Voltar"
-          icon="pi pi-arrow-left"
-          className="p-button-outlined"
-          onClick={handleBackToVideo}
-        />
-      </div>
+      <ActionButtons 
+        onNewAnalysis={handleNewAnalysis}
+        onBack={handleBackToVideo}
+      />
     </div>
   );
 };
