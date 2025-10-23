@@ -3,6 +3,8 @@ import { Card } from 'primereact/card';
 import {
   LineChart,
   Line,
+  BarChart,
+  Bar,
   ScatterChart,
   Scatter,
   XAxis,
@@ -65,15 +67,16 @@ const IssueGraph = ({ issueType, data, title, fps = 30 }) => {
           width: '100%',
           overflowX: 'auto', 
           overflowY: 'hidden',
+          scrollbarWidth: 'thin'
         }}
         >
         <div
           style={{
-            width: '200%',   
+            width: '100%',   
             minWidth: '800px', 
           }}
         >
-        <ResponsiveContainer width="200%" height={300}>
+        <ResponsiveContainer width="100%" height={300}>
           <LineChart
             data={chartData}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
@@ -124,27 +127,48 @@ const IssueGraph = ({ issueType, data, title, fps = 30 }) => {
     );
   }
 
-  // Render scatter chart for overstride (showing overstride detection over frames)
+  // Render bar/line chart for overstride (grouped by seconds)
   if (issueType === 'overstride') {
-    // Backend now only sends ground contact frames (analyzed frames)
-    // Use data exactly as received - no filtering or averaging
-    const scatterData = data.map(item => ({
-        frame_number: item.frame_number,
-        overstride: item.overstride ? 1 : 0,
-      label: item.overstride ? 'Overstride Detectado' : 'Normal'
-    }));
-
-    // Count overstride detections
-    const overstrideCount = scatterData.filter(item => item.overstride === 1).length;
+    // Group data by seconds
+    const secondsData = {};
+    
+    data.forEach(item => {
+      const second = Math.floor((item.frame || item.frame_number) / fps);
+      
+      if (!secondsData[second]) {
+        secondsData[second] = {
+          second: second,
+          hasOverstride: false,
+          frameCount: 0
+        };
+      }
+      
+      secondsData[second].frameCount += 1;
+      
+      // If any frame in this second has overstride, mark the second as having overstride
+      if (item.overstride) {
+        secondsData[second].hasOverstride = true;
+      }
+    });
+    
+    // Convert to chart data format
+    const chartData = Object.values(secondsData).map(item => ({
+      second: item.second,
+      overstride: item.hasOverstride ? 1 : 0,
+      label: item.hasOverstride ? 'Overstride' : 'Normal'
+    })).sort((a, b) => a.second - b.second);
+    
+    // Count seconds with overstride
+    const overstrideCount = chartData.filter(item => item.overstride === 1).length;
 
     return (
       <Card className="mt-3 p-3">
         <div className="text-center mb-3">
           <h4 className="text-sm font-semibold text-black m-0">
-            {title || 'Momentos de Contato com Solo (Overstride)'}
+            {title || 'Detecção de Overstride por Segundo'}
           </h4>
         </div>
-        {scatterData.length === 0 ? (
+        {chartData.length === 0 ? (
           <div className="text-center p-4">
             <p className="text-black-alpha-70">
               Nenhum momento de contato com solo analisado
@@ -156,7 +180,7 @@ const IssueGraph = ({ issueType, data, title, fps = 30 }) => {
               ✓ Nenhum overstride detectado (boa técnica!)
             </p>
             <p className="text-xs text-black-alpha-60 mt-2">
-              {scatterData.length} momentos de contato analisados
+              Analisados {chartData.length} segundos de corrida
             </p>
           </div>
         ) : (
@@ -166,52 +190,39 @@ const IssueGraph = ({ issueType, data, title, fps = 30 }) => {
               width: '100%',
               overflowX: 'auto', 
               overflowY: 'hidden',
+              scrollbarWidth: 'thin'
             }}
             >
             <div
               style={{
-                width: '200%',   
+                width: '100%',   
                 minWidth: '800px', 
               }}
             >
-            <ResponsiveContainer width="200%" height={300}>
-              <ScatterChart
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart
+                data={chartData}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis 
-                  type="number" 
-                  dataKey="frame_number" 
-                  name="Tempo"
-                  label={{ value: 'Frame', position: 'insideBottomRight', offset: -5 }}
+                  dataKey="second" 
+                  label={{ value: 'Tempo (segundos)', position: 'insideBottomRight', offset: -5 }}
                 />
                 <YAxis 
-                  type="number" 
-                  
-                  dataKey="overstride"
-                  name="Status"
-                  domain={[-0.2, 1.2]}
+                  domain={[0, 1]}
                   ticks={[0, 1]}
-                  tickFormatter={(value) => value === 1 ? 'Overstride' : 'Normal'}                 
-                  label={{ value: 'Detecção', angle: -90, position: 'insideLeft' }}
+                  tickFormatter={(value) => value === 1 ? 'Sim' : 'Não'}
+                  label={{ value: 'Overstride Detectado', angle: -90, position: 'insideLeft' }}
                 />
                 <Tooltip 
-                  cursor={{ strokeDasharray: '3 3' }}
-                  formatter={(value, name) => {
-                    if (name === 'overstride') {
-                      return ['Detectado', 'Overstride'];
-                    }
-                    return [value, name];
-                  }}
-                  labelFormatter={(label) => `Tempo: ${label}s`}
                   content={({ active, payload }) => {
                     if (active && payload && payload.length) {
                       const data = payload[0].payload;
                       return (
                         <div style={{ backgroundColor: 'white', padding: '10px', border: '1px solid #ccc', borderRadius: '4px' }}>
-                          <p style={{ margin: 0 }}><strong>Tempo:</strong> {data.second}s</p>
-                          <p style={{ margin: 0 }}><strong>Frame:</strong> {data.frame_number}</p>
-                          <p style={{ margin: 0 }}><strong>Status:</strong> Overstride Detectado</p>
+                          <p style={{ margin: 0 }}><strong>Segundo:</strong> {data.second}</p>
+                          <p style={{ margin: 0 }}><strong>Overstride:</strong> {data.overstride === 1 ? 'Sim' : 'Não'}</p>
                         </div>
                       );
                     }
@@ -219,33 +230,26 @@ const IssueGraph = ({ issueType, data, title, fps = 30 }) => {
                   }}
                 />
                 <Legend 
-                  payload={
-                    overstrideCount > 0 && overstrideCount < scatterData.length
-                      ? [
-                          { value: 'Overstride Detectado', type: 'circle', color: '#ff4444' },
-                          { value: 'Contato Normal', type: 'circle', color: '#00C49F' }
-                        ]
-                      : [
-                          { value: 'Overstride Detectado (Contato com Solo)', type: 'circle', color: '#ff4444' }
-                        ]
-                  }
+                  payload={[
+                    { value: 'Overstride Detectado', type: 'square', color: '#ff4444' },
+                    { value: 'Sem Overstride', type: 'square', color: '#00C49F' }
+                  ]}
                 />
-                <Scatter name="Overstride" data={scatterData}>
-                  {scatterData.map((entry, index) => (
+                <Bar dataKey="overstride" name="Overstride">
+                  {chartData.map((entry, index) => (
                     <Cell 
                       key={`cell-${index}`} 
                       fill={entry.overstride === 1 ? '#ff4444' : '#00C49F'} 
                     />
                   ))}
-                </Scatter>
-              </ScatterChart>
+                </Bar>
+              </BarChart>
             </ResponsiveContainer>
             </div>
             </div>
             <div className="text-center mt-2">
               <small className="text-black-alpha-70">
-                Cada ponto representa um momento de contato com o solo analisado. 
-                Vermelho = overstride detectado ({overstrideCount}/{scatterData.length} contatos)
+                Cada barra representa um segundo. Vermelho = overstride detectado ({overstrideCount}/{chartData.length} segundos)
               </small>
             </div>
           </>

@@ -375,7 +375,7 @@ const ExportOptions = ({ reportData, analysisSections = [] }) => {
         />
         
         <Button
-          label="Salvar JSON"
+          label="Salvar Análise"
           icon="pi pi-save"
           className="p-button-raised p-button-primary p-2 gap-1"
           onClick={handleJSONSave}

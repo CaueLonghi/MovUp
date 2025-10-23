@@ -12,7 +12,7 @@ const formatTime = (seconds) => {
 };
 
 const formatPercentage = (percentage) => {
-  return `${percentage.toFixed(1)}%`;
+  return `${percentage.toFixed()}%`;
 };
 
 /**
@@ -78,12 +78,6 @@ const SummaryContainer = ({ reportData }) => {
            reportData.analysis_summary.visibility_issues;
   };
 
-  const getTotalErrorSeconds = () => {
-    if (!reportData?.analysis) return 0;
-    return reportData.analysis.reduce((total, issue) => {
-      return total + (issue.time_seconds || 0);
-    }, 0);
-  };
 
   const getErrorPercentage = () => {
     const totalFrames = reportData?.total_frames || 0;
@@ -92,7 +86,6 @@ const SummaryContainer = ({ reportData }) => {
   };
 
   const totalErrorFrames = getTotalErrorFrames();
-  const totalErrorSeconds = getTotalErrorSeconds();
   const errorPercentage = getErrorPercentage();
 
   return (
@@ -124,13 +117,13 @@ const SummaryContainer = ({ reportData }) => {
           color="red"
         />
         <MetricCard
-          value={formatTime(totalErrorSeconds)}
+          value={`${(totalErrorFrames / reportData?.fps.toFixed(0)).toFixed(2)}s`}
           label="Tempo com Erro"
           color="orange"
         />
         <MetricCard
           value={formatPercentage(errorPercentage)}
-          label="% com Erro"
+          label="com Erro"
           color="purple"
         />
       </div>
