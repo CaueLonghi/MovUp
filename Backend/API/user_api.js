@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
 
     const existingUser = await prisma.user.findUnique({ where: { email } });
     if (existingUser) {
-      return res.status(400).json({ error: 'E-mail já cadastrado.' });
+      return res.status(400).json({ error: 'E-mail cadastrado.' });
     }
 
     const hashedPassword = await bcrypt.hash(senha, 10);
@@ -26,10 +26,10 @@ router.post('/', async (req, res) => {
       },
     });
 
-    res.status(201).json({ message: 'Usuário criado com sucesso!' });
+    res.status(201).json({ message: 'Usuário criado' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao criar usuário.' });
+    res.status(500).json({ error: 'Erro ao criar' });
   }
 });
 
@@ -48,7 +48,7 @@ router.delete('/:id', async (req, res) => {
   });
 
   res.status(200).json({
-    message: `Usuário com id ${userId} e nome ${userName}deletado com sucesso!`,
+    message: `Usuário id ${userId} e nome ${userName}deletado`,
   });
 });
 
@@ -59,7 +59,7 @@ router.post('/login', async (req, res) => {
 
   const user = await prisma.user.findUnique({ where: { email } });
   if (!user) {
-    return res.status(400).json({ error: 'Usuário não encontrado.' });
+    return res.status(400).json({ error: 'não encontrado.' });
   }
 
   const isPasswordValid = await bcrypt.compare(senha, user.senha);
@@ -73,7 +73,7 @@ router.post('/login', async (req, res) => {
     { expiresIn: '2h' }
   );
 
-  res.json({ message: 'Login realizado com sucesso!', token });
+  res.json({ message: 'Login realizado', token });
 });
 
 export default router;
