@@ -129,9 +129,8 @@ const IssueGraph = ({ issueType, data, title, fps = 30 }) => {
     // Backend now only sends ground contact frames (analyzed frames)
     // Use data exactly as received - no filtering or averaging
     const scatterData = data.map(item => ({
-      second: ((item.frame || item.frame_number) / fps).toFixed(2),
-      overstride: item.overstride ? 1 : 0,
-      frame_number: item.frame || item.frame_number,
+        frame_number: item.frame_number,
+        overstride: item.overstride ? 1 : 0,
       label: item.overstride ? 'Overstride Detectado' : 'Normal'
     }));
 
@@ -182,14 +181,18 @@ const IssueGraph = ({ issueType, data, title, fps = 30 }) => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis 
                   type="number" 
-                  dataKey="second" 
+                  dataKey="frame_number" 
                   name="Tempo"
-                  label={{ value: 'Tempo (segundos)', position: 'insideBottomRight', offset: -5 }}
+                  label={{ value: 'Frame', position: 'insideBottomRight', offset: -5 }}
                 />
                 <YAxis 
-                  type="category" 
-                  dataKey="label"
+                  type="number" 
+                  
+                  dataKey="overstride"
                   name="Status"
+                  domain={[-0.2, 1.2]}
+                  ticks={[0, 1]}
+                  tickFormatter={(value) => value === 1 ? 'Overstride' : 'Normal'}                 
                   label={{ value: 'Detecção', angle: -90, position: 'insideLeft' }}
                 />
                 <Tooltip 

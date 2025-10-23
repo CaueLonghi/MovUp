@@ -114,7 +114,7 @@ const SummaryContainer = ({ reportData }) => {
           color="blue"
         />
         <MetricCard
-          value={reportData?.fps || 0}
+          value={reportData?.fps.toFixed(0) || 0}
           label="FPS"
           color="green"
         />
