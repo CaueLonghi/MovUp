@@ -53,7 +53,7 @@ router.delete('/:id', async (req, res) => {
   });
 
   res.status(200).json({
-    message: `Ficha médica do usuário "${ficha.user.nome}" (id ${ficha.userId}) deletada com sucesso!`,
+    message: `Ficha"${ficha.user.nome}" (id ${ficha.userId}) deletada`,
   });
 });
 
