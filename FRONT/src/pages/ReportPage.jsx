@@ -115,11 +115,15 @@ const AnalysisSections = ({ analysisSections }) => (
         frameCount={section.frameCount}
         totalSeconds={section.totalSeconds}
         worstFrameImage={section.worstFrameImage}
+        successFrameImage={section.successFrameImage}
         worstFrameNumber={section.worstFrameNumber}
         worstFrameSeverity={section.worstFrameSeverity}
         worstFrameDescription={section.worstFrameDescription}
         issueType={section.issueType}
         severity={section.severity}
+        frameData={section.frameData}
+        chartTitle={section.chartTitle}
+        fps={section.fps}
       />
     ))}
   </div>
@@ -232,7 +236,7 @@ const ReportPage = () => {
         <SuccessScreen />
       )}
 
-      <ExportOptions reportData={processedData} />
+      <ExportOptions reportData={processedData} analysisSections={analysisSections} />
 
       <ActionButtons 
         onNewAnalysis={handleNewAnalysis}

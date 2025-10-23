@@ -1,5 +1,7 @@
 import React from 'react';
 import { Card } from 'primereact/card';
+import IssueGraph from './IssueGraph';
+import ImageCarousel from './ImageCarousel';
 
 /**
  * Utility functions
@@ -34,39 +36,6 @@ const StatisticsDisplay = ({ frameCount, totalSeconds }) => (
   </div>
 );
 
-/**
- * Worst frame image display component
- */
-const WorstFrameImage = ({ 
-  imageUrl, 
-  frameNumber, 
-  severity, 
-  description, 
-  title 
-}) => {
-  if (!imageUrl) return null;
-
-  return (
-    <div className="text-center">
-      <h4 className="text-sm font-semibold text-black mb-2">
-        Frame com Maior Severidade (#{frameNumber})
-      </h4>
-      {description && (
-        <p className="text-xs text-black-alpha-70 mb-2">
-          {description}
-        </p>
-      )}
-      <div className="relative inline-block">
-        <img 
-          src={imageUrl} 
-          alt={`${title} - Frame ${frameNumber}`}
-          className="h-auto border-round shadow-2"
-          style={{ maxWidth: '80%' }}
-        />
-      </div>
-    </div>
-  );
-};
 
 /**
  * Main analysis section component
@@ -79,7 +48,12 @@ const AnalysisSection = ({
   frameCount, 
   totalSeconds, 
   worstFrameImage, 
-  worstFrameNumber
+  successFrameImage,
+  worstFrameNumber,
+  issueType,
+  frameData,
+  chartTitle,
+  fps
 }) => {
   return (
     <Card className="mb-4 analysis-section-card p-3">
@@ -105,11 +79,23 @@ const AnalysisSection = ({
           totalSeconds={totalSeconds} 
         />
 
-        <WorstFrameImage
-          imageUrl={worstFrameImage}
-          frameNumber={worstFrameNumber}
+        {/* Image Carousel - shows both error and success frames */}
+        <ImageCarousel
+          errorImage={worstFrameImage}
+          successImage={successFrameImage}
+          errorFrameNumber={worstFrameNumber}
           title={title}
         />
+
+        {/* Interactive Chart */}
+        {issueType && frameData && (
+          <IssueGraph 
+            issueType={issueType}
+            data={frameData}
+            title={chartTitle}
+            fps={fps}
+          />
+        )}
       </div>
     </Card>
   );

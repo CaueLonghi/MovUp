@@ -32,47 +32,71 @@ const useVideoUpload = () => {
    * @returns {Object} Transformed data
    */
   const transformApiResponse = useCallback((apiResponse) => {
-    const { analysis = [], summary = {}, worst_frames = [] } = apiResponse;
+    console.log('📥 API Response received:', apiResponse);
+    
+    // NEW FORMAT: Backend returns analysis with aggregated data
+    const { 
+      analysis = [],     // Aggregated format [{ posture: {...} }, { overstride: {...} }, ...]
+      summary = {}
+    } = apiResponse;
+    
+    // Extract data from aggregated format
+    const totalFrames = summary.total_frames || 0;
+    const postureData = analysis.find(item => item.posture)?.posture || {};
+    const overstrideData = analysis.find(item => item.overstride)?.overstride || {};
+    const visibilityData = analysis.find(item => item.baixa_visibilidade)?.baixa_visibilidade || {};
     
     // Calculate metrics
-    const totalIssues = analysis.length;
-    const totalFrames = summary.total_frames || 0;
+    const posture_issues = postureData['Número de frames com erro'] || 0;
+    const overstride_issues = overstrideData['Número de frames com erro'] || 0;
+    const visibility_issues = visibilityData['Número de frames com erro'] || 0;
+    const totalIssues = posture_issues + overstride_issues + visibility_issues;
     const errorPercentage = totalFrames > 0 ? (totalIssues / totalFrames) * 100 : 0;
-    
-    const totalErrorSeconds = analysis.reduce((total, issue) => {
-      return total + (issue.time_seconds || 0);
-    }, 0);
 
-    // Transform legacy format for backward compatibility
-    const legacyPosturasErradas = analysis.map(issue => ({
-      frame: issue.frame,
-      second: issue.time_seconds || 0,
-      angle: issue.issue_type === 'posture' ? 95 : 120,
-      direcao: 'para frente'
-    }));
-
-    return {
+    const result = {
       // Core data
       status: apiResponse.status,
-      analysis,
-      worst_frames,
+      analysis: analysis,  // Keep aggregated format
       
       // Summary metrics
       total_frames: totalFrames,
       fps: summary.fps || 0,
-      tempo_total_errado_segundos: totalErrorSeconds,
+      total_duration_seconds: summary.total_duration_seconds || 0,
+      tempo_total_errado_segundos: 0, // Not applicable in aggregated format
       percentual_errado: errorPercentage,
-      
-      // Legacy format for backward compatibility
-      posturas_erradas: legacyPosturasErradas,
       
       // Analysis summary
       analysis_summary: {
         posture_issues: summary.posture_issues_count || 0,
         overstride_issues: summary.overstride_issues_count || 0,
         visibility_issues: summary.visibility_issues_count || 0
-      }
+      },
+      
+      // Worst frames data for display
+      worst_frames: [
+        ...(postureData.worst_frame_number > 0 ? [{
+          error_type: 'posture',
+          frame_number: postureData.worst_frame_number,
+          image_path: postureData.image_path,
+          description: 'Pior frame de postura detectado'
+        }] : []),
+        ...(overstrideData.worst_frame_number > 0 ? [{
+          error_type: 'overstride',
+          frame_number: overstrideData.worst_frame_number,
+          image_path: overstrideData.image_path,
+          description: 'Pior frame de overstride detectado'
+        }] : []),
+        ...(visibilityData.worst_frame_number > 0 ? [{
+          error_type: 'visibility',
+          frame_number: visibilityData.worst_frame_number,
+          image_path: visibilityData.image_path,
+          description: 'Pior frame de visibilidade detectado'
+        }] : [])
+      ]
     };
+
+    console.log('✅ Transformed data:', result);
+    return result;
   }, []);
 
   /**

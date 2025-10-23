@@ -59,7 +59,7 @@ const QualityProgress = ({ errorPercentage }) => (
     <div className="flex justify-content-between mt-1">
       <span className="text-xs text-red-600">Precisa Melhorar</span>
       <span className="text-xs text-orange-600">Regular</span>
-      <span className="text-xs text-yellow-600">Bom</span>
+      {/* <span className="text-xs text-yellow-600">Bom</span> */}
       <span className="text-xs text-green-600">Excelente</span>
     </div>
   </div>

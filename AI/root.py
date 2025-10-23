@@ -6,6 +6,7 @@ import numpy as np
 from multiprocessing import Pool, cpu_count
 import tempfile
 import json
+from datetime import datetime
 from typing import Dict, List, Any
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -226,6 +227,16 @@ def process_frames_sequential(meta):
     TOL = 1e-3                         # variavel de tolerancia pra evitar problemas com casas decimais
     detection_cooldown = 0             # contador de cooldown (0 = pronto para detectar)
     rightHeel_history = []             # valores historicos de y do calcanhar
+    
+    # Lists to store frame-level data
+    frame_data = {
+        'posture_angles': [],      # Store all angles for each frame
+        'overstride_frames': [],   # Store overstride detection for each frame
+        'success_frames': {
+            'posture': [],
+            'overstride': []
+        }
+    }
 
     # instancia do mediapipe
     with mp_pose.Pose(
@@ -282,6 +293,12 @@ def process_frames_sequential(meta):
                     knee     = [knee_lm.x, knee_lm.y]
                     angle = calculate_back_posture(shoulder, hip, knee)
                     back_angle = angle
+                    
+                    # Store angle for this frame
+                    frame_data['posture_angles'].append({
+                        'frame_number': i,
+                        'angle': round(angle, 2)
+                    })
 
                     if angle <= BACK_ANGLE_BAD_THRESH:
                         # desenha os landmarks em vermelho e salva na pasta 'postura_incorreta'
@@ -292,6 +309,14 @@ def process_frames_sequential(meta):
                         )
                         print(f"[POSTURA] frame={i} angle={angle:.1f}° (ruim)")
                         save_img(annotated_path('postura_incorreta', i), image)
+                    else:
+                        # Store as a success frame
+                        if len(frame_data['success_frames']['posture']) == 0:
+                            # Save first success frame
+                            success_dir = os.path.join(OUT_DIR, 'success_frames')
+                            os.makedirs(success_dir, exist_ok=True)
+                            save_img(os.path.join(success_dir, f'posture_success_{i:06d}.jpg'), image)
+                            frame_data['success_frames']['posture'].append(i)
                 else:
                     # se algum dos três (ombro/quadril/joelho) está com vis < MIN_VIS, não confiamos no angulo
                     visibility_issue = True
@@ -327,6 +352,12 @@ def process_frames_sequential(meta):
                             else:
                                 # para nao dividir nada por 0
                                 angle_deg = 0.0
+                            
+                            # Store overstride data for this frame
+                            frame_data['overstride_frames'].append({
+                                'frame_number': i,
+                                'overstride': True
+                            })
 
                             # ----------------Desenhos no frame--------------
                             cpt = (int(contact_px[0]), int(contact_px[1]))
@@ -347,6 +378,18 @@ def process_frames_sequential(meta):
 
                             # inicia cooldown para não duplicar detecções do mesmo pico
                             detection_cooldown = cooldown_frames
+                        else:
+                            # Not a peak overstride frame
+                            frame_data['overstride_frames'].append({
+                                'frame_number': i,
+                                'overstride': False
+                            })
+                            # Store success frame
+                            if len(frame_data['success_frames']['overstride']) == 0:
+                                success_dir = os.path.join(OUT_DIR, 'success_frames')
+                                os.makedirs(success_dir, exist_ok=True)
+                                save_img(os.path.join(success_dir, f'overstride_success_{i:06d}.jpg'), image)
+                                frame_data['success_frames']['overstride'].append(i)
 
                 # decrementa cooldown ao fim do frame
                 if detection_cooldown > 0:
@@ -370,6 +413,12 @@ def process_frames_sequential(meta):
                   f"| heel_y={(f'{right_heel_y:.4f}' if right_heel_y is not None else 'None')} "
                   f"| lowest_y={(f'{lowest_heel_y:.4f}' if lowest_heel_y is not None else 'None')}")
             i += 1
+    
+    # Save frame-level data to JSON file
+    frame_data_path = os.path.join(OUT_DIR, 'frame_data.json')
+    with open(frame_data_path, 'w') as f:
+        json.dump(frame_data, f, indent=2)
+    print(f"[DATA] Frame-level data saved to: {frame_data_path}")
 
     print(f"[OK] Análises salvas em: {os.path.abspath(OUT_DIR)}")
 
@@ -410,6 +459,16 @@ def worker_chunk(args):
     rightHeel_history = []
 
     local_logs = []  # strings de log para retornar ao processo pai (apenas informativo)
+    
+    # Local frame data for this chunk
+    local_frame_data = {
+        'posture_angles': [],
+        'overstride_frames': [],
+        'success_frames': {
+            'posture': [],
+            'overstride': []
+        }
+    }
 
     with mp_pose.Pose(
         static_image_mode=False,
@@ -461,6 +520,13 @@ def worker_chunk(args):
                     knee     = [knee_lm.x, knee_lm.y]
                     angle = calculate_back_posture(shoulder, hip, knee)
                     back_angle = angle
+                    
+                    # Store angle for this frame
+                    if i >= effective_start:
+                        local_frame_data['posture_angles'].append({
+                            'frame_number': i,
+                            'angle': round(angle, 2)
+                        })
 
                     if angle <= BACK_ANGLE_BAD_THRESH and i >= effective_start:
                         mp_drawing.draw_landmarks(
@@ -470,6 +536,12 @@ def worker_chunk(args):
                         )
                         local_logs.append(f"[POSTURA] frame={i} angle={round(angle,1)}° (ruim)")
                         save_img(annotated_path('postura_incorreta', i), image)
+                    elif i >= effective_start and len(local_frame_data['success_frames']['posture']) == 0:
+                        # Store as a success frame
+                        success_dir = os.path.join(OUT_DIR, 'success_frames')
+                        os.makedirs(success_dir, exist_ok=True)
+                        save_img(os.path.join(success_dir, f'posture_success_{i:06d}.jpg'), image)
+                        local_frame_data['success_frames']['posture'].append(i)
                 else:
                     visibility_issue = True
 
@@ -498,6 +570,13 @@ def worker_chunk(args):
                                 angle_deg = float(np.degrees(np.arccos(cos_val)))
                             else:
                                 angle_deg = 0.0
+                            
+                            # Store overstride data for this frame
+                            if i >= effective_start:
+                                local_frame_data['overstride_frames'].append({
+                                    'frame_number': i,
+                                    'overstride': True
+                                })
 
                             if i >= effective_start:
                                 cpt = (int(contact_px[0]), int(contact_px[1]))
@@ -513,6 +592,19 @@ def worker_chunk(args):
                                 save_img(annotated_path('min_heel', i), image)
 
                             detection_cooldown = cooldown_frames
+                        else:
+                            # Not a peak overstride frame
+                            if i >= effective_start:
+                                local_frame_data['overstride_frames'].append({
+                                    'frame_number': i,
+                                    'overstride': False
+                                })
+                                # Store success frame
+                                if len(local_frame_data['success_frames']['overstride']) == 0:
+                                    success_dir = os.path.join(OUT_DIR, 'success_frames')
+                                    os.makedirs(success_dir, exist_ok=True)
+                                    save_img(os.path.join(success_dir, f'overstride_success_{i:06d}.jpg'), image)
+                                    local_frame_data['success_frames']['overstride'].append(i)
 
                 if detection_cooldown > 0:
                     detection_cooldown -= 1
@@ -537,8 +629,11 @@ def worker_chunk(args):
                     f"| lowest_y={(f'{lowest_heel_y:.4f}' if lowest_heel_y is not None else 'None')}"
                 )
 
-    # devolve as linhas de log para o processo pai imprimir
-    return "\n".join(local_logs)
+    # devolve as linhas de log e os dados do frame para o processo pai
+    return {
+        'logs': "\n".join(local_logs),
+        'frame_data': local_frame_data
+    }
 
 def process_frames_multiproc(meta):
     """
@@ -560,22 +655,50 @@ def process_frames_multiproc(meta):
 
     # empacota os argumentos para cada worker
     args_list = [(a, b, c, meta) for (a, b, c) in parts]
+    
+    # Aggregate frame data from all workers
+    aggregated_frame_data = {
+        'posture_angles': [],
+        'overstride_frames': [],
+        'success_frames': {
+            'posture': [],
+            'overstride': []
+        }
+    }
 
     # se for 1 chunk so
     if NUM_PROCS == 1:
-        logs_all = []
         for args in args_list:
-            logs_all.append(worker_chunk(args))
-        print("\n".join(logs_all))
-        print(f"[OK] Análises salvas em: {os.path.abspath(OUT_DIR)}")
-        return
-
-    # paraleliza o processo com varios workers
-    with Pool(processes=NUM_PROCS) as pool:
-        for idx, log in enumerate(pool.imap_unordered(worker_chunk, args_list)):
-            print(f"[PROC] chunk {idx+1}/{len(parts)} pronto")
-            if log:
-                print(log)
+            result = worker_chunk(args)
+            if result['logs']:
+                print(result['logs'])
+            # Aggregate data
+            aggregated_frame_data['posture_angles'].extend(result['frame_data']['posture_angles'])
+            aggregated_frame_data['overstride_frames'].extend(result['frame_data']['overstride_frames'])
+            aggregated_frame_data['success_frames']['posture'].extend(result['frame_data']['success_frames']['posture'])
+            aggregated_frame_data['success_frames']['overstride'].extend(result['frame_data']['success_frames']['overstride'])
+    else:
+        # paraleliza o processo com varios workers
+        with Pool(processes=NUM_PROCS) as pool:
+            for idx, result in enumerate(pool.imap_unordered(worker_chunk, args_list)):
+                print(f"[PROC] chunk {idx+1}/{len(parts)} pronto")
+                if result['logs']:
+                    print(result['logs'])
+                # Aggregate data
+                aggregated_frame_data['posture_angles'].extend(result['frame_data']['posture_angles'])
+                aggregated_frame_data['overstride_frames'].extend(result['frame_data']['overstride_frames'])
+                aggregated_frame_data['success_frames']['posture'].extend(result['frame_data']['success_frames']['posture'])
+                aggregated_frame_data['success_frames']['overstride'].extend(result['frame_data']['success_frames']['overstride'])
+    
+    # Sort frame data by frame number
+    aggregated_frame_data['posture_angles'].sort(key=lambda x: x['frame_number'])
+    aggregated_frame_data['overstride_frames'].sort(key=lambda x: x['frame_number'])
+    
+    # Save aggregated frame-level data to JSON file
+    frame_data_path = os.path.join(OUT_DIR, 'frame_data.json')
+    with open(frame_data_path, 'w') as f:
+        json.dump(aggregated_frame_data, f, indent=2)
+    print(f"[DATA] Frame-level data saved to: {frame_data_path}")
 
     print(f"[OK] Análises salvas em: {os.path.abspath(OUT_DIR)}")
 
@@ -761,83 +884,164 @@ def collect_analysis_results(meta: Dict[str, Any], video_path: str = None) -> Di
     """
     fps = meta['fps']
     frame_count = meta['frame_count']
+    total_duration_seconds = frame_count / fps if fps > 0 else 0
     
-    # Initialize result structure
-    result = {
-        "status": "success",
-        "analysis": [],
-        "summary": {
-            "total_frames": frame_count,
-            "fps": fps,
-            "total_duration_seconds": frame_count / fps if fps > 0 else 0,
-            "posture_issues_count": 0,
-            "overstride_issues_count": 0,
-            "visibility_issues_count": 0
+    # Initialize counters and worst frame info
+    posture_issues_count = 0
+    overstride_issues_count = 0
+    visibility_issues_count = 0
+    
+    posture_worst_frame = 0
+    overstride_worst_frame = 0
+    visibility_worst_frame = 0
+    
+    posture_image_path = ""
+    overstride_image_path = ""
+    visibility_image_path = ""
+    
+    posture_success_image_path = ""
+    overstride_success_image_path = ""
+    
+    # Load frame-level data from JSON file
+    frame_data = {
+        'posture_angles': [],
+        'overstride_frames': [],
+        'success_frames': {
+            'posture': [],
+            'overstride': []
         }
     }
+    frame_data_path = os.path.join(OUT_DIR, 'frame_data.json')
+    if os.path.exists(frame_data_path):
+        try:
+            with open(frame_data_path, 'r') as f:
+                frame_data = json.load(f)
+        except Exception as e:
+            print(f"[WARN] Could not load frame data: {e}")
     
     # Collect posture issues
     posture_dir = os.path.join(OUT_DIR, 'postura_incorreta')
     if os.path.exists(posture_dir):
         posture_files = [f for f in os.listdir(posture_dir) if f.endswith('.jpg')]
-        result["summary"]["posture_issues_count"] = len(posture_files)
+        posture_issues_count = len(posture_files)
         
-        for file in posture_files:
-            # Extract frame number from filename
-            frame_num = int(file.split('_')[1].split('.')[0])
-            time_seconds = frame_num / fps if fps > 0 else 0
-            
-            result["analysis"].append({
-                "frame": frame_num,
-                "time_seconds": time_seconds,
-                "issue_type": "posture",
-                "issue": "Back posture angle below threshold"
-            })
+        # Find worst frame (highest frame number or use severity calculation)
+        if posture_files:
+            frame_numbers = []
+            for file in posture_files:
+                try:
+                    frame_num = int(file.split('_')[1].split('.')[0])
+                    frame_numbers.append(frame_num)
+                except (IndexError, ValueError):
+                    continue
+             
+            if frame_numbers:
+                posture_worst_frame = max(frame_numbers)
+                posture_image_path = f"out/postura_incorreta/frame_{posture_worst_frame:06d}.jpg"
     
     # Collect overstride issues
     overstride_dir = os.path.join(OUT_DIR, 'min_heel')
     if os.path.exists(overstride_dir):
         overstride_files = [f for f in os.listdir(overstride_dir) if f.endswith('.jpg')]
-        result["summary"]["overstride_issues_count"] = len(overstride_files)
+        overstride_issues_count = len(overstride_files)
         
-        for file in overstride_files:
-            frame_num = int(file.split('_')[1].split('.')[0])
-            time_seconds = frame_num / fps if fps > 0 else 0
+        # Find worst frame
+        if overstride_files:
+            frame_numbers = []
+            for file in overstride_files:
+                try:
+                    frame_num = int(file.split('_')[1].split('.')[0])
+                    frame_numbers.append(frame_num)
+                except (IndexError, ValueError):
+                    continue
             
-            result["analysis"].append({
-                "frame": frame_num,
-                "time_seconds": time_seconds,
-                "issue_type": "overstride",
-                "issue": "Potential overstride detected"
-            })
+            if frame_numbers:
+                overstride_worst_frame = max(frame_numbers)
+                overstride_image_path = f"out/min_heel/frame_{overstride_worst_frame:06d}.jpg"
     
     # Collect visibility issues
     visibility_dir = os.path.join(OUT_DIR, 'baixa_visibilidade')
     if os.path.exists(visibility_dir):
         visibility_files = [f for f in os.listdir(visibility_dir) if f.endswith('.jpg')]
-        result["summary"]["visibility_issues_count"] = len(visibility_files)
+        visibility_issues_count = len(visibility_files)
         
-        for file in visibility_files:
-            frame_num = int(file.split('_')[1].split('.')[0])
-            time_seconds = frame_num / fps if fps > 0 else 0
+        # Find worst frame
+        if visibility_files:
+            frame_numbers = []
+            for file in visibility_files:
+                try:
+                    frame_num = int(file.split('_')[1].split('.')[0])
+                    frame_numbers.append(frame_num)
+                except (IndexError, ValueError):
+                    continue
             
-            result["analysis"].append({
-                "frame": frame_num,
-                "time_seconds": time_seconds,
-                "issue_type": "visibility",
-                "issue": "Insufficient landmark visibility"
-            })
+            if frame_numbers:
+                visibility_worst_frame = max(frame_numbers)
+                visibility_image_path = f"out/baixa_visibilidade/frame_{visibility_worst_frame:06d}.jpg"
     
-    # Sort analysis by frame number
-    result["analysis"].sort(key=lambda x: x["frame"])
+    # Calculate frames with success (frames without errors)
+    posture_success_frames = frame_count - posture_issues_count
+    overstride_success_frames = frame_count - overstride_issues_count
+    visibility_success_frames = frame_count - visibility_issues_count
     
-    # Extract worst frames if video path is provided
-    if video_path:
-        worst_frames = extract_worst_frames(video_path, meta)
-        result["worst_frames"] = worst_frames
-    else:
-        result["worst_frames"] = {}
+    # Get success frame image paths
+    success_frames_dir = os.path.join(OUT_DIR, 'success_frames')
+    if os.path.exists(success_frames_dir):
+        # Find posture success image
+        posture_success_files = [f for f in os.listdir(success_frames_dir) if f.startswith('posture_success_')]
+        if posture_success_files:
+            posture_success_image_path = f"out/success_frames/{posture_success_files[0]}"
+        
+        # Find overstride success image
+        overstride_success_files = [f for f in os.listdir(success_frames_dir) if f.startswith('overstride_success_')]
+        if overstride_success_files:
+            overstride_success_image_path = f"out/success_frames/{overstride_success_files[0]}"
     
+    # Build result structure in the requested format
+    result = {
+        "status": "success",
+        "analysis": [
+            {
+                "posture": {
+                    "Número de frames com erro": posture_issues_count,
+                    "Número de frames com sucesso": posture_success_frames,
+                    "worst_frame_number": posture_worst_frame,
+                    "image_path": posture_image_path,
+                    "success_image_path": posture_success_image_path,
+                    "angles": frame_data.get('posture_angles', [])
+                }
+            },
+            {
+                "overstride": {
+                    "Número de frames com erro": overstride_issues_count,
+                    "Número de frames com sucesso": overstride_success_frames,
+                    "worst_frame_number": overstride_worst_frame,
+                    "image_path": overstride_image_path,
+                    "success_image_path": overstride_success_image_path,
+                    "frames": frame_data.get('overstride_frames', [])
+                }
+            },
+            {
+                "baixa_visibilidade": {
+                    "Número de frames com erro": visibility_issues_count,
+                    "Número de frames com sucesso": visibility_success_frames,
+                    "worst_frame_number": visibility_worst_frame,
+                    "image_path": visibility_image_path
+                }
+            }
+        ],
+        "summary": {
+            "total_frames": frame_count,
+            "fps": fps,
+            "total_duration_seconds": total_duration_seconds,
+            "posture_issues_count": posture_issues_count,
+            "overstride_issues_count": overstride_issues_count,
+            "visibility_issues_count": visibility_issues_count
+        }
+    }
+    
+    print(result)
+        
     return result
 
 @app.post("/analisar-video/")

@@ -14,14 +14,14 @@ import '../styles/record-page.css';
 /**
  * Video preview component
  */
-const VideoPreview = ({ videoPreview, selectedVideo, onConfirm, onCancel, isLoading }) => (
-  <Dialog visible={videoPreview}>
+const VideoPreview = ({ videoPreview, selectedVideo, onConfirm, onCancel, isLoading, sectionRef }) => (
+  <Card ref={sectionRef}>
       <div className="text-center">
         <h3 className="text-xl font-semibold text-black py-3">Prévia do Vídeo</h3>
         <video 
           controls 
           className="w-80 max-w-md p-2"
-          style={{ maxHeight: '65vh' }}
+          style={{ maxHeight: '65vh', maxWidth: '100%' }}
         >
           <source src={videoPreview} type={selectedVideo?.type} />
           Seu navegador não suporta o elemento de vídeo.
@@ -43,7 +43,7 @@ const VideoPreview = ({ videoPreview, selectedVideo, onConfirm, onCancel, isLoad
           />
         </div>
       </div>
-  </Dialog>
+  </Card>
 );
 
 /**
@@ -124,9 +124,15 @@ const Video = () => {
   const [showConfirm, setShowConfirm] = useState(false);
   const fileInputRef = useRef(null);
   const navigate = useNavigate();
-  
+  const sectionRef = useRef(null);
+
   const { uploadVideo, isLoading, error, progress, clearError } = useVideoUpload();
 
+  const handleScroll = () => {
+    setTimeout(() => {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
   /**
    * Handles file selection
    */
@@ -137,6 +143,7 @@ const Video = () => {
       const url = URL.createObjectURL(file);
       setVideoPreview(url);
       setShowConfirm(true);
+      handleScroll();
       clearError();
     } else {
       setError('Por favor, selecione um arquivo de vídeo válido.');
@@ -148,7 +155,7 @@ const Video = () => {
    */
   const handleUpload = useCallback(() => {
     if (fileInputRef.current) {
-      fileInputRef.current.click();
+      fileInputRef.current.click();      
     }
   }, []);
 
@@ -191,7 +198,7 @@ const Video = () => {
   }
 
   return (
-    <div className="page-container">
+    <div className="page-container" style={{ scrollBehavior: 'smooth' }}>
       <Instructions />
 
       <ActionButtons 
@@ -227,6 +234,7 @@ const Video = () => {
           onConfirm={handleConfirm}
           onCancel={handleCancel}
           isLoading={isLoading}
+          sectionRef={sectionRef}
         />
       )}
     </div>
