@@ -13,7 +13,7 @@
    ```
 
 3. **Abrir Navegador**
-   Navegue para `http://localhost:5173`
+   Navegue para `http://localhost:3000`
 
 ## 📱 Testando a PWA
 

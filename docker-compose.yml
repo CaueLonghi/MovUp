@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  front:
+    build: ./FRONT      
+    container_name: front-movup
+    ports:
+      - "3000:3000"
+    networks:
+      - movup-network
+
+  ai:
+    build: ./AI         
+    container_name: ai-movup
+    ports:
+      - "8000:8000"
+    networks:
+      - movup-network
+
+networks:
+  movup-network:
+    driver: bridge

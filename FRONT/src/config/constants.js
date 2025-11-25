@@ -4,7 +4,7 @@
 
 // API Configuration
 export const API_CONFIG = {
-  baseUrl: 'http://127.0.0.1:8000',
+  baseUrl: 'http://127.0.0.1:3000',
   endpoints: {
     analyze: '/analisar-video/',
     saveReport: '/api/save_report',
