@@ -39,7 +39,11 @@
 .quality-progress-bar {
   height: 12px;
   border-radius: 6px;
-  background: linear-gradient(90deg, #28a745 0%, #ffc107 50%, #dc3545 100%);
+  background: linear-gradient(#dc3545 100%);
+}
+
+.p-progressbar .p-progressbar-value{
+  background: #28a745;
 }
 
 /* Analysis Section Styles */
@@ -176,3 +180,4 @@
     gap: 0.5rem;
   }
 }
+

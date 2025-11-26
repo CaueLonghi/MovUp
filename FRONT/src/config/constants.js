@@ -108,3 +108,4 @@ export const ROUTES = {
   REGISTER: '/register',
   PROFILE: '/profile'
 };
+

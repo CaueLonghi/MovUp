@@ -14,60 +14,236 @@ const API_CONFIG = {
 
 /**
  * PDF content generator
+ * @param {Object} data - Report data
+ * @param {Array} analysisSections - Analysis sections with images and charts
  */
-const generatePDFContent = (data) => {
+const generatePDFContent = (data, analysisSections = []) => {
+  const issueTypeNames = {
+    posture: 'Problemas de Postura',
+    overstride: 'Problemas de Overstride',
+    visibility: 'Problemas de Visibilidade'
+  };
+
   return `
     <!DOCTYPE html>
     <html>
     <head>
       <title>Relatório de Análise - MovUp</title>
+      <meta charset="UTF-8">
       <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .header { text-align: center; margin-bottom: 30px; }
-        .summary { margin-bottom: 30px; }
-        .metric { display: inline-block; margin: 10px; text-align: center; }
-        .analysis-section { margin-bottom: 20px; page-break-inside: avoid; }
-        .metric-value { font-size: 24px; font-weight: bold; }
-        .metric-label { font-size: 12px; color: #666; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
+        * { box-sizing: border-box; }
+        body { 
+          font-family: Arial, sans-serif; 
+          margin: 20px; 
+          line-height: 1.6;
+          color: #333;
+        }
+        .header { 
+          text-align: center; 
+          margin-bottom: 30px; 
+          padding-bottom: 20px;
+          border-bottom: 3px solid #4A90E2;
+        }
+        .header h1 { 
+          color: #4A90E2; 
+          margin-bottom: 5px;
+        }
+        .summary { 
+          margin-bottom: 40px; 
+          padding: 20px;
+          background-color: #f8f9fa;
+          border-radius: 8px;
+        }
+        .metrics-container {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+        }
+        .metric { 
+          margin: 10px; 
+          text-align: center;
+          min-width: 120px;
+        }
+        .metric-value { 
+          font-size: 32px; 
+          font-weight: bold; 
+          color: #4A90E2;
+        }
+        .metric-label { 
+          font-size: 13px; 
+          color: #666; 
+          margin-top: 5px;
+        }
+        .analysis-section { 
+          margin-bottom: 40px; 
+          page-break-inside: avoid;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          padding: 20px;
+        }
+        .analysis-section h2 {
+          color: #2c3e50;
+          border-bottom: 2px solid #4A90E2;
+          padding-bottom: 10px;
+          margin-bottom: 20px;
+        }
+        .description-box {
+          background-color: #f8f9fa;
+          padding: 15px;
+          border-radius: 5px;
+          margin-bottom: 20px;
+        }
+        .description-box p {
+          margin: 10px 0;
+        }
+        .stats-container {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          margin: 20px 0;
+        }
+        .stat-box {
+          text-align: center;
+          padding: 15px;
+          background-color: #e3f2fd;
+          border-radius: 5px;
+          min-width: 150px;
+        }
+        .stat-value {
+          font-size: 24px;
+          font-weight: bold;
+          color: #1976d2;
+        }
+        .stat-label {
+          font-size: 12px;
+          color: #555;
+          margin-top: 5px;
+        }
+        .images-section {
+          margin: 30px 0;
+          text-align: center;
+        }
+        .image-container {
+          display: inline-block;
+          margin: 10px;
+          vertical-align: top;
+        }
+        .image-container img {
+          max-width: 400px;
+          height: auto;
+          border: 2px solid #ddd;
+          border-radius: 5px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .image-caption {
+          font-size: 14px;
+          font-weight: bold;
+          margin-top: 10px;
+          color: #555;
+        }
+        .chart-placeholder {
+          background-color: #f0f0f0;
+          padding: 30px;
+          border-radius: 5px;
+          text-align: center;
+          margin: 20px 0;
+          color: #666;
+        }
+        .footer {
+          margin-top: 50px;
+          padding-top: 20px;
+          border-top: 2px solid #ddd;
+          text-align: center;
+          color: #888;
+          font-size: 12px;
+        }
       </style>
     </head>
     <body>
       <div class="header">
         <h1>Relatório de Análise Biomecânica</h1>
-        <p>MovUp - Análise de Corrida</p>
+        <p><strong>MovUp - Análise de Corrida</strong></p>
         <p>Gerado em: ${new Date().toLocaleString('pt-BR')}</p>
       </div>
       
       <div class="summary">
-        <h2>Resumo Geral</h2>
-        <div class="metric">
-          <div class="metric-value">${data?.total_frames || 0}</div>
-          <div class="metric-label">Total de Frames</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">${data?.fps || 0}</div>
-          <div class="metric-label">FPS</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">${data?.analysis_summary?.posture_issues || 0}</div>
-          <div class="metric-label">Problemas de Postura</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">${data?.analysis_summary?.overstride_issues || 0}</div>
-          <div class="metric-label">Problemas de Overstride</div>
+        <h2 style="text-align: center; margin-top: 0;">Resumo Geral</h2>
+        <div class="metrics-container">
+          <div class="metric">
+            <div class="metric-value">${data?.summary?.total_frames || data?.total_frames || 0}</div>
+            <div class="metric-label">Total de Frames</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">${data?.summary?.fps || data?.fps || 0}</div>
+            <div class="metric-label">FPS</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">${data?.summary?.posture_issues_count || 0}</div>
+            <div class="metric-label">Problemas de Postura</div>
+          </div>
+          <div class="metric">
+            <div class="metric-value">${data?.summary?.overstride_issues_count || 0}</div>
+            <div class="metric-label">Problemas de Overstride</div>
+          </div>
         </div>
       </div>
       
-      ${data?.analysis?.map(issue => `
+      ${analysisSections.map(section => `
         <div class="analysis-section">
-          <h3>Frame ${issue.frame} - ${issue.issue_type}</h3>
-          <p><strong>Problema:</strong> ${issue.issue}</p>
-          <p><strong>Tempo:</strong> ${issue.time_seconds?.toFixed(2)}s</p>
+          <h2>${section.title}</h2>
+          
+          <div class="description-box">
+            <p><strong>O que é:</strong> ${section.description}</p>
+            <p><strong>Impacto:</strong> ${section.impact}</p>
+          </div>
+          
+          <div class="stats-container">
+            <div class="stat-box">
+              <div class="stat-value">${section.frameCount}</div>
+              <div class="stat-label">Frames com Erro</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">${section.totalSeconds?.toFixed(1)}s</div>
+              <div class="stat-label">Tempo Total Afetado</div>
+            </div>
+          </div>
+          
+          ${section.worstFrameImage || section.successFrameImage ? `
+            <div class="images-section">
+              <h3 style="text-align: center;">Comparação de Frames</h3>
+              ${section.worstFrameImage ? `
+                <div class="image-container">
+                  <img src="${section.worstFrameImage}" alt="Frame com Erro" />
+                  <div class="image-caption">Frame com Erro ${section.worstFrameNumber ? `(#${section.worstFrameNumber})` : ''}</div>
+                </div>
+              ` : ''}
+              ${section.successFrameImage ? `
+                <div class="image-container">
+                  <img src="${section.successFrameImage}" alt="Frame de Sucesso" />
+                  <div class="image-caption">Frame de Sucesso</div>
+                </div>
+              ` : ''}
+            </div>
+          ` : ''}
+          
+          <div class="chart-placeholder">
+            <p><strong>📊 Gráfico de ${section.issueType === 'posture' ? 'Ângulo da Postura por Segundo' : 'Detecção de Overstride'}</strong></p>
+            <p style="font-size: 12px; margin-top: 10px;">
+              ${section.issueType === 'posture' 
+                ? 'Mostra a média do ângulo da postura ao longo do tempo' 
+                : 'Mostra os momentos de contato com o solo onde overstride foi detectado'}
+            </p>
+            <p style="font-size: 11px; color: #999; margin-top: 10px;">
+              Visualize o gráfico interativo na versão online do relatório
+            </p>
+          </div>
         </div>
-      `).join('') || ''}
+      `).join('')}
+      
+      <div class="footer">
+        <p><strong>MovUp</strong> - Sistema de Análise Biomecânica de Corrida</p>
+        <p>Este relatório foi gerado automaticamente. Para mais informações, acesse a plataforma MovUp.</p>
+      </div>
     </body>
     </html>
   `;
@@ -77,7 +253,7 @@ const generatePDFContent = (data) => {
  * Export options component
  * Handles PDF generation and JSON saving
  */
-const ExportOptions = ({ reportData }) => {
+const ExportOptions = ({ reportData, analysisSections = [] }) => {
   const [isExportingPDF, setIsExportingPDF] = useState(false);
   const [isSavingJSON, setIsSavingJSON] = useState(false);
   const [exportMessage, setExportMessage] = useState(null);
@@ -91,7 +267,7 @@ const ExportOptions = ({ reportData }) => {
 
     try {
       const printWindow = window.open('', '_blank');
-      const htmlContent = generatePDFContent(reportData);
+      const htmlContent = generatePDFContent(reportData, analysisSections);
       
       printWindow.document.write(htmlContent);
       printWindow.document.close();
@@ -114,7 +290,7 @@ const ExportOptions = ({ reportData }) => {
     } finally {
       setIsExportingPDF(false);
     }
-  }, [reportData]);
+  }, [reportData, analysisSections]);
 
   /**
    * Handles JSON save to backend
@@ -199,7 +375,7 @@ const ExportOptions = ({ reportData }) => {
         />
         
         <Button
-          label="Salvar JSON"
+          label="Salvar Análise"
           icon="pi pi-save"
           className="p-button-raised p-button-primary p-2 gap-1"
           onClick={handleJSONSave}

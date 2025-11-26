@@ -79,3 +79,4 @@ export const formatSeverityScore = (score) => {
   if (!score || score < 0 || score > 1) return '0%';
   return formatPercentage(score * 100);
 };
+

@@ -90,66 +90,94 @@ const useReportData = (rawData) => {
   }, []);
 
   /**
-   * Creates analysis section data for a specific issue type
+   * Creates analysis section data for a specific issue type from aggregated data
    * @param {string} issueType - The issue type
-   * @param {Array} issues - Array of issues for this type
+   * @param {Object} issueData - Aggregated issue data
    * @param {Object} data - The processed data object
    * @returns {Object|null} Analysis section data
    */
-  const createAnalysisSection = useCallback((issueType, issues, data) => {
+  const createAnalysisSection = useCallback((issueType, issueData, data) => {
     const config = ISSUE_TYPE_CONFIG[issueType];
     if (!config) return null;
 
-    const frameCount = issues.length;
-    const totalSeconds = issues.reduce((total, issue) => total + (issue.time_seconds || 0), 0);
+    const frameCount = issueData['Número de frames com erro'] || 0;
+    
+    // Calculate total seconds based on fps and frame count
+    const fps = data.fps || 1;
+    const totalSeconds = frameCount / fps;
     
     // Get worst frame data
     const worstFrameData = getWorstFrameData(issueType, data);
     
-    // Fallback: find worst frame from issues if backend data not available
-    const worstFrame = worstFrameData || issues.reduce((worst, current) => {
-      if (current.severity_score && worst.severity_score) {
-        return current.severity_score > worst.severity_score ? current : worst;
-      }
-      return worst;
-    }, issues[0]);
+    // Use worst frame from aggregated data or from worst_frames array
+    const worstFrame = worstFrameData || {
+      frame_number: issueData.worst_frame_number,
+      image_path: issueData.image_path
+    };
+
+    // Get frame-level data for charts
+    let frameData = null;
+    let chartTitle = '';
+    
+    if (issueType === 'posture') {
+      frameData = issueData.angles || [];
+      chartTitle = 'Ângulo da Postura por Frame';
+    } else if (issueType === 'overstride') {
+      frameData = issueData.frames || [];
+      chartTitle = 'Detecção de Overstride por Frame';
+    }
+
+    // Get success image path
+    const successImagePath = issueData.success_image_path ? constructImageUrl(issueData.success_image_path) : null;
 
     return {
       ...config,
       frameCount,
       totalSeconds,
       worstFrameImage: worstFrame?.image_path ? constructImageUrl(worstFrame.image_path) : null,
-      worstFrameNumber: worstFrame?.frame_number || worstFrame?.frame,
+      successFrameImage: successImagePath,
+      worstFrameNumber: worstFrame?.frame_number,
       worstFrameSeverity: worstFrame?.severity_score,
       worstFrameDescription: worstFrame?.description,
-      issueType
+      issueType,
+      frameData,
+      chartTitle,
+      fps: data.fps || 30
     };
   }, [getWorstFrameData, constructImageUrl]);
 
   /**
-   * Processes raw data and creates analysis sections
+   * Processes raw data and creates analysis sections from aggregated format
    */
   const analysisSections = useMemo(() => {
     if (!processedData?.analysis) return [];
 
-    // Group analysis by issue type
-    const groupedAnalysis = processedData.analysis.reduce((acc, issue) => {
-      if (!acc[issue.issue_type]) {
-        acc[issue.issue_type] = [];
-      }
-      acc[issue.issue_type].push(issue);
-      return acc;
-    }, {});
+    console.log('🔍 Creating analysis sections from aggregated data');
 
-    // Create sections for each issue type
+    // NEW FORMAT: analysis is an array of objects like [{ posture: {...} }, { overstride: {...} }, ...]
     const sections = [];
-    Object.entries(groupedAnalysis).forEach(([issueType, issues]) => {
-      const section = createAnalysisSection(issueType, issues, processedData);
-      if (section) {
-        sections.push(section);
+    
+    processedData.analysis.forEach(item => {
+      // Always show posture section (even with 0 errors)
+      if (item.posture) {
+        const section = createAnalysisSection('posture', item.posture, processedData);
+        if (section) sections.push(section);
+      }
+      
+      // Always show overstride section (even with 0 errors)
+      if (item.overstride) {
+        const section = createAnalysisSection('overstride', item.overstride, processedData);
+        if (section) sections.push(section);
+      }
+      
+      // Only show visibility if there are errors
+      if (item.baixa_visibilidade && item.baixa_visibilidade['Número de frames com erro'] > 0) {
+        const section = createAnalysisSection('visibility', item.baixa_visibilidade, processedData);
+        if (section) sections.push(section);
       }
     });
 
+    console.log('✅ Analysis sections created:', sections.length);
     return sections;
   }, [processedData, createAnalysisSection]);
 
@@ -157,33 +185,33 @@ const useReportData = (rawData) => {
    * Processes and validates raw data
    */
   useEffect(() => {
-    console.log('useReportData: useEffect triggered', { rawData: !!rawData });
+    console.log('📊 useReportData: useEffect triggered', { 
+      hasRawData: !!rawData,
+      rawDataKeys: rawData ? Object.keys(rawData) : []
+    });
     
     const processData = async () => {
       try {
-        console.log('useReportData: Starting data processing');
+        console.log('🔄 useReportData: Starting data processing');
         setLoading(true);
         setError(null);
 
         if (!rawData) {
-          console.log('useReportData: No raw data, setting processed data to null');
+          console.log('⚠️ useReportData: No raw data, setting processed data to null');
           setProcessedData(null);
           return;
         }
 
-        // Validate and process the raw data
+        // NEW FORMAT: Backend sends analysis in aggregated format
+        // analysis = [{ posture: {...} }, { overstride: {...} }, { baixa_visibilidade: {...} }]
         let analysisData = rawData.analysis || [];
         
-        // Fallback: convert legacy posturas_erradas format
-        if (!analysisData.length && rawData.posturas_erradas?.length) {
-          analysisData = rawData.posturas_erradas.map(item => ({
-            frame: item.frame,
-            time_seconds: item.second,
-            issue_type: 'posture',
-            issue: 'Legacy posture issue',
-            severity: 'medium'
-          }));
-        }
+        console.log('📋 Analysis data:', {
+          hasAnalysis: !!rawData.analysis,
+          analysisLength: analysisData.length,
+          hasWorstFrames: !!rawData.worst_frames,
+          hasSummary: !!rawData.analysis_summary
+        });
 
         const processed = {
           ...rawData,
@@ -195,9 +223,16 @@ const useReportData = (rawData) => {
           }
         };
 
+        console.log('✅ Data processed successfully:', {
+          totalFrames: processed.total_frames,
+          analysisItems: processed.analysis?.length,
+          hasSummary: !!processed.analysis_summary,
+          hasWorstFrames: !!processed.worst_frames
+        });
+
         setProcessedData(processed);
       } catch (err) {
-        console.error('Error processing report data:', err);
+        console.error('❌ Error processing report data:', err);
         setError(err.message);
       } finally {
         setLoading(false);
