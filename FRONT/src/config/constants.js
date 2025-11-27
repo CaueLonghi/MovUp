@@ -6,8 +6,8 @@
 export const API_CONFIG = {
   baseUrl: 'http://localhost:8080',
   endpoints: {
-    analyze: '/analisar/',
-    saveReport: '/api/save_report',
+    analyze: '/analisar',
+    saveReport: '/analises',
     worstFrame: '/api/worst_frame',
     register: '/users',
     login: '/users/login'

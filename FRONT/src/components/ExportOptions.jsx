@@ -3,14 +3,8 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Message } from 'primereact/message';
+import { API_CONFIG } from '../config/constants';
 
-// API Configuration
-const API_CONFIG = {
-  baseUrl: 'http://127.0.0.1:8000',
-  endpoints: {
-    saveReport: '/api/save_report'
-  }
-};
 
 /**
  * PDF content generator
@@ -306,9 +300,8 @@ const ExportOptions = ({ reportData, analysisSections = [] }) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          report_data: reportData,
-          timestamp: new Date().toISOString(),
-          user_id: 'current_user'
+          data: reportData,
+          userId: 1
         })
       });
 

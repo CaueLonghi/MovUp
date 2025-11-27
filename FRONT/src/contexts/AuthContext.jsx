@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
       // Por enquanto, vamos usar os dados básicos
       const userData = {
         email: email,
-        // Você pode fazer uma chamada adicional para buscar mais dados do usuário
+        id: data.id, // Salvar o ID do usuário retornado pela API
       };
 
       setUser(userData);
@@ -99,9 +99,8 @@ export const AuthProvider = ({ children }) => {
         return { success: false, error: data.error || 'Erro ao criar conta' };
       }
 
-      // Após registro bem-sucedido, fazer login automaticamente
-      const loginResult = await login(email, senha);
-      return loginResult;
+      // Retornar sucesso sem fazer login automático
+      return { success: true, message: 'Conta criada com sucesso!' };
     } catch (error) {
       console.error('Erro no registro:', error);
       if (error.name === 'TypeError' && error.message.includes('fetch')) {

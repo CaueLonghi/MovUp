@@ -141,7 +141,7 @@ const Login = () => {
             <Button
               type="submit"
               label={isLoading ? 'Entrando...' : 'Entrar'}
-              icon={isLoading ? 'pi pi-spinner pi-spin' : ''}
+              icon={isLoading ? 'pi pi-spinner pi-spin' : 'pi pi-user'}
               className="bg-black border-none login-button"
               disabled={isLoading}
             />

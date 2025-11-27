@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { Card } from 'primereact/card';
@@ -8,6 +8,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
+import { Toast } from 'primereact/toast';
 import movup_logo from '../assets/movup_logo.png';
 import '../styles/login-page.css'
 import 'primeicons/primeicons.css';
@@ -24,6 +25,7 @@ const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
+  const toast = useRef(null);
 
   const genderOptions = [
     { label: 'Masculino', value: 'male' },
@@ -46,9 +48,6 @@ const Register = () => {
       newErrors.email = 'Email inválido';
     }
 
-    if (!formData.gender) {
-      newErrors.gender = 'Gênero é obrigatório';
-    }
 
     if (!formData.age) {
       newErrors.age = 'Idade é obrigatória';
@@ -83,7 +82,17 @@ const Register = () => {
       
       const result = await register(formData.name, formData.email, birthday, formData.password);
       if (result.success) {
-        navigate('/');
+        // Mostrar toast de sucesso
+        toast.current.show({
+          severity: 'success',
+          summary: 'Sucesso',
+          detail: 'Conta criada com sucesso! Redirecionando para login...',
+          life: 3000
+        });
+        // Redirecionar para login após um pequeno delay
+        setTimeout(() => {
+          navigate('/login');
+        }, 1500);
       } else {
         setErrors({ general: result.error || 'Falha no cadastro' });
       }
@@ -137,6 +146,7 @@ const Register = () => {
 
   return (
     <div className="page-container mb-0">
+      <Toast ref={toast} />
       <div className="bg-white flex align-items-center justify-content-center flex-column login-page">
         <img src={movup_logo} alt="" className='img-logo' />
         <Card className="w-full max-w-md card-login">
@@ -149,7 +159,7 @@ const Register = () => {
             <Message 
               severity="error" 
               text={errors.general} 
-              className="mb-3 w-full"
+              className="mb-3 w-full p-2 gap-2"
             />
           )}
 
@@ -192,26 +202,6 @@ const Register = () => {
               {errors.email && (
                 <small id="email-error" className="p-error block mt-1">
                   {errors.email}
-                </small>
-              )}
-            </div>
-
-            <div className="field">
-              <label htmlFor="gender" className="block text-black font-semibold mb-2">
-                Gênero
-              </label>
-              <Dropdown
-                id="gender"
-                value={formData.gender}
-                options={genderOptions}
-                onChange={handleDropdownChange}
-                className={`w-full ${errors.gender ? 'p-invalid' : ''}`}
-                placeholder="Selecione seu gênero"
-                aria-describedby="gender-error"
-              />
-              {errors.gender && (
-                <small id="gender-error" className="p-error block mt-1">
-                  {errors.gender}
                 </small>
               )}
             </div>

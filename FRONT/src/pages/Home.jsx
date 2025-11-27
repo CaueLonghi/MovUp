@@ -32,14 +32,21 @@ const Home = () => {
           <div className="text-left">
             <h2 className="text-lg font-bold text-black mb-3">História do movUP</h2>
             <p className="text-black-alpha-80 line-height-3 text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            O MovUP nasceu de forma simples, espontânea e muito parecida com a jornada de muitos corredores amadores. Tudo começou quando três colegas de faculdade — inicialmente apenas conhecidos de sala — passaram a se reunir semanalmente para correr. O que era só uma forma de aliviar o estresse da graduação acabou se tornando um hábito, fortalecendo uma amizade e despertando um interesse crescente pela própria evolução na corrida.
+            <br/>
+            <br/>
+            Com o tempo, o grupo começou a buscar maneiras de melhorar sua técnica. Porém, como a maioria dos corredores recreativos, eles não tinham acesso fácil a avaliações biomecânicas ou acompanhamento especializado. A curiosidade e a vontade de evoluir os levaram a gravar suas corridas na esteira para observar a postura, o impacto da pisada e a regularidade da passada.
+            <br/>
+            <br/>
+            Foi nesse momento que surgiu a ideia: “Por que não criar uma ferramenta acessível, automatizada e capaz de analisar nossa própria corrida?”
+            <br/>
+            <br/>
+            Da união entre a prática esportiva, a amizade e o conhecimento em tecnologia, nasceu o MovUP — um aplicativo pensado para ajudar corredores reais, em condições reais, a entenderem melhor sua técnica e reduzirem o risco de lesões.
+            <br/>
+            <br/>
+            O projeto cresceu, ganhou estrutura, base científica e modelo computacional robusto, mas manteve sua essência: democratizar a análise biomecânica, tornando acessível aquilo que antes dependia de clínicas especializadas. O MovUP representa a junção da paixão por correr com a vontade de transformar tecnologia em algo útil, prático e funcional — começando por três amigos que só queriam correr melhor.
             </p>
             <br />
-            <p className="text-black-alpha-80 line-height-3 text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-              Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
             <div className="text-center mt-3">
               <img src={poster} alt="" className='image-poster' />
             </div>

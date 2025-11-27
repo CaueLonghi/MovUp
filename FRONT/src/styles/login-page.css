@@ -34,4 +34,10 @@
     margin-top: 15px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     font-weight: 500 !important;
+    justify-content: center;
+    gap: 16px;
+}
+
+.login-button .p-button-label{
+        flex: none;
 }
