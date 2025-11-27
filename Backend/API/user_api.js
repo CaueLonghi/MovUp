@@ -33,7 +33,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-
 router.get('/', async (req, res) => {
   const users = await prisma.user.findMany();
   res.status(200).json(users);
@@ -51,8 +50,6 @@ router.delete('/:id', async (req, res) => {
     message: `Usuário id ${userId} e nome ${userName}deletado`,
   });
 });
-
-
 
 router.post('/login', async (req, res) => {
   const { email, senha } = req.body;

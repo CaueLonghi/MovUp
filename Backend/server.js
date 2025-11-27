@@ -1,10 +1,19 @@
 import express from 'express';
+import cors from 'cors';
 import userRoutes from './API/user_api.js'; 
 import fichaRoutes from './API/ficha_api.js';
 import analiseRoutes from './API/analise_api.js';
 
 
 const app = express();
+
+// Configurar CORS
+app.use(cors({
+  origin: ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173', 'http://127.0.0.1:3000'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.use(express.json());
 
@@ -13,10 +22,10 @@ app.use('/fichas', fichaRoutes);
 app.use('/analises', analiseRoutes);
 
 app.get('/', (req, res) => {
-  res.send('Servidor rodando');
+  res.json({ message: 'Servidor rodando' });
 });
 
-app.listen(3000, () => {
-  console.log('http://localhost:3000');
+app.listen(8080, () => {
+  console.log('Servidor rodando em http://localhost:8080');
 });
 
