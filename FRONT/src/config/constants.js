@@ -4,11 +4,13 @@
 
 // API Configuration
 export const API_CONFIG = {
-  baseUrl: 'http://127.0.0.1:3000',
+  baseUrl: 'http://localhost:8080',
   endpoints: {
-    analyze: '/analisar-video/',
+    analyze: '/analisar/',
     saveReport: '/api/save_report',
-    worstFrame: '/api/worst_frame'
+    worstFrame: '/api/worst_frame',
+    register: '/users',
+    login: '/users/login'
   },
   timeout: 30000 // 30 seconds
 };

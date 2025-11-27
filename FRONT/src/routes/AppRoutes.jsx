@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { ProgressSpinner } from 'primereact/progressspinner';
+import Cookies from 'js-cookie';
 import logoLoading from '../assets/movup_loading.png'
 
 // Lazy load pages for better performance
@@ -25,13 +26,15 @@ const LoadingSpinner = () => (
 
 // Protected route component
 const ProtectedRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+  const { loading, isAuthenticated } = useAuth();
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
-  if (!user) {
+  // Verificar autenticação via cookie
+  const token = Cookies.get('auth_token');
+  if (!token || !isAuthenticated()) {
     return <Navigate to="/login" replace />;
   }
 

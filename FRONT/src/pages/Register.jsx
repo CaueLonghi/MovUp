@@ -75,7 +75,13 @@ const Register = () => {
 
     setIsLoading(true);
     try {
-      const result = await register(formData.name, formData.email, formData.password);
+      // Calcular data de nascimento a partir da idade
+      // O backend espera uma data no formato ISO (YYYY-MM-DD)
+      const today = new Date();
+      const birthYear = today.getFullYear() - formData.age;
+      const birthday = new Date(birthYear, 0, 1).toISOString().split('T')[0]; // Usar 1º de janeiro do ano de nascimento
+      
+      const result = await register(formData.name, formData.email, birthday, formData.password);
       if (result.success) {
         navigate('/');
       } else {
