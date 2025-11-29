@@ -35,11 +35,10 @@ model FichaMedica {
 }
 
 model Analise {
-  id        Int      @id @default(autoincrement())
-  userId    Int
-  data      Bytes
-  createdAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
+  id       Int    @id @default(autoincrement())
+  userId   Int
+  data     Bytes
+  user     User   @relation(fields: [userId], references: [id])
 
   @@index([userId])
 }

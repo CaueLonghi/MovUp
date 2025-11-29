@@ -7,9 +7,9 @@ import analiseRoutes from './API/analise_api.js';
 
 const app = express();
 
-// Configurar CORS - Permitir todas as origens (para produção na AWS)
+// Configurar CORS
 app.use(cors({
-  origin: true, // Permite todas as origens
+  origin: ['*'],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
