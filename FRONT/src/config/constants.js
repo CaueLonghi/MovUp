@@ -2,9 +2,11 @@
  * Application constants and configuration
  */
 
+import { BACKEND_API_URL } from './apiUrls';
+
 // API Configuration
 export const API_CONFIG = {
-  baseUrl: 'http://3.239.94.63:8080',
+  baseUrl: BACKEND_API_URL,
   endpoints: {
     analyze: '/analisar',
     saveReport: '/analises',

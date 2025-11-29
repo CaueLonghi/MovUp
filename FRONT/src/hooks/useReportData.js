@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
+import { PYTHON_API_URL } from '../config/apiUrls';
 
 // Issue type configurations
 const ISSUE_TYPE_CONFIG = {
@@ -25,10 +26,8 @@ const ISSUE_TYPE_CONFIG = {
 // Backend configuration
 const BACKEND_CONFIG = {
   baseUrls: [
-    'http://3.239.94.63:8000',
-    'http://3.239.94.63:8000',
-    'http://3.239.94.63:5000',
-    'http://3.239.94.63:5000'
+    PYTHON_API_URL,
+    PYTHON_API_URL.replace('8000', '5000')
   ]
 };
 

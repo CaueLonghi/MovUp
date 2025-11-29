@@ -1,8 +1,9 @@
 import { useState, useCallback } from 'react';
+import { PYTHON_API_URL } from '../config/apiUrls';
 
 // API Configuration
 const API_CONFIG = {
-  baseUrl: 'http://3.239.94.63:8000',
+  baseUrl: PYTHON_API_URL,
   endpoints: {
     analyze: '/analisar-video/',
     saveReport: '/api/save_report'
