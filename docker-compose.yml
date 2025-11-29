@@ -17,14 +17,6 @@ services:
     networks:
       - movup-network
 
-  back:
-    build: ./Backend        
-    container_name: back-movup
-    ports:
-      - "8080:8080"
-    networks:
-      - movup-network
-
 networks:
   movup-network:
     driver: bridge

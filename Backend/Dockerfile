@@ -1,21 +1,20 @@
-FROM node:18-slim
+# AI - Python API
+FROM python:3.10
 
-# Criar diretório da aplicação
+# Diretório da aplicação
 WORKDIR /app
 
-# Copiar apenas package.json para otimizar cache
-COPY package*.json ./
+# Copia dependências
+COPY requirements.txt .
 
-# Instalar dependências
-RUN npm install
+# Instala dependências
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar o restante do projeto
+# Copia o restante da aplicação
 COPY . .
 
-RUN npx prisma generate
+# Porta usada pela API
+EXPOSE 8000
 
-# Expor porta do servidor
-EXPOSE 8080
-
-# Comando de inicialização
-CMD ["node", "server.js"]
+# Comando para rodar a API
+CMD ["python", "-m", "uvicorn", "root:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

@@ -706,10 +706,10 @@ def process_frames_multiproc(meta):
 # ------------------ FASTAPI INTEGRATION ------------------
 app = FastAPI(title="MovUp Video Analysis API", version="1.0.0")
 
-# Configure CORS
+# Configure CORS - Permitir todas as origens (para produção na AWS)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"],  # Permite todas as origens
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
