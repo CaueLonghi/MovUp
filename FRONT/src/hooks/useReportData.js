@@ -25,10 +25,10 @@ const ISSUE_TYPE_CONFIG = {
 // Backend configuration
 const BACKEND_CONFIG = {
   baseUrls: [
-    'http://127.0.0.1:8000',
-    'http://localhost:8000',
-    'http://127.0.0.1:5000',
-    'http://localhost:5000'
+    'http://3.239.94.63:8000',
+    'http://3.239.94.63:8000',
+    'http://3.239.94.63:5000',
+    'http://3.239.94.63:5000'
   ]
 };
 

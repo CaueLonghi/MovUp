@@ -4,7 +4,7 @@
 
 // API Configuration
 export const API_CONFIG = {
-  baseUrl: 'http://localhost:8080',
+  baseUrl: 'http://3.239.94.63:8080',
   endpoints: {
     analyze: '/analisar',
     saveReport: '/analises',

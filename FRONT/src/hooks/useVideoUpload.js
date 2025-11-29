@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 
 // API Configuration
 const API_CONFIG = {
-  baseUrl: 'http://127.0.0.1:8000',
+  baseUrl: 'http://3.239.94.63:8000',
   endpoints: {
     analyze: '/analisar-video/',
     saveReport: '/api/save_report'
