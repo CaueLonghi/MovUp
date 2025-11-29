@@ -9,7 +9,6 @@ COPY package*.json ./
 # Instalar dependências
 RUN npm install
 
-
 # Copiar o restante do projeto
 COPY . .
 
@@ -19,5 +18,4 @@ RUN npx prisma generate
 EXPOSE 8080
 
 # Comando de inicialização
-CMD ["npx", "prisma.js","generate"]
 CMD ["node", "server.js"]
