@@ -55,11 +55,11 @@ export const AuthProvider = ({ children }) => {
         Cookies.set('auth_token', data.token, { expires: 2 }); // Expira em 2 dias
       }
 
-      // Buscar dados do usuário (você pode ajustar isso conforme sua API)
-      // Por enquanto, vamos usar os dados básicos
+      // Buscar dados do usuário retornados pela API
       const userData = {
         email: email,
         id: data.id, // Salvar o ID do usuário retornado pela API
+        nome: data.nome, // Salvar o nome do usuário retornado pela API
       };
 
       setUser(userData);

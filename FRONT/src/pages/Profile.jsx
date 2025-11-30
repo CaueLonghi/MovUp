@@ -120,7 +120,7 @@ const Profile = () => {
               style={{ width: '120px', height: '120px' }}
             />
           </div>
-          <h1 className="text-2xl font-bold text-black mb-2">{user.name || user.email || 'Usuário'}</h1>
+          <h1 className="text-2xl font-bold text-black mb-2">{user.nome || 'Usuário'}</h1>
           <Button 
             label="Sair" 
             icon="pi pi-sign-out"

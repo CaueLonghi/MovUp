@@ -4,6 +4,7 @@ import { Card } from 'primereact/card';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Message } from 'primereact/message';
 import { API_CONFIG } from '../config/constants';
+import { useAuth } from '../contexts/AuthContext';
 
 
 /**
@@ -248,6 +249,7 @@ const generatePDFContent = (data, analysisSections = []) => {
  * Handles PDF generation and JSON saving
  */
 const ExportOptions = ({ reportData, analysisSections = [] }) => {
+  const { user } = useAuth();
   const [isExportingPDF, setIsExportingPDF] = useState(false);
   const [isSavingJSON, setIsSavingJSON] = useState(false);
   const [exportMessage, setExportMessage] = useState(null);
@@ -290,9 +292,17 @@ const ExportOptions = ({ reportData, analysisSections = [] }) => {
    * Handles JSON save to backend
    */
   const handleJSONSave = useCallback(async () => {
+    if (!user?.id) {
+      setExportMessage({
+        severity: 'error',
+        text: 'Usuário não autenticado. Faça login para salvar análises.'
+      });
+      return;
+    }
+
     setIsSavingJSON(true);
     setExportMessage(null);
-
+    console.log(user.id)
     try {
       const response = await fetch(`${API_CONFIG.baseUrl}${API_CONFIG.endpoints.saveReport}`, {
         method: 'POST',
@@ -301,7 +311,7 @@ const ExportOptions = ({ reportData, analysisSections = [] }) => {
         },
         body: JSON.stringify({
           data: reportData,
-          userId: 1
+          userId: user.id
         })
       });
 
@@ -324,7 +334,7 @@ const ExportOptions = ({ reportData, analysisSections = [] }) => {
     } finally {
       setIsSavingJSON(false);
     }
-  }, [reportData]);
+  }, [reportData, user]);
 
   /**
    * Clears export message

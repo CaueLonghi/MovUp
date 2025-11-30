@@ -6,11 +6,13 @@ export const Header = () => {
     <div className="bg-white p-3 border-round">
               <div className="flex justify-content-between align-items-center">
                 <div>
+                  <a href="/">
                   <img 
                     src={movup_logo} 
                     alt="MOVUP Logo" 
                     className="logo-image mb-2"
                   />
+                  </a>
                 </div>
                 <p className="pi pi-bell"></p>
               </div>
