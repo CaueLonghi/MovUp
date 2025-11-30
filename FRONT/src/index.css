@@ -107,6 +107,7 @@ textarea:focus {
 /* Icon container styles - Galeria com tamanhos iguais */
 .icon-container {
   background-color: var(--background-primary);
+  border: none;
   border-radius: 12px;
   padding: 20px;
   display: flex;
@@ -118,7 +119,7 @@ textarea:focus {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: 95px;
   width: 95px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* transition: transform 0.2s ease, box-shadow 0.2s ease; */
   
 }
 

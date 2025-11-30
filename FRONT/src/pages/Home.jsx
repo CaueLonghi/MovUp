@@ -20,10 +20,12 @@ const Home = () => {
         {/* Feature Grid com Containers Amarelos - Galeria */}
         <div className="gallery-grid">
           {features.map((feature, index) => (
-            <div key={index} className="icon-container">
-              <i className={`${feature.icon} text-black`}></i>
-              <h3 className="text-black">{feature.title}</h3>
-            </div>
+            <Button key={index} className="icon-container" disabled>
+              <div key={index} className="icon-container">
+                <i className={`${feature.icon} text-black`}></i>
+                <h3 className="text-black">{feature.title}</h3>
+              </div>
+            </Button>
           ))}
         </div>
 

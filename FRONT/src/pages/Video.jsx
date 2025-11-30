@@ -139,7 +139,7 @@ const ActionButtons = ({ onRecord, onUpload, isLoading }) => (
       size="large"
       style={{ height: '60px', fontSize: '16px' }}
       onClick={onRecord}
-      disabled={isLoading}
+      disabled
     />
     <Button 
       label="CARREGUE SUA CORRIDA" 
