@@ -4,8 +4,8 @@
  */
 
 // Backend Node.js API (authentication, análises)
-export const BACKEND_API_URL = 'http://3.239.94.63:8080';
+export const BACKEND_API_URL = 'http://localhost:8080';
 
 // Python/FastAPI Backend (video analysis)
-export const PYTHON_API_URL = 'http://3.239.94.63:8000';
+export const PYTHON_API_URL = 'http://localhost:8000';
 

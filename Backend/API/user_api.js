@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
     { expiresIn: '2h' }
   );
 
-  res.json({ message: 'Login realizado', token });
+  res.json({ message: 'Login realizado', token, id: user.id  });
 });
 
 export default router;
