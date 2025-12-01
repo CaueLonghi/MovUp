@@ -112,6 +112,26 @@
   transform: scale(1.05);
 }
 
+/* Image Carousel Styles - Fix for portrait images */
+.image-carousel-container img {
+  image-orientation: from-image;
+  object-fit: contain;
+  width: auto;
+  height: auto;
+}
+
+/* Ensure portrait images are displayed correctly */
+.image-carousel-container img[style*="max-width"] {
+  max-height: 80vh !important;
+}
+
+@media (max-width: 768px) {
+  .image-carousel-container img {
+    max-width: 90% !important;
+    max-height: 60vh !important;
+  }
+}
+
 /* Error States */
 .error-state {
   background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);

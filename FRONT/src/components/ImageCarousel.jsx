@@ -60,7 +60,21 @@ const ImageCarousel = ({ errorImage, successImage, errorFrameNumber, title }) =>
             src={images[0].itemImageSrc} 
             alt={images[0].alt}
             className="h-auto border-round shadow-2"
-            style={{ maxWidth: '80%' }}
+            style={{ 
+              maxWidth: '80%',
+              maxHeight: '70vh',
+              objectFit: 'contain',
+              imageOrientation: 'from-image'
+            }}
+            onLoad={(e) => {
+              const img = e.target;
+              const isPortrait = img.naturalHeight > img.naturalWidth;
+              if (isPortrait && img.naturalWidth < img.naturalHeight) {
+                // Ensure portrait images are displayed correctly
+                img.style.maxWidth = '60%';
+                img.style.maxHeight = '80vh';
+              }
+            }}
           />
         </div>
       </div>
@@ -86,7 +100,22 @@ const ImageCarousel = ({ errorImage, successImage, errorFrameNumber, title }) =>
             src={item.itemImageSrc} 
             alt={item.alt}
             className="h-auto border-round shadow-2"
-            style={{ maxWidth: '80%', margin: '0 auto' }}
+            style={{ 
+              maxWidth: '80%', 
+              maxHeight: '70vh',
+              margin: '0 auto',
+              objectFit: 'contain',
+              imageOrientation: 'from-image'
+            }}
+            onLoad={(e) => {
+              const img = e.target;
+              const isPortrait = img.naturalHeight > img.naturalWidth;
+              if (isPortrait && img.naturalWidth < img.naturalHeight) {
+                // Ensure portrait images are displayed correctly
+                img.style.maxWidth = '60%';
+                img.style.maxHeight = '80vh';
+              }
+            }}
           />
         </div>
         <div className="mt-2">

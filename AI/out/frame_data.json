@@ -2,5935 +2,3083 @@
   "posture_angles": [
     {
       "frame_number": 0,
-      "angle": 108.75
+      "angle": 137.63
     },
     {
       "frame_number": 1,
-      "angle": 122.91
+      "angle": 139.51
     },
     {
       "frame_number": 2,
-      "angle": 160.39
+      "angle": 144.56
     },
     {
       "frame_number": 3,
-      "angle": 135.7
-    },
-    {
-      "frame_number": 4,
-      "angle": 140.0
-    },
-    {
-      "frame_number": 5,
-      "angle": 135.45
-    },
-    {
-      "frame_number": 6,
-      "angle": 141.66
-    },
-    {
-      "frame_number": 7,
-      "angle": 136.53
-    },
-    {
-      "frame_number": 8,
-      "angle": 134.23
-    },
-    {
-      "frame_number": 9,
-      "angle": 119.75
-    },
-    {
-      "frame_number": 10,
-      "angle": 106.64
-    },
-    {
-      "frame_number": 11,
-      "angle": 116.09
-    },
-    {
-      "frame_number": 12,
-      "angle": 153.36
-    },
-    {
-      "frame_number": 13,
-      "angle": 148.45
-    },
-    {
-      "frame_number": 14,
-      "angle": 157.09
-    },
-    {
-      "frame_number": 15,
-      "angle": 116.81
-    },
-    {
-      "frame_number": 16,
-      "angle": 108.04
-    },
-    {
-      "frame_number": 17,
-      "angle": 111.26
-    },
-    {
-      "frame_number": 18,
-      "angle": 152.25
-    },
-    {
-      "frame_number": 19,
-      "angle": 134.43
-    },
-    {
-      "frame_number": 20,
-      "angle": 111.9
-    },
-    {
-      "frame_number": 21,
-      "angle": 127.82
-    },
-    {
-      "frame_number": 22,
-      "angle": 169.37
-    },
-    {
-      "frame_number": 23,
-      "angle": 178.2
-    },
-    {
-      "frame_number": 24,
-      "angle": 150.68
-    },
-    {
-      "frame_number": 25,
-      "angle": 134.25
-    },
-    {
-      "frame_number": 26,
-      "angle": 135.23
-    },
-    {
-      "frame_number": 27,
-      "angle": 132.01
-    },
-    {
-      "frame_number": 28,
-      "angle": 132.42
-    },
-    {
-      "frame_number": 29,
-      "angle": 109.69
-    },
-    {
-      "frame_number": 30,
-      "angle": 93.08
-    },
-    {
-      "frame_number": 31,
-      "angle": 95.46
-    },
-    {
-      "frame_number": 32,
-      "angle": 156.14
-    },
-    {
-      "frame_number": 33,
-      "angle": 159.76
-    },
-    {
-      "frame_number": 34,
-      "angle": 179.39
-    },
-    {
-      "frame_number": 35,
-      "angle": 133.34
-    },
-    {
-      "frame_number": 36,
-      "angle": 116.46
-    },
-    {
-      "frame_number": 37,
-      "angle": 128.25
-    },
-    {
-      "frame_number": 38,
-      "angle": 128.1
-    },
-    {
-      "frame_number": 39,
-      "angle": 119.74
-    },
-    {
-      "frame_number": 40,
-      "angle": 114.28
-    },
-    {
-      "frame_number": 41,
-      "angle": 124.24
-    },
-    {
-      "frame_number": 42,
-      "angle": 175.6
-    },
-    {
-      "frame_number": 43,
-      "angle": 174.93
-    },
-    {
-      "frame_number": 44,
-      "angle": 150.09
-    },
-    {
-      "frame_number": 45,
-      "angle": 123.39
-    },
-    {
-      "frame_number": 46,
-      "angle": 129.11
-    },
-    {
-      "frame_number": 47,
-      "angle": 134.07
-    },
-    {
-      "frame_number": 48,
-      "angle": 136.29
-    },
-    {
-      "frame_number": 49,
-      "angle": 132.65
-    },
-    {
-      "frame_number": 50,
-      "angle": 134.01
-    },
-    {
-      "frame_number": 51,
-      "angle": 125.08
-    },
-    {
-      "frame_number": 52,
-      "angle": 122.59
-    },
-    {
-      "frame_number": 53,
-      "angle": 119.27
-    },
-    {
-      "frame_number": 54,
-      "angle": 117.55
-    },
-    {
-      "frame_number": 55,
-      "angle": 113.33
-    },
-    {
-      "frame_number": 56,
-      "angle": 108.1
-    },
-    {
-      "frame_number": 57,
-      "angle": 100.64
-    },
-    {
-      "frame_number": 58,
-      "angle": 97.77
-    },
-    {
-      "frame_number": 59,
-      "angle": 95.37
-    },
-    {
-      "frame_number": 60,
-      "angle": 95.37
-    },
-    {
-      "frame_number": 61,
-      "angle": 93.92
-    },
-    {
-      "frame_number": 62,
-      "angle": 93.56
-    },
-    {
-      "frame_number": 63,
-      "angle": 100.25
-    },
-    {
-      "frame_number": 64,
-      "angle": 179.12
-    },
-    {
-      "frame_number": 65,
-      "angle": 166.37
-    },
-    {
-      "frame_number": 66,
-      "angle": 157.04
-    },
-    {
-      "frame_number": 67,
-      "angle": 151.69
-    },
-    {
-      "frame_number": 68,
-      "angle": 151.13
-    },
-    {
-      "frame_number": 69,
-      "angle": 151.32
-    },
-    {
-      "frame_number": 70,
-      "angle": 153.15
-    },
-    {
-      "frame_number": 71,
-      "angle": 152.37
-    },
-    {
-      "frame_number": 72,
-      "angle": 154.4
-    },
-    {
-      "frame_number": 73,
-      "angle": 156.6
-    },
-    {
-      "frame_number": 74,
-      "angle": 157.86
-    },
-    {
-      "frame_number": 75,
-      "angle": 171.84
-    },
-    {
-      "frame_number": 76,
-      "angle": 178.51
-    },
-    {
-      "frame_number": 77,
-      "angle": 123.57
-    },
-    {
-      "frame_number": 78,
-      "angle": 117.47
-    },
-    {
-      "frame_number": 79,
-      "angle": 125.77
-    },
-    {
-      "frame_number": 80,
-      "angle": 124.79
-    },
-    {
-      "frame_number": 81,
-      "angle": 125.46
-    },
-    {
-      "frame_number": 82,
-      "angle": 115.5
-    },
-    {
-      "frame_number": 83,
-      "angle": 101.89
-    },
-    {
-      "frame_number": 84,
-      "angle": 106.44
-    },
-    {
-      "frame_number": 85,
-      "angle": 101.58
-    },
-    {
-      "frame_number": 86,
-      "angle": 112.46
-    },
-    {
-      "frame_number": 87,
-      "angle": 113.41
-    },
-    {
-      "frame_number": 88,
-      "angle": 111.99
-    },
-    {
-      "frame_number": 89,
-      "angle": 111.99
-    },
-    {
-      "frame_number": 90,
-      "angle": 110.16
-    },
-    {
-      "frame_number": 91,
-      "angle": 122.91
-    },
-    {
-      "frame_number": 92,
-      "angle": 131.23
-    },
-    {
-      "frame_number": 93,
-      "angle": 127.12
-    },
-    {
-      "frame_number": 94,
-      "angle": 123.56
-    },
-    {
-      "frame_number": 95,
-      "angle": 119.11
-    },
-    {
-      "frame_number": 96,
-      "angle": 115.6
-    },
-    {
-      "frame_number": 97,
-      "angle": 115.83
-    },
-    {
-      "frame_number": 98,
-      "angle": 114.39
-    },
-    {
-      "frame_number": 99,
-      "angle": 114.35
-    },
-    {
-      "frame_number": 100,
-      "angle": 110.9
-    },
-    {
-      "frame_number": 101,
-      "angle": 115.74
-    },
-    {
-      "frame_number": 102,
-      "angle": 118.88
-    },
-    {
-      "frame_number": 103,
-      "angle": 120.93
-    },
-    {
-      "frame_number": 104,
-      "angle": 127.49
-    },
-    {
-      "frame_number": 105,
-      "angle": 126.35
-    },
-    {
-      "frame_number": 106,
-      "angle": 127.13
-    },
-    {
-      "frame_number": 107,
-      "angle": 151.24
-    },
-    {
-      "frame_number": 108,
-      "angle": 161.28
-    },
-    {
-      "frame_number": 109,
-      "angle": 149.7
-    },
-    {
-      "frame_number": 110,
-      "angle": 130.93
-    },
-    {
-      "frame_number": 111,
-      "angle": 128.33
-    },
-    {
-      "frame_number": 112,
-      "angle": 143.16
-    },
-    {
-      "frame_number": 113,
-      "angle": 165.17
-    },
-    {
-      "frame_number": 114,
-      "angle": 145.45
-    },
-    {
-      "frame_number": 115,
-      "angle": 142.75
-    },
-    {
-      "frame_number": 116,
       "angle": 146.11
     },
     {
-      "frame_number": 117,
-      "angle": 143.38
+      "frame_number": 4,
+      "angle": 146.78
     },
     {
-      "frame_number": 118,
-      "angle": 141.18
+      "frame_number": 5,
+      "angle": 147.13
     },
     {
-      "frame_number": 119,
-      "angle": 143.46
+      "frame_number": 6,
+      "angle": 139.24
     },
     {
-      "frame_number": 120,
-      "angle": 139.6
+      "frame_number": 7,
+      "angle": 143.15
     },
     {
-      "frame_number": 121,
-      "angle": 141.18
+      "frame_number": 8,
+      "angle": 156.26
     },
     {
-      "frame_number": 122,
-      "angle": 138.57
+      "frame_number": 9,
+      "angle": 171.5
     },
     {
-      "frame_number": 123,
-      "angle": 134.23
+      "frame_number": 10,
+      "angle": 179.34
     },
     {
-      "frame_number": 124,
-      "angle": 128.9
+      "frame_number": 11,
+      "angle": 175.76
     },
     {
-      "frame_number": 125,
-      "angle": 118.31
+      "frame_number": 12,
+      "angle": 175.74
     },
     {
-      "frame_number": 126,
-      "angle": 117.94
+      "frame_number": 13,
+      "angle": 178.32
     },
     {
-      "frame_number": 127,
-      "angle": 122.56
+      "frame_number": 14,
+      "angle": 162.68
     },
     {
-      "frame_number": 128,
-      "angle": 122.5
+      "frame_number": 15,
+      "angle": 143.19
     },
     {
-      "frame_number": 129,
-      "angle": 125.09
+      "frame_number": 16,
+      "angle": 133.91
     },
     {
-      "frame_number": 130,
-      "angle": 122.12
+      "frame_number": 17,
+      "angle": 126.13
     },
     {
-      "frame_number": 131,
-      "angle": 124.43
+      "frame_number": 18,
+      "angle": 127.77
     },
     {
-      "frame_number": 132,
-      "angle": 114.7
+      "frame_number": 19,
+      "angle": 125.37
     },
     {
-      "frame_number": 133,
-      "angle": 104.14
-    },
-    {
-      "frame_number": 134,
-      "angle": 102.74
-    },
-    {
-      "frame_number": 135,
-      "angle": 101.6
-    },
-    {
-      "frame_number": 136,
-      "angle": 100.07
-    },
-    {
-      "frame_number": 137,
-      "angle": 94.3
-    },
-    {
-      "frame_number": 138,
-      "angle": 90.43
-    },
-    {
-      "frame_number": 139,
-      "angle": 92.55
-    },
-    {
-      "frame_number": 140,
-      "angle": 92.51
-    },
-    {
-      "frame_number": 141,
-      "angle": 96.5
-    },
-    {
-      "frame_number": 142,
-      "angle": 99.23
-    },
-    {
-      "frame_number": 143,
-      "angle": 124.54
-    },
-    {
-      "frame_number": 144,
-      "angle": 177.95
-    },
-    {
-      "frame_number": 145,
-      "angle": 174.46
-    },
-    {
-      "frame_number": 146,
-      "angle": 155.28
-    },
-    {
-      "frame_number": 147,
-      "angle": 149.82
-    },
-    {
-      "frame_number": 148,
-      "angle": 148.32
-    },
-    {
-      "frame_number": 149,
-      "angle": 159.83
-    },
-    {
-      "frame_number": 150,
-      "angle": 158.24
-    },
-    {
-      "frame_number": 151,
-      "angle": 149.94
-    },
-    {
-      "frame_number": 152,
-      "angle": 149.7
-    },
-    {
-      "frame_number": 153,
-      "angle": 150.41
-    },
-    {
-      "frame_number": 154,
-      "angle": 132.89
-    },
-    {
-      "frame_number": 155,
-      "angle": 117.99
-    },
-    {
-      "frame_number": 156,
-      "angle": 116.82
-    },
-    {
-      "frame_number": 157,
-      "angle": 124.68
-    },
-    {
-      "frame_number": 158,
-      "angle": 123.54
-    },
-    {
-      "frame_number": 159,
-      "angle": 122.04
-    },
-    {
-      "frame_number": 160,
-      "angle": 115.25
-    },
-    {
-      "frame_number": 161,
-      "angle": 114.91
-    },
-    {
-      "frame_number": 162,
-      "angle": 119.96
-    },
-    {
-      "frame_number": 163,
-      "angle": 101.26
-    },
-    {
-      "frame_number": 164,
-      "angle": 102.61
-    },
-    {
-      "frame_number": 165,
-      "angle": 99.0
-    },
-    {
-      "frame_number": 166,
-      "angle": 108.95
-    },
-    {
-      "frame_number": 167,
-      "angle": 111.16
-    },
-    {
-      "frame_number": 168,
-      "angle": 110.69
-    },
-    {
-      "frame_number": 169,
-      "angle": 129.13
-    },
-    {
-      "frame_number": 170,
-      "angle": 127.9
-    },
-    {
-      "frame_number": 171,
-      "angle": 132.3
-    },
-    {
-      "frame_number": 172,
-      "angle": 122.64
-    },
-    {
-      "frame_number": 173,
-      "angle": 130.13
-    },
-    {
-      "frame_number": 174,
-      "angle": 126.08
-    },
-    {
-      "frame_number": 175,
-      "angle": 121.64
-    },
-    {
-      "frame_number": 176,
-      "angle": 109.38
-    },
-    {
-      "frame_number": 177,
-      "angle": 108.99
-    },
-    {
-      "frame_number": 178,
-      "angle": 106.48
-    },
-    {
-      "frame_number": 179,
-      "angle": 108.67
-    },
-    {
-      "frame_number": 180,
-      "angle": 106.78
-    },
-    {
-      "frame_number": 181,
-      "angle": 111.1
-    },
-    {
-      "frame_number": 182,
-      "angle": 120.84
-    },
-    {
-      "frame_number": 183,
-      "angle": 124.44
-    },
-    {
-      "frame_number": 184,
-      "angle": 125.13
-    },
-    {
-      "frame_number": 185,
-      "angle": 125.74
-    },
-    {
-      "frame_number": 186,
-      "angle": 162.18
-    },
-    {
-      "frame_number": 187,
-      "angle": 177.02
-    },
-    {
-      "frame_number": 188,
-      "angle": 174.88
-    },
-    {
-      "frame_number": 189,
-      "angle": 134.16
-    },
-    {
-      "frame_number": 190,
-      "angle": 137.7
-    },
-    {
-      "frame_number": 191,
-      "angle": 134.61
-    },
-    {
-      "frame_number": 192,
-      "angle": 137.92
-    },
-    {
-      "frame_number": 193,
-      "angle": 161.73
-    },
-    {
-      "frame_number": 194,
-      "angle": 157.06
-    },
-    {
-      "frame_number": 195,
-      "angle": 131.77
-    },
-    {
-      "frame_number": 196,
-      "angle": 133.74
-    },
-    {
-      "frame_number": 197,
-      "angle": 129.48
-    },
-    {
-      "frame_number": 198,
-      "angle": 137.2
-    },
-    {
-      "frame_number": 199,
-      "angle": 136.25
-    },
-    {
-      "frame_number": 200,
-      "angle": 136.04
-    },
-    {
-      "frame_number": 201,
-      "angle": 136.65
-    },
-    {
-      "frame_number": 202,
-      "angle": 134.4
-    },
-    {
-      "frame_number": 203,
-      "angle": 110.63
-    },
-    {
-      "frame_number": 204,
-      "angle": 102.29
-    },
-    {
-      "frame_number": 205,
-      "angle": 101.38
-    },
-    {
-      "frame_number": 206,
-      "angle": 103.39
-    },
-    {
-      "frame_number": 207,
-      "angle": 110.67
-    },
-    {
-      "frame_number": 208,
-      "angle": 104.58
-    },
-    {
-      "frame_number": 209,
-      "angle": 102.23
-    },
-    {
-      "frame_number": 210,
-      "angle": 108.04
-    },
-    {
-      "frame_number": 211,
-      "angle": 121.12
-    },
-    {
-      "frame_number": 212,
-      "angle": 127.89
-    },
-    {
-      "frame_number": 213,
-      "angle": 135.05
-    },
-    {
-      "frame_number": 214,
-      "angle": 135.23
-    },
-    {
-      "frame_number": 215,
-      "angle": 119.33
-    },
-    {
-      "frame_number": 216,
-      "angle": 93.45
-    },
-    {
-      "frame_number": 217,
-      "angle": 89.49
-    },
-    {
-      "frame_number": 218,
-      "angle": 90.88
-    },
-    {
-      "frame_number": 219,
-      "angle": 91.81
-    },
-    {
-      "frame_number": 220,
-      "angle": 91.32
-    },
-    {
-      "frame_number": 221,
-      "angle": 90.62
-    },
-    {
-      "frame_number": 222,
-      "angle": 96.68
-    },
-    {
-      "frame_number": 223,
-      "angle": 101.04
-    },
-    {
-      "frame_number": 224,
-      "angle": 169.52
-    },
-    {
-      "frame_number": 225,
-      "angle": 156.73
-    },
-    {
-      "frame_number": 226,
-      "angle": 163.41
-    },
-    {
-      "frame_number": 227,
-      "angle": 173.02
-    },
-    {
-      "frame_number": 228,
-      "angle": 151.43
-    },
-    {
-      "frame_number": 229,
-      "angle": 153.49
-    },
-    {
-      "frame_number": 230,
-      "angle": 149.72
-    },
-    {
-      "frame_number": 231,
-      "angle": 149.31
-    },
-    {
-      "frame_number": 232,
-      "angle": 153.06
-    },
-    {
-      "frame_number": 233,
-      "angle": 141.21
-    },
-    {
-      "frame_number": 234,
-      "angle": 123.32
-    },
-    {
-      "frame_number": 235,
-      "angle": 123.3
-    },
-    {
-      "frame_number": 236,
-      "angle": 119.72
-    },
-    {
-      "frame_number": 237,
-      "angle": 123.75
-    },
-    {
-      "frame_number": 238,
-      "angle": 117.94
-    },
-    {
-      "frame_number": 239,
-      "angle": 121.13
-    },
-    {
-      "frame_number": 240,
-      "angle": 120.13
-    },
-    {
-      "frame_number": 241,
-      "angle": 113.99
-    },
-    {
-      "frame_number": 242,
-      "angle": 110.25
-    },
-    {
-      "frame_number": 243,
-      "angle": 108.73
-    },
-    {
-      "frame_number": 244,
-      "angle": 106.35
-    },
-    {
-      "frame_number": 245,
-      "angle": 110.0
-    },
-    {
-      "frame_number": 246,
-      "angle": 110.7
-    },
-    {
-      "frame_number": 247,
-      "angle": 114.28
-    },
-    {
-      "frame_number": 248,
-      "angle": 112.14
-    },
-    {
-      "frame_number": 249,
-      "angle": 122.25
-    },
-    {
-      "frame_number": 250,
-      "angle": 118.86
-    },
-    {
-      "frame_number": 251,
-      "angle": 138.19
-    },
-    {
-      "frame_number": 252,
-      "angle": 126.21
-    },
-    {
-      "frame_number": 253,
-      "angle": 126.84
-    },
-    {
-      "frame_number": 254,
-      "angle": 119.7
-    },
-    {
-      "frame_number": 255,
-      "angle": 113.0
-    },
-    {
-      "frame_number": 256,
-      "angle": 107.74
-    },
-    {
-      "frame_number": 257,
-      "angle": 110.48
-    },
-    {
-      "frame_number": 258,
-      "angle": 111.5
-    },
-    {
-      "frame_number": 259,
-      "angle": 110.6
-    },
-    {
-      "frame_number": 260,
-      "angle": 115.6
-    },
-    {
-      "frame_number": 261,
-      "angle": 114.64
-    },
-    {
-      "frame_number": 262,
-      "angle": 120.72
-    },
-    {
-      "frame_number": 263,
-      "angle": 123.32
-    },
-    {
-      "frame_number": 264,
+      "frame_number": 20,
       "angle": 124.2
     },
     {
-      "frame_number": 265,
-      "angle": 129.39
+      "frame_number": 21,
+      "angle": 129.0
     },
     {
-      "frame_number": 266,
-      "angle": 130.01
+      "frame_number": 22,
+      "angle": 139.44
     },
     {
-      "frame_number": 267,
-      "angle": 154.78
+      "frame_number": 23,
+      "angle": 148.07
     },
     {
-      "frame_number": 268,
-      "angle": 178.33
+      "frame_number": 24,
+      "angle": 152.7
     },
     {
-      "frame_number": 269,
-      "angle": 132.61
+      "frame_number": 25,
+      "angle": 149.9
     },
     {
-      "frame_number": 270,
-      "angle": 130.76
+      "frame_number": 26,
+      "angle": 147.4
     },
     {
-      "frame_number": 271,
-      "angle": 154.98
+      "frame_number": 27,
+      "angle": 139.92
     },
     {
-      "frame_number": 272,
-      "angle": 159.4
+      "frame_number": 28,
+      "angle": 143.62
     },
     {
-      "frame_number": 273,
-      "angle": 145.02
+      "frame_number": 29,
+      "angle": 158.92
     },
     {
-      "frame_number": 274,
-      "angle": 133.17
+      "frame_number": 30,
+      "angle": 175.14
     },
     {
-      "frame_number": 275,
-      "angle": 126.56
+      "frame_number": 31,
+      "angle": 179.01
     },
     {
-      "frame_number": 276,
-      "angle": 125.36
+      "frame_number": 32,
+      "angle": 173.65
     },
     {
-      "frame_number": 277,
-      "angle": 123.81
+      "frame_number": 33,
+      "angle": 171.16
     },
     {
-      "frame_number": 278,
-      "angle": 108.35
+      "frame_number": 34,
+      "angle": 177.88
     },
     {
-      "frame_number": 279,
-      "angle": 111.53
+      "frame_number": 35,
+      "angle": 159.03
     },
     {
-      "frame_number": 280,
-      "angle": 114.41
-    },
-    {
-      "frame_number": 281,
-      "angle": 122.63
-    },
-    {
-      "frame_number": 282,
-      "angle": 127.58
-    },
-    {
-      "frame_number": 283,
-      "angle": 132.33
-    },
-    {
-      "frame_number": 284,
-      "angle": 132.38
-    },
-    {
-      "frame_number": 285,
-      "angle": 109.85
-    },
-    {
-      "frame_number": 286,
-      "angle": 111.96
-    },
-    {
-      "frame_number": 287,
-      "angle": 109.95
-    },
-    {
-      "frame_number": 288,
-      "angle": 122.07
-    },
-    {
-      "frame_number": 289,
-      "angle": 119.68
-    },
-    {
-      "frame_number": 290,
-      "angle": 109.33
-    },
-    {
-      "frame_number": 291,
-      "angle": 110.21
-    },
-    {
-      "frame_number": 292,
-      "angle": 106.14
-    },
-    {
-      "frame_number": 293,
-      "angle": 111.37
-    },
-    {
-      "frame_number": 294,
-      "angle": 109.11
-    },
-    {
-      "frame_number": 295,
-      "angle": 104.17
-    },
-    {
-      "frame_number": 296,
-      "angle": 100.19
-    },
-    {
-      "frame_number": 297,
-      "angle": 92.2
-    },
-    {
-      "frame_number": 298,
-      "angle": 92.37
-    },
-    {
-      "frame_number": 299,
-      "angle": 93.3
-    },
-    {
-      "frame_number": 300,
-      "angle": 95.54
-    },
-    {
-      "frame_number": 301,
-      "angle": 98.54
-    },
-    {
-      "frame_number": 302,
-      "angle": 100.88
-    },
-    {
-      "frame_number": 303,
-      "angle": 107.62
-    },
-    {
-      "frame_number": 304,
-      "angle": 123.67
-    },
-    {
-      "frame_number": 305,
-      "angle": 164.58
-    },
-    {
-      "frame_number": 306,
-      "angle": 173.88
-    },
-    {
-      "frame_number": 307,
-      "angle": 178.78
-    },
-    {
-      "frame_number": 308,
-      "angle": 116.47
-    },
-    {
-      "frame_number": 309,
-      "angle": 148.24
-    },
-    {
-      "frame_number": 310,
-      "angle": 148.58
-    },
-    {
-      "frame_number": 311,
-      "angle": 149.36
-    },
-    {
-      "frame_number": 312,
-      "angle": 150.11
-    },
-    {
-      "frame_number": 313,
-      "angle": 164.19
-    },
-    {
-      "frame_number": 314,
-      "angle": 166.94
-    },
-    {
-      "frame_number": 315,
-      "angle": 128.69
-    },
-    {
-      "frame_number": 316,
-      "angle": 119.64
-    },
-    {
-      "frame_number": 317,
-      "angle": 122.65
-    },
-    {
-      "frame_number": 318,
-      "angle": 122.69
-    },
-    {
-      "frame_number": 319,
-      "angle": 112.14
-    },
-    {
-      "frame_number": 320,
-      "angle": 106.43
-    },
-    {
-      "frame_number": 321,
-      "angle": 109.27
-    },
-    {
-      "frame_number": 322,
-      "angle": 121.05
-    },
-    {
-      "frame_number": 323,
-      "angle": 113.65
-    },
-    {
-      "frame_number": 324,
-      "angle": 110.08
-    },
-    {
-      "frame_number": 325,
-      "angle": 111.31
-    },
-    {
-      "frame_number": 326,
-      "angle": 127.42
-    },
-    {
-      "frame_number": 327,
-      "angle": 120.38
-    },
-    {
-      "frame_number": 328,
-      "angle": 119.88
-    },
-    {
-      "frame_number": 329,
-      "angle": 137.53
-    },
-    {
-      "frame_number": 330,
-      "angle": 133.0
-    },
-    {
-      "frame_number": 331,
-      "angle": 143.36
-    },
-    {
-      "frame_number": 332,
-      "angle": 129.98
-    },
-    {
-      "frame_number": 333,
-      "angle": 112.25
-    },
-    {
-      "frame_number": 334,
-      "angle": 103.96
-    },
-    {
-      "frame_number": 335,
-      "angle": 102.66
-    },
-    {
-      "frame_number": 336,
-      "angle": 103.79
-    },
-    {
-      "frame_number": 337,
-      "angle": 103.55
-    },
-    {
-      "frame_number": 338,
-      "angle": 105.55
-    },
-    {
-      "frame_number": 339,
-      "angle": 111.23
-    },
-    {
-      "frame_number": 340,
-      "angle": 112.07
-    },
-    {
-      "frame_number": 341,
-      "angle": 121.29
-    },
-    {
-      "frame_number": 342,
-      "angle": 125.83
-    },
-    {
-      "frame_number": 343,
-      "angle": 125.35
-    },
-    {
-      "frame_number": 344,
-      "angle": 124.79
-    },
-    {
-      "frame_number": 345,
-      "angle": 124.41
-    },
-    {
-      "frame_number": 346,
-      "angle": 128.45
-    },
-    {
-      "frame_number": 347,
-      "angle": 130.86
-    },
-    {
-      "frame_number": 348,
-      "angle": 135.95
-    },
-    {
-      "frame_number": 349,
-      "angle": 146.7
-    },
-    {
-      "frame_number": 350,
-      "angle": 127.6
-    },
-    {
-      "frame_number": 351,
-      "angle": 163.38
-    },
-    {
-      "frame_number": 352,
-      "angle": 139.54
-    },
-    {
-      "frame_number": 353,
-      "angle": 113.69
-    },
-    {
-      "frame_number": 354,
-      "angle": 114.08
-    },
-    {
-      "frame_number": 355,
-      "angle": 121.83
-    },
-    {
-      "frame_number": 356,
-      "angle": 133.26
-    },
-    {
-      "frame_number": 357,
-      "angle": 134.74
-    },
-    {
-      "frame_number": 358,
-      "angle": 134.15
-    },
-    {
-      "frame_number": 359,
-      "angle": 135.4
-    },
-    {
-      "frame_number": 360,
-      "angle": 135.22
-    },
-    {
-      "frame_number": 361,
-      "angle": 134.35
-    },
-    {
-      "frame_number": 362,
-      "angle": 130.28
-    },
-    {
-      "frame_number": 363,
-      "angle": 119.4
-    },
-    {
-      "frame_number": 364,
-      "angle": 115.58
-    },
-    {
-      "frame_number": 365,
-      "angle": 113.82
-    },
-    {
-      "frame_number": 366,
-      "angle": 108.59
-    },
-    {
-      "frame_number": 367,
-      "angle": 101.47
-    },
-    {
-      "frame_number": 368,
-      "angle": 102.55
-    },
-    {
-      "frame_number": 369,
-      "angle": 101.85
-    },
-    {
-      "frame_number": 370,
-      "angle": 106.03
-    },
-    {
-      "frame_number": 371,
-      "angle": 114.58
-    },
-    {
-      "frame_number": 372,
-      "angle": 111.83
-    },
-    {
-      "frame_number": 373,
-      "angle": 98.57
-    },
-    {
-      "frame_number": 374,
-      "angle": 96.73
-    },
-    {
-      "frame_number": 375,
-      "angle": 90.88
-    },
-    {
-      "frame_number": 376,
-      "angle": 88.06
-    },
-    {
-      "frame_number": 377,
-      "angle": 87.19
-    },
-    {
-      "frame_number": 378,
-      "angle": 88.05
-    },
-    {
-      "frame_number": 379,
-      "angle": 88.79
-    },
-    {
-      "frame_number": 380,
-      "angle": 93.18
-    },
-    {
-      "frame_number": 381,
-      "angle": 103.9
-    },
-    {
-      "frame_number": 382,
-      "angle": 173.44
-    },
-    {
-      "frame_number": 383,
-      "angle": 177.65
-    },
-    {
-      "frame_number": 384,
-      "angle": 153.29
-    },
-    {
-      "frame_number": 385,
+      "frame_number": 36,
       "angle": 148.39
     },
     {
-      "frame_number": 386,
-      "angle": 159.26
+      "frame_number": 37,
+      "angle": 136.97
     },
     {
-      "frame_number": 387,
-      "angle": 155.21
+      "frame_number": 38,
+      "angle": 129.03
     },
     {
-      "frame_number": 388,
-      "angle": 145.82
+      "frame_number": 39,
+      "angle": 126.68
     },
     {
-      "frame_number": 389,
-      "angle": 147.6
+      "frame_number": 40,
+      "angle": 126.48
     },
     {
-      "frame_number": 390,
-      "angle": 151.39
+      "frame_number": 41,
+      "angle": 125.66
     },
     {
-      "frame_number": 391,
-      "angle": 151.57
+      "frame_number": 42,
+      "angle": 130.14
     },
     {
-      "frame_number": 392,
-      "angle": 162.76
+      "frame_number": 43,
+      "angle": 137.34
     },
     {
-      "frame_number": 393,
-      "angle": 139.27
+      "frame_number": 44,
+      "angle": 145.14
     },
     {
-      "frame_number": 394,
-      "angle": 130.23
+      "frame_number": 45,
+      "angle": 146.6
     },
     {
-      "frame_number": 395,
-      "angle": 125.91
+      "frame_number": 46,
+      "angle": 146.1
     },
     {
-      "frame_number": 396,
-      "angle": 127.13
+      "frame_number": 47,
+      "angle": 140.81
     },
     {
-      "frame_number": 397,
-      "angle": 123.36
+      "frame_number": 48,
+      "angle": 134.34
     },
     {
-      "frame_number": 398,
-      "angle": 110.54
+      "frame_number": 49,
+      "angle": 140.9
     },
     {
-      "frame_number": 399,
-      "angle": 112.75
+      "frame_number": 50,
+      "angle": 157.56
     },
     {
-      "frame_number": 400,
-      "angle": 113.18
+      "frame_number": 51,
+      "angle": 171.89
     },
     {
-      "frame_number": 401,
-      "angle": 110.49
+      "frame_number": 52,
+      "angle": 179.59
     },
     {
-      "frame_number": 402,
-      "angle": 106.55
+      "frame_number": 53,
+      "angle": 174.14
     },
     {
-      "frame_number": 403,
-      "angle": 112.24
+      "frame_number": 54,
+      "angle": 167.91
     },
     {
-      "frame_number": 404,
-      "angle": 114.79
+      "frame_number": 55,
+      "angle": 143.41
     },
     {
-      "frame_number": 405,
-      "angle": 121.94
+      "frame_number": 56,
+      "angle": 149.83
     },
     {
-      "frame_number": 406,
-      "angle": 130.85
+      "frame_number": 57,
+      "angle": 148.07
     },
     {
-      "frame_number": 407,
-      "angle": 119.68
+      "frame_number": 58,
+      "angle": 139.67
     },
     {
-      "frame_number": 408,
-      "angle": 116.74
+      "frame_number": 59,
+      "angle": 127.92
     },
     {
-      "frame_number": 409,
+      "frame_number": 60,
       "angle": 126.67
     },
     {
-      "frame_number": 410,
-      "angle": 118.76
+      "frame_number": 61,
+      "angle": 126.57
     },
     {
-      "frame_number": 411,
-      "angle": 116.56
+      "frame_number": 62,
+      "angle": 124.97
     },
     {
-      "frame_number": 412,
-      "angle": 113.94
+      "frame_number": 63,
+      "angle": 129.85
     },
     {
-      "frame_number": 413,
-      "angle": 108.3
+      "frame_number": 64,
+      "angle": 136.75
     },
     {
-      "frame_number": 414,
-      "angle": 104.74
+      "frame_number": 65,
+      "angle": 143.58
     },
     {
-      "frame_number": 415,
-      "angle": 103.69
+      "frame_number": 66,
+      "angle": 149.38
     },
     {
-      "frame_number": 416,
-      "angle": 106.51
+      "frame_number": 67,
+      "angle": 148.3
     },
     {
-      "frame_number": 417,
-      "angle": 110.53
+      "frame_number": 68,
+      "angle": 147.58
     },
     {
-      "frame_number": 418,
-      "angle": 118.71
+      "frame_number": 69,
+      "angle": 143.81
     },
     {
-      "frame_number": 419,
-      "angle": 123.13
+      "frame_number": 70,
+      "angle": 145.06
     },
     {
-      "frame_number": 420,
-      "angle": 124.22
+      "frame_number": 71,
+      "angle": 161.14
     },
     {
-      "frame_number": 421,
-      "angle": 125.07
+      "frame_number": 72,
+      "angle": 174.71
     },
     {
-      "frame_number": 422,
-      "angle": 126.1
+      "frame_number": 73,
+      "angle": 174.77
     },
     {
-      "frame_number": 423,
-      "angle": 127.79
+      "frame_number": 74,
+      "angle": 172.88
     },
     {
-      "frame_number": 424,
-      "angle": 174.29
+      "frame_number": 75,
+      "angle": 169.73
     },
     {
-      "frame_number": 425,
-      "angle": 178.25
+      "frame_number": 76,
+      "angle": 172.78
     },
     {
-      "frame_number": 426,
-      "angle": 136.96
+      "frame_number": 77,
+      "angle": 168.67
     },
     {
-      "frame_number": 427,
-      "angle": 175.04
+      "frame_number": 78,
+      "angle": 158.39
     },
     {
-      "frame_number": 428,
-      "angle": 159.12
+      "frame_number": 79,
+      "angle": 142.05
     },
     {
-      "frame_number": 429,
-      "angle": 137.94
+      "frame_number": 80,
+      "angle": 126.04
     },
     {
-      "frame_number": 430,
-      "angle": 151.28
+      "frame_number": 81,
+      "angle": 129.45
     },
     {
-      "frame_number": 431,
-      "angle": 144.69
+      "frame_number": 82,
+      "angle": 128.38
     },
     {
-      "frame_number": 432,
-      "angle": 140.79
+      "frame_number": 83,
+      "angle": 131.13
     },
     {
-      "frame_number": 433,
-      "angle": 140.08
+      "frame_number": 84,
+      "angle": 134.99
     },
     {
-      "frame_number": 434,
-      "angle": 128.02
+      "frame_number": 85,
+      "angle": 144.14
     },
     {
-      "frame_number": 435,
-      "angle": 133.94
+      "frame_number": 86,
+      "angle": 149.07
     },
     {
-      "frame_number": 436,
-      "angle": 137.65
+      "frame_number": 87,
+      "angle": 152.18
     },
     {
-      "frame_number": 437,
-      "angle": 134.79
+      "frame_number": 88,
+      "angle": 152.29
     },
     {
-      "frame_number": 438,
-      "angle": 139.12
+      "frame_number": 89,
+      "angle": 145.12
     },
     {
-      "frame_number": 439,
-      "angle": 141.14
-    },
-    {
-      "frame_number": 440,
-      "angle": 141.27
-    },
-    {
-      "frame_number": 441,
-      "angle": 138.84
-    },
-    {
-      "frame_number": 442,
-      "angle": 129.71
-    },
-    {
-      "frame_number": 443,
-      "angle": 119.29
-    },
-    {
-      "frame_number": 444,
-      "angle": 116.22
-    },
-    {
-      "frame_number": 445,
-      "angle": 121.85
-    },
-    {
-      "frame_number": 446,
-      "angle": 120.94
-    },
-    {
-      "frame_number": 447,
-      "angle": 112.6
-    },
-    {
-      "frame_number": 448,
-      "angle": 112.96
-    },
-    {
-      "frame_number": 449,
-      "angle": 110.6
-    },
-    {
-      "frame_number": 450,
-      "angle": 112.95
-    },
-    {
-      "frame_number": 451,
-      "angle": 110.94
-    },
-    {
-      "frame_number": 452,
-      "angle": 106.57
-    },
-    {
-      "frame_number": 453,
-      "angle": 102.1
-    },
-    {
-      "frame_number": 454,
-      "angle": 99.86
-    },
-    {
-      "frame_number": 455,
-      "angle": 95.27
-    },
-    {
-      "frame_number": 456,
-      "angle": 95.16
-    },
-    {
-      "frame_number": 457,
-      "angle": 93.14
-    },
-    {
-      "frame_number": 458,
-      "angle": 99.18
-    },
-    {
-      "frame_number": 459,
-      "angle": 102.8
-    },
-    {
-      "frame_number": 460,
-      "angle": 111.52
-    },
-    {
-      "frame_number": 461,
-      "angle": 122.0
-    },
-    {
-      "frame_number": 462,
-      "angle": 161.2
-    },
-    {
-      "frame_number": 463,
-      "angle": 150.26
-    },
-    {
-      "frame_number": 464,
-      "angle": 143.91
-    },
-    {
-      "frame_number": 465,
-      "angle": 146.33
-    },
-    {
-      "frame_number": 466,
-      "angle": 145.73
-    },
-    {
-      "frame_number": 467,
-      "angle": 153.7
-    },
-    {
-      "frame_number": 468,
-      "angle": 145.95
-    },
-    {
-      "frame_number": 469,
-      "angle": 150.8
-    },
-    {
-      "frame_number": 470,
-      "angle": 149.67
-    },
-    {
-      "frame_number": 471,
-      "angle": 155.91
-    },
-    {
-      "frame_number": 472,
-      "angle": 137.95
-    },
-    {
-      "frame_number": 473,
-      "angle": 148.82
-    },
-    {
-      "frame_number": 474,
-      "angle": 129.89
-    },
-    {
-      "frame_number": 475,
-      "angle": 121.56
-    },
-    {
-      "frame_number": 476,
-      "angle": 115.54
-    },
-    {
-      "frame_number": 477,
-      "angle": 114.65
-    },
-    {
-      "frame_number": 478,
-      "angle": 118.66
-    },
-    {
-      "frame_number": 479,
-      "angle": 119.0
-    },
-    {
-      "frame_number": 480,
-      "angle": 107.92
-    },
-    {
-      "frame_number": 481,
-      "angle": 114.23
-    },
-    {
-      "frame_number": 482,
-      "angle": 116.05
-    },
-    {
-      "frame_number": 483,
-      "angle": 110.29
-    },
-    {
-      "frame_number": 484,
-      "angle": 117.07
-    },
-    {
-      "frame_number": 485,
-      "angle": 118.63
-    },
-    {
-      "frame_number": 486,
-      "angle": 119.04
-    },
-    {
-      "frame_number": 487,
-      "angle": 129.74
-    },
-    {
-      "frame_number": 488,
-      "angle": 116.51
-    },
-    {
-      "frame_number": 489,
-      "angle": 116.66
-    },
-    {
-      "frame_number": 490,
-      "angle": 118.3
-    },
-    {
-      "frame_number": 491,
-      "angle": 110.96
-    },
-    {
-      "frame_number": 492,
-      "angle": 112.4
-    },
-    {
-      "frame_number": 493,
-      "angle": 108.83
-    },
-    {
-      "frame_number": 494,
-      "angle": 110.81
-    },
-    {
-      "frame_number": 495,
-      "angle": 108.65
-    },
-    {
-      "frame_number": 496,
-      "angle": 106.12
-    },
-    {
-      "frame_number": 497,
-      "angle": 108.03
-    },
-    {
-      "frame_number": 498,
-      "angle": 111.29
-    },
-    {
-      "frame_number": 499,
-      "angle": 119.34
-    },
-    {
-      "frame_number": 500,
-      "angle": 123.76
-    },
-    {
-      "frame_number": 501,
-      "angle": 125.28
-    },
-    {
-      "frame_number": 502,
-      "angle": 129.43
-    },
-    {
-      "frame_number": 503,
-      "angle": 130.51
-    },
-    {
-      "frame_number": 504,
-      "angle": 160.67
-    },
-    {
-      "frame_number": 505,
-      "angle": 159.0
-    },
-    {
-      "frame_number": 506,
-      "angle": 155.78
-    },
-    {
-      "frame_number": 507,
-      "angle": 160.88
-    },
-    {
-      "frame_number": 508,
-      "angle": 170.79
-    },
-    {
-      "frame_number": 509,
-      "angle": 155.51
-    },
-    {
-      "frame_number": 510,
-      "angle": 149.55
-    },
-    {
-      "frame_number": 511,
-      "angle": 138.41
-    },
-    {
-      "frame_number": 512,
-      "angle": 114.03
-    },
-    {
-      "frame_number": 513,
-      "angle": 117.11
-    },
-    {
-      "frame_number": 514,
-      "angle": 116.98
-    },
-    {
-      "frame_number": 515,
-      "angle": 118.59
-    },
-    {
-      "frame_number": 516,
-      "angle": 117.01
-    },
-    {
-      "frame_number": 517,
-      "angle": 117.8
-    },
-    {
-      "frame_number": 518,
-      "angle": 117.82
-    },
-    {
-      "frame_number": 519,
-      "angle": 114.95
-    },
-    {
-      "frame_number": 520,
-      "angle": 128.67
-    },
-    {
-      "frame_number": 521,
-      "angle": 127.48
-    },
-    {
-      "frame_number": 522,
-      "angle": 122.1
-    },
-    {
-      "frame_number": 523,
-      "angle": 123.02
-    },
-    {
-      "frame_number": 524,
-      "angle": 126.83
-    },
-    {
-      "frame_number": 525,
-      "angle": 123.1
-    },
-    {
-      "frame_number": 526,
-      "angle": 128.76
-    },
-    {
-      "frame_number": 527,
-      "angle": 133.39
-    },
-    {
-      "frame_number": 528,
-      "angle": 120.7
-    },
-    {
-      "frame_number": 529,
-      "angle": 117.04
-    },
-    {
-      "frame_number": 530,
-      "angle": 114.41
-    },
-    {
-      "frame_number": 531,
-      "angle": 116.09
-    },
-    {
-      "frame_number": 532,
-      "angle": 103.46
-    },
-    {
-      "frame_number": 533,
-      "angle": 98.83
-    },
-    {
-      "frame_number": 534,
-      "angle": 93.8
-    },
-    {
-      "frame_number": 535,
-      "angle": 92.14
-    },
-    {
-      "frame_number": 536,
-      "angle": 91.13
-    },
-    {
-      "frame_number": 537,
-      "angle": 90.46
-    },
-    {
-      "frame_number": 538,
-      "angle": 92.95
-    },
-    {
-      "frame_number": 539,
-      "angle": 111.53
-    },
-    {
-      "frame_number": 540,
-      "angle": 129.14
-    },
-    {
-      "frame_number": 541,
-      "angle": 173.7
-    },
-    {
-      "frame_number": 542,
-      "angle": 156.28
-    },
-    {
-      "frame_number": 543,
-      "angle": 150.22
-    },
-    {
-      "frame_number": 544,
-      "angle": 150.21
-    },
-    {
-      "frame_number": 545,
-      "angle": 162.98
-    },
-    {
-      "frame_number": 546,
-      "angle": 145.16
-    },
-    {
-      "frame_number": 547,
-      "angle": 144.3
-    },
-    {
-      "frame_number": 548,
-      "angle": 146.95
-    },
-    {
-      "frame_number": 549,
-      "angle": 143.56
-    },
-    {
-      "frame_number": 550,
-      "angle": 150.68
-    },
-    {
-      "frame_number": 551,
-      "angle": 148.83
-    },
-    {
-      "frame_number": 552,
-      "angle": 125.04
-    },
-    {
-      "frame_number": 553,
-      "angle": 123.16
-    },
-    {
-      "frame_number": 554,
-      "angle": 120.51
-    },
-    {
-      "frame_number": 555,
-      "angle": 113.9
-    },
-    {
-      "frame_number": 556,
-      "angle": 109.74
-    },
-    {
-      "frame_number": 557,
-      "angle": 111.05
-    },
-    {
-      "frame_number": 558,
-      "angle": 114.28
-    },
-    {
-      "frame_number": 559,
-      "angle": 106.55
-    },
-    {
-      "frame_number": 560,
-      "angle": 117.14
-    },
-    {
-      "frame_number": 561,
-      "angle": 112.75
-    },
-    {
-      "frame_number": 562,
-      "angle": 109.66
-    },
-    {
-      "frame_number": 563,
-      "angle": 107.63
-    },
-    {
-      "frame_number": 564,
-      "angle": 105.8
-    },
-    {
-      "frame_number": 565,
-      "angle": 110.29
-    },
-    {
-      "frame_number": 566,
-      "angle": 124.6
-    },
-    {
-      "frame_number": 567,
-      "angle": 121.48
-    },
-    {
-      "frame_number": 568,
-      "angle": 112.14
-    },
-    {
-      "frame_number": 569,
-      "angle": 109.06
-    },
-    {
-      "frame_number": 570,
-      "angle": 116.87
-    },
-    {
-      "frame_number": 571,
-      "angle": 137.0
-    },
-    {
-      "frame_number": 572,
-      "angle": 132.98
-    },
-    {
-      "frame_number": 573,
-      "angle": 114.67
-    },
-    {
-      "frame_number": 574,
-      "angle": 111.16
-    },
-    {
-      "frame_number": 575,
-      "angle": 112.3
-    },
-    {
-      "frame_number": 576,
-      "angle": 111.89
-    },
-    {
-      "frame_number": 577,
-      "angle": 111.58
-    },
-    {
-      "frame_number": 578,
-      "angle": 117.72
-    },
-    {
-      "frame_number": 579,
-      "angle": 120.25
-    },
-    {
-      "frame_number": 580,
-      "angle": 123.52
-    },
-    {
-      "frame_number": 581,
-      "angle": 124.23
-    },
-    {
-      "frame_number": 582,
-      "angle": 125.04
-    },
-    {
-      "frame_number": 583,
-      "angle": 152.19
-    },
-    {
-      "frame_number": 584,
-      "angle": 142.64
-    },
-    {
-      "frame_number": 585,
-      "angle": 172.6
-    },
-    {
-      "frame_number": 586,
-      "angle": 134.74
-    },
-    {
-      "frame_number": 587,
-      "angle": 128.49
-    },
-    {
-      "frame_number": 588,
-      "angle": 153.74
-    },
-    {
-      "frame_number": 589,
-      "angle": 163.67
-    },
-    {
-      "frame_number": 590,
-      "angle": 142.37
-    },
-    {
-      "frame_number": 591,
-      "angle": 137.89
-    },
-    {
-      "frame_number": 592,
-      "angle": 143.04
-    },
-    {
-      "frame_number": 593,
-      "angle": 137.04
-    },
-    {
-      "frame_number": 594,
-      "angle": 133.79
-    },
-    {
-      "frame_number": 595,
-      "angle": 136.05
-    },
-    {
-      "frame_number": 596,
-      "angle": 120.72
-    },
-    {
-      "frame_number": 597,
-      "angle": 131.31
-    },
-    {
-      "frame_number": 598,
-      "angle": 132.85
-    },
-    {
-      "frame_number": 599,
-      "angle": 120.39
-    },
-    {
-      "frame_number": 600,
-      "angle": 113.45
-    },
-    {
-      "frame_number": 601,
-      "angle": 112.96
-    },
-    {
-      "frame_number": 602,
-      "angle": 111.47
-    },
-    {
-      "frame_number": 603,
-      "angle": 109.09
-    },
-    {
-      "frame_number": 604,
-      "angle": 104.02
-    },
-    {
-      "frame_number": 605,
-      "angle": 101.51
-    },
-    {
-      "frame_number": 606,
-      "angle": 101.28
-    },
-    {
-      "frame_number": 607,
-      "angle": 100.09
-    },
-    {
-      "frame_number": 608,
-      "angle": 100.31
-    },
-    {
-      "frame_number": 609,
-      "angle": 101.49
-    },
-    {
-      "frame_number": 610,
-      "angle": 108.09
-    },
-    {
-      "frame_number": 611,
-      "angle": 105.41
-    },
-    {
-      "frame_number": 612,
-      "angle": 101.34
-    },
-    {
-      "frame_number": 613,
-      "angle": 94.05
-    },
-    {
-      "frame_number": 614,
-      "angle": 90.67
-    },
-    {
-      "frame_number": 615,
-      "angle": 89.84
-    },
-    {
-      "frame_number": 616,
-      "angle": 90.6
-    },
-    {
-      "frame_number": 617,
-      "angle": 89.0
-    },
-    {
-      "frame_number": 618,
-      "angle": 94.68
-    },
-    {
-      "frame_number": 619,
-      "angle": 111.02
-    },
-    {
-      "frame_number": 620,
-      "angle": 154.68
-    },
-    {
-      "frame_number": 621,
-      "angle": 158.75
-    },
-    {
-      "frame_number": 622,
-      "angle": 154.38
-    },
-    {
-      "frame_number": 623,
-      "angle": 174.37
-    },
-    {
-      "frame_number": 624,
-      "angle": 159.37
-    },
-    {
-      "frame_number": 625,
-      "angle": 159.33
-    },
-    {
-      "frame_number": 626,
-      "angle": 156.65
-    },
-    {
-      "frame_number": 627,
-      "angle": 146.21
-    },
-    {
-      "frame_number": 628,
-      "angle": 148.94
-    },
-    {
-      "frame_number": 629,
-      "angle": 179.71
-    },
-    {
-      "frame_number": 630,
-      "angle": 139.53
-    },
-    {
-      "frame_number": 631,
-      "angle": 175.78
-    },
-    {
-      "frame_number": 632,
-      "angle": 121.27
-    },
-    {
-      "frame_number": 633,
-      "angle": 115.2
-    },
-    {
-      "frame_number": 634,
-      "angle": 113.27
-    },
-    {
-      "frame_number": 635,
-      "angle": 118.43
-    },
-    {
-      "frame_number": 636,
-      "angle": 108.5
-    },
-    {
-      "frame_number": 637,
-      "angle": 106.3
-    },
-    {
-      "frame_number": 638,
-      "angle": 103.14
-    },
-    {
-      "frame_number": 639,
-      "angle": 102.08
-    },
-    {
-      "frame_number": 640,
-      "angle": 102.04
-    },
-    {
-      "frame_number": 641,
-      "angle": 103.33
-    },
-    {
-      "frame_number": 642,
-      "angle": 103.91
-    },
-    {
-      "frame_number": 643,
-      "angle": 109.49
-    },
-    {
-      "frame_number": 644,
-      "angle": 109.43
-    },
-    {
-      "frame_number": 645,
-      "angle": 118.16
-    },
-    {
-      "frame_number": 646,
-      "angle": 110.58
-    },
-    {
-      "frame_number": 647,
-      "angle": 109.08
-    },
-    {
-      "frame_number": 648,
-      "angle": 143.09
-    },
-    {
-      "frame_number": 649,
-      "angle": 125.71
-    },
-    {
-      "frame_number": 650,
-      "angle": 141.56
-    },
-    {
-      "frame_number": 651,
-      "angle": 131.62
-    },
-    {
-      "frame_number": 652,
-      "angle": 113.47
-    },
-    {
-      "frame_number": 653,
-      "angle": 107.45
-    },
-    {
-      "frame_number": 654,
-      "angle": 107.9
-    },
-    {
-      "frame_number": 655,
-      "angle": 105.39
-    },
-    {
-      "frame_number": 656,
-      "angle": 107.13
-    },
-    {
-      "frame_number": 657,
-      "angle": 110.94
-    },
-    {
-      "frame_number": 658,
-      "angle": 116.77
-    },
-    {
-      "frame_number": 659,
-      "angle": 119.9
-    },
-    {
-      "frame_number": 660,
-      "angle": 122.75
-    },
-    {
-      "frame_number": 661,
-      "angle": 123.19
-    },
-    {
-      "frame_number": 662,
-      "angle": 127.32
-    },
-    {
-      "frame_number": 663,
-      "angle": 144.8
-    },
-    {
-      "frame_number": 664,
-      "angle": 135.77
-    },
-    {
-      "frame_number": 665,
-      "angle": 138.94
-    },
-    {
-      "frame_number": 666,
-      "angle": 145.63
-    },
-    {
-      "frame_number": 667,
-      "angle": 143.65
-    },
-    {
-      "frame_number": 668,
-      "angle": 143.66
-    },
-    {
-      "frame_number": 669,
-      "angle": 157.01
-    },
-    {
-      "frame_number": 670,
-      "angle": 129.59
-    },
-    {
-      "frame_number": 671,
-      "angle": 121.21
-    },
-    {
-      "frame_number": 672,
-      "angle": 118.21
-    },
-    {
-      "frame_number": 673,
-      "angle": 122.33
-    },
-    {
-      "frame_number": 674,
-      "angle": 124.79
-    },
-    {
-      "frame_number": 675,
-      "angle": 132.23
-    },
-    {
-      "frame_number": 676,
-      "angle": 133.58
-    },
-    {
-      "frame_number": 677,
-      "angle": 131.85
-    },
-    {
-      "frame_number": 678,
-      "angle": 130.59
-    },
-    {
-      "frame_number": 679,
-      "angle": 133.6
-    },
-    {
-      "frame_number": 680,
-      "angle": 130.02
-    },
-    {
-      "frame_number": 681,
-      "angle": 121.57
-    },
-    {
-      "frame_number": 682,
-      "angle": 113.85
-    },
-    {
-      "frame_number": 683,
-      "angle": 121.15
-    },
-    {
-      "frame_number": 684,
-      "angle": 121.29
-    },
-    {
-      "frame_number": 685,
-      "angle": 122.78
-    },
-    {
-      "frame_number": 686,
-      "angle": 102.28
-    },
-    {
-      "frame_number": 687,
-      "angle": 105.48
-    },
-    {
-      "frame_number": 688,
-      "angle": 113.03
-    },
-    {
-      "frame_number": 689,
-      "angle": 118.77
-    },
-    {
-      "frame_number": 690,
-      "angle": 130.74
-    },
-    {
-      "frame_number": 691,
-      "angle": 133.94
-    },
-    {
-      "frame_number": 692,
-      "angle": 118.88
-    },
-    {
-      "frame_number": 693,
-      "angle": 100.84
-    },
-    {
-      "frame_number": 694,
-      "angle": 92.99
-    },
-    {
-      "frame_number": 695,
-      "angle": 90.72
-    },
-    {
-      "frame_number": 696,
-      "angle": 89.25
-    },
-    {
-      "frame_number": 697,
-      "angle": 88.52
-    },
-    {
-      "frame_number": 698,
-      "angle": 90.44
-    },
-    {
-      "frame_number": 699,
-      "angle": 90.85
-    },
-    {
-      "frame_number": 700,
-      "angle": 150.93
-    },
-    {
-      "frame_number": 701,
-      "angle": 127.55
-    },
-    {
-      "frame_number": 702,
-      "angle": 151.79
-    },
-    {
-      "frame_number": 703,
-      "angle": 150.16
-    },
-    {
-      "frame_number": 704,
-      "angle": 166.31
-    },
-    {
-      "frame_number": 705,
-      "angle": 166.05
-    },
-    {
-      "frame_number": 706,
-      "angle": 166.48
-    },
-    {
-      "frame_number": 707,
-      "angle": 177.32
-    },
-    {
-      "frame_number": 708,
-      "angle": 131.02
-    },
-    {
-      "frame_number": 709,
-      "angle": 126.15
-    },
-    {
-      "frame_number": 710,
-      "angle": 173.2
-    },
-    {
-      "frame_number": 711,
-      "angle": 115.23
-    },
-    {
-      "frame_number": 712,
-      "angle": 112.42
-    },
-    {
-      "frame_number": 713,
-      "angle": 114.49
-    },
-    {
-      "frame_number": 714,
-      "angle": 116.84
-    },
-    {
-      "frame_number": 715,
-      "angle": 111.96
-    },
-    {
-      "frame_number": 716,
-      "angle": 106.2
-    },
-    {
-      "frame_number": 717,
-      "angle": 96.8
-    },
-    {
-      "frame_number": 718,
-      "angle": 121.61
-    },
-    {
-      "frame_number": 719,
-      "angle": 114.09
-    },
-    {
-      "frame_number": 720,
-      "angle": 108.67
-    },
-    {
-      "frame_number": 721,
-      "angle": 114.99
-    },
-    {
-      "frame_number": 722,
-      "angle": 126.62
-    },
-    {
-      "frame_number": 723,
-      "angle": 170.98
-    },
-    {
-      "frame_number": 724,
+      "frame_number": 90,
       "angle": 142.15
     },
     {
-      "frame_number": 725,
-      "angle": 136.7
+      "frame_number": 91,
+      "angle": 152.5
     },
     {
-      "frame_number": 726,
-      "angle": 137.58
+      "frame_number": 92,
+      "angle": 164.85
     },
     {
-      "frame_number": 727,
-      "angle": 119.81
+      "frame_number": 93,
+      "angle": 177.37
     },
     {
-      "frame_number": 728,
-      "angle": 122.37
+      "frame_number": 94,
+      "angle": 169.44
     },
     {
-      "frame_number": 729,
-      "angle": 110.96
+      "frame_number": 95,
+      "angle": 165.66
     },
     {
-      "frame_number": 730,
-      "angle": 104.04
+      "frame_number": 96,
+      "angle": 158.19
     },
     {
-      "frame_number": 731,
-      "angle": 91.59
+      "frame_number": 97,
+      "angle": 158.47
     },
     {
-      "frame_number": 732,
-      "angle": 176.41
+      "frame_number": 98,
+      "angle": 157.11
     },
     {
-      "frame_number": 733,
-      "angle": 148.58
+      "frame_number": 99,
+      "angle": 157.69
     },
     {
-      "frame_number": 734,
-      "angle": 159.35
+      "frame_number": 100,
+      "angle": 145.5
     },
     {
-      "frame_number": 735,
-      "angle": 138.75
+      "frame_number": 101,
+      "angle": 133.12
     },
     {
-      "frame_number": 736,
-      "angle": 126.81
+      "frame_number": 102,
+      "angle": 136.54
     },
     {
-      "frame_number": 737,
-      "angle": 120.84
+      "frame_number": 103,
+      "angle": 135.3
     },
     {
-      "frame_number": 738,
-      "angle": 133.76
+      "frame_number": 104,
+      "angle": 135.8
     },
     {
-      "frame_number": 739,
-      "angle": 135.53
+      "frame_number": 105,
+      "angle": 142.64
     },
     {
-      "frame_number": 740,
-      "angle": 114.43
+      "frame_number": 106,
+      "angle": 149.45
     },
     {
-      "frame_number": 741,
-      "angle": 122.21
+      "frame_number": 107,
+      "angle": 152.29
     },
     {
-      "frame_number": 742,
-      "angle": 124.6
+      "frame_number": 108,
+      "angle": 152.98
     },
     {
-      "frame_number": 743,
-      "angle": 133.49
+      "frame_number": 109,
+      "angle": 154.08
     },
     {
-      "frame_number": 744,
-      "angle": 138.06
+      "frame_number": 110,
+      "angle": 153.56
     },
     {
-      "frame_number": 745,
-      "angle": 120.32
+      "frame_number": 111,
+      "angle": 146.81
     },
     {
-      "frame_number": 746,
-      "angle": 124.1
+      "frame_number": 112,
+      "angle": 147.41
     },
     {
-      "frame_number": 747,
-      "angle": 121.73
+      "frame_number": 113,
+      "angle": 160.13
     },
     {
-      "frame_number": 748,
-      "angle": 126.76
+      "frame_number": 114,
+      "angle": 177.62
     },
     {
-      "frame_number": 749,
-      "angle": 119.81
+      "frame_number": 115,
+      "angle": 170.8
     },
     {
-      "frame_number": 750,
-      "angle": 102.79
+      "frame_number": 116,
+      "angle": 169.94
     },
     {
-      "frame_number": 751,
-      "angle": 97.79
+      "frame_number": 117,
+      "angle": 163.12
     },
     {
-      "frame_number": 752,
-      "angle": 136.28
+      "frame_number": 118,
+      "angle": 160.82
     },
     {
-      "frame_number": 753,
-      "angle": 172.13
+      "frame_number": 119,
+      "angle": 157.75
     },
     {
-      "frame_number": 754,
-      "angle": 145.15
+      "frame_number": 120,
+      "angle": 152.96
     },
     {
-      "frame_number": 755,
-      "angle": 135.5
+      "frame_number": 121,
+      "angle": 143.41
     },
     {
-      "frame_number": 756,
-      "angle": 118.19
+      "frame_number": 122,
+      "angle": 135.89
     },
     {
-      "frame_number": 757,
-      "angle": 110.04
+      "frame_number": 123,
+      "angle": 136.53
     },
     {
-      "frame_number": 758,
-      "angle": 133.63
+      "frame_number": 124,
+      "angle": 134.21
     },
     {
-      "frame_number": 759,
-      "angle": 141.13
+      "frame_number": 125,
+      "angle": 135.2
+    },
+    {
+      "frame_number": 126,
+      "angle": 139.88
+    },
+    {
+      "frame_number": 127,
+      "angle": 150.39
+    },
+    {
+      "frame_number": 128,
+      "angle": 153.94
+    },
+    {
+      "frame_number": 129,
+      "angle": 156.16
+    },
+    {
+      "frame_number": 130,
+      "angle": 157.69
+    },
+    {
+      "frame_number": 131,
+      "angle": 151.42
+    },
+    {
+      "frame_number": 132,
+      "angle": 143.43
+    },
+    {
+      "frame_number": 133,
+      "angle": 149.77
+    },
+    {
+      "frame_number": 134,
+      "angle": 159.89
+    },
+    {
+      "frame_number": 135,
+      "angle": 178.21
+    },
+    {
+      "frame_number": 136,
+      "angle": 169.26
+    },
+    {
+      "frame_number": 137,
+      "angle": 168.27
+    },
+    {
+      "frame_number": 138,
+      "angle": 169.11
+    },
+    {
+      "frame_number": 139,
+      "angle": 178.26
+    },
+    {
+      "frame_number": 140,
+      "angle": 165.33
+    },
+    {
+      "frame_number": 141,
+      "angle": 153.5
+    },
+    {
+      "frame_number": 142,
+      "angle": 141.5
+    },
+    {
+      "frame_number": 143,
+      "angle": 133.51
+    },
+    {
+      "frame_number": 144,
+      "angle": 133.15
+    },
+    {
+      "frame_number": 145,
+      "angle": 132.24
+    },
+    {
+      "frame_number": 146,
+      "angle": 132.49
+    },
+    {
+      "frame_number": 147,
+      "angle": 137.95
+    },
+    {
+      "frame_number": 148,
+      "angle": 148.47
+    },
+    {
+      "frame_number": 149,
+      "angle": 151.76
+    },
+    {
+      "frame_number": 150,
+      "angle": 152.69
+    },
+    {
+      "frame_number": 151,
+      "angle": 153.0
+    },
+    {
+      "frame_number": 152,
+      "angle": 148.56
+    },
+    {
+      "frame_number": 153,
+      "angle": 139.44
+    },
+    {
+      "frame_number": 154,
+      "angle": 147.61
+    },
+    {
+      "frame_number": 155,
+      "angle": 161.53
+    },
+    {
+      "frame_number": 156,
+      "angle": 175.87
+    },
+    {
+      "frame_number": 157,
+      "angle": 168.99
+    },
+    {
+      "frame_number": 158,
+      "angle": 169.22
+    },
+    {
+      "frame_number": 159,
+      "angle": 165.4
+    },
+    {
+      "frame_number": 160,
+      "angle": 160.69
+    },
+    {
+      "frame_number": 161,
+      "angle": 162.7
+    },
+    {
+      "frame_number": 162,
+      "angle": 148.9
+    },
+    {
+      "frame_number": 163,
+      "angle": 135.93
+    },
+    {
+      "frame_number": 164,
+      "angle": 127.48
+    },
+    {
+      "frame_number": 165,
+      "angle": 129.57
+    },
+    {
+      "frame_number": 166,
+      "angle": 131.24
+    },
+    {
+      "frame_number": 167,
+      "angle": 131.43
+    },
+    {
+      "frame_number": 168,
+      "angle": 133.09
+    },
+    {
+      "frame_number": 169,
+      "angle": 137.73
+    },
+    {
+      "frame_number": 170,
+      "angle": 139.38
+    },
+    {
+      "frame_number": 171,
+      "angle": 140.5
+    },
+    {
+      "frame_number": 172,
+      "angle": 144.02
+    },
+    {
+      "frame_number": 173,
+      "angle": 141.7
+    },
+    {
+      "frame_number": 174,
+      "angle": 149.06
+    },
+    {
+      "frame_number": 175,
+      "angle": 150.64
+    },
+    {
+      "frame_number": 176,
+      "angle": 161.42
+    },
+    {
+      "frame_number": 177,
+      "angle": 176.58
+    },
+    {
+      "frame_number": 178,
+      "angle": 178.25
+    },
+    {
+      "frame_number": 179,
+      "angle": 179.96
+    },
+    {
+      "frame_number": 180,
+      "angle": 178.82
+    },
+    {
+      "frame_number": 181,
+      "angle": 142.09
+    },
+    {
+      "frame_number": 182,
+      "angle": 148.5
+    },
+    {
+      "frame_number": 183,
+      "angle": 140.21
+    },
+    {
+      "frame_number": 184,
+      "angle": 129.91
+    },
+    {
+      "frame_number": 185,
+      "angle": 127.7
+    },
+    {
+      "frame_number": 186,
+      "angle": 123.64
+    },
+    {
+      "frame_number": 187,
+      "angle": 123.15
+    },
+    {
+      "frame_number": 188,
+      "angle": 124.79
+    },
+    {
+      "frame_number": 189,
+      "angle": 131.6
+    },
+    {
+      "frame_number": 190,
+      "angle": 139.24
+    },
+    {
+      "frame_number": 191,
+      "angle": 144.28
+    },
+    {
+      "frame_number": 192,
+      "angle": 145.66
+    },
+    {
+      "frame_number": 193,
+      "angle": 148.65
+    },
+    {
+      "frame_number": 194,
+      "angle": 145.8
+    },
+    {
+      "frame_number": 195,
+      "angle": 139.24
+    },
+    {
+      "frame_number": 196,
+      "angle": 158.92
+    },
+    {
+      "frame_number": 197,
+      "angle": 172.27
+    },
+    {
+      "frame_number": 198,
+      "angle": 179.79
+    },
+    {
+      "frame_number": 199,
+      "angle": 170.05
+    },
+    {
+      "frame_number": 200,
+      "angle": 163.7
+    },
+    {
+      "frame_number": 201,
+      "angle": 151.86
+    },
+    {
+      "frame_number": 202,
+      "angle": 151.98
+    },
+    {
+      "frame_number": 203,
+      "angle": 157.39
+    },
+    {
+      "frame_number": 204,
+      "angle": 149.39
+    },
+    {
+      "frame_number": 205,
+      "angle": 136.25
+    },
+    {
+      "frame_number": 206,
+      "angle": 134.43
+    },
+    {
+      "frame_number": 207,
+      "angle": 133.99
+    },
+    {
+      "frame_number": 208,
+      "angle": 135.51
+    },
+    {
+      "frame_number": 209,
+      "angle": 135.28
+    },
+    {
+      "frame_number": 210,
+      "angle": 143.76
+    },
+    {
+      "frame_number": 211,
+      "angle": 151.48
+    },
+    {
+      "frame_number": 212,
+      "angle": 153.13
+    },
+    {
+      "frame_number": 213,
+      "angle": 153.14
+    },
+    {
+      "frame_number": 214,
+      "angle": 156.73
+    },
+    {
+      "frame_number": 215,
+      "angle": 149.72
+    },
+    {
+      "frame_number": 216,
+      "angle": 141.49
+    },
+    {
+      "frame_number": 217,
+      "angle": 154.36
+    },
+    {
+      "frame_number": 218,
+      "angle": 173.97
+    },
+    {
+      "frame_number": 219,
+      "angle": 175.75
+    },
+    {
+      "frame_number": 220,
+      "angle": 172.86
+    },
+    {
+      "frame_number": 221,
+      "angle": 173.56
+    },
+    {
+      "frame_number": 222,
+      "angle": 174.3
+    },
+    {
+      "frame_number": 223,
+      "angle": 157.8
+    },
+    {
+      "frame_number": 224,
+      "angle": 153.83
+    },
+    {
+      "frame_number": 225,
+      "angle": 144.61
+    },
+    {
+      "frame_number": 226,
+      "angle": 131.0
+    },
+    {
+      "frame_number": 227,
+      "angle": 129.45
+    },
+    {
+      "frame_number": 228,
+      "angle": 126.79
+    },
+    {
+      "frame_number": 229,
+      "angle": 126.07
+    },
+    {
+      "frame_number": 230,
+      "angle": 127.98
+    },
+    {
+      "frame_number": 231,
+      "angle": 131.22
+    },
+    {
+      "frame_number": 232,
+      "angle": 137.29
+    },
+    {
+      "frame_number": 233,
+      "angle": 138.09
+    },
+    {
+      "frame_number": 234,
+      "angle": 140.57
+    },
+    {
+      "frame_number": 235,
+      "angle": 145.68
+    },
+    {
+      "frame_number": 236,
+      "angle": 140.33
+    },
+    {
+      "frame_number": 237,
+      "angle": 136.12
+    },
+    {
+      "frame_number": 238,
+      "angle": 154.0
+    },
+    {
+      "frame_number": 239,
+      "angle": 168.18
+    },
+    {
+      "frame_number": 240,
+      "angle": 176.91
+    },
+    {
+      "frame_number": 241,
+      "angle": 176.68
+    },
+    {
+      "frame_number": 242,
+      "angle": 179.16
+    },
+    {
+      "frame_number": 243,
+      "angle": 179.79
+    },
+    {
+      "frame_number": 244,
+      "angle": 133.13
+    },
+    {
+      "frame_number": 245,
+      "angle": 141.31
+    },
+    {
+      "frame_number": 246,
+      "angle": 135.47
+    },
+    {
+      "frame_number": 247,
+      "angle": 128.57
+    },
+    {
+      "frame_number": 248,
+      "angle": 127.16
+    },
+    {
+      "frame_number": 249,
+      "angle": 124.99
+    },
+    {
+      "frame_number": 250,
+      "angle": 125.98
+    },
+    {
+      "frame_number": 251,
+      "angle": 126.5
+    },
+    {
+      "frame_number": 252,
+      "angle": 132.81
+    },
+    {
+      "frame_number": 253,
+      "angle": 138.61
+    },
+    {
+      "frame_number": 254,
+      "angle": 141.91
+    },
+    {
+      "frame_number": 255,
+      "angle": 144.06
+    },
+    {
+      "frame_number": 256,
+      "angle": 144.38
+    },
+    {
+      "frame_number": 257,
+      "angle": 139.34
+    },
+    {
+      "frame_number": 258,
+      "angle": 134.49
+    },
+    {
+      "frame_number": 259,
+      "angle": 148.28
+    },
+    {
+      "frame_number": 260,
+      "angle": 167.08
+    },
+    {
+      "frame_number": 261,
+      "angle": 176.0
+    },
+    {
+      "frame_number": 262,
+      "angle": 178.62
+    },
+    {
+      "frame_number": 263,
+      "angle": 179.59
+    },
+    {
+      "frame_number": 264,
+      "angle": 174.38
+    },
+    {
+      "frame_number": 265,
+      "angle": 139.63
+    },
+    {
+      "frame_number": 266,
+      "angle": 151.01
+    },
+    {
+      "frame_number": 267,
+      "angle": 146.92
+    },
+    {
+      "frame_number": 268,
+      "angle": 134.53
+    },
+    {
+      "frame_number": 269,
+      "angle": 129.16
+    },
+    {
+      "frame_number": 270,
+      "angle": 127.67
+    },
+    {
+      "frame_number": 271,
+      "angle": 126.14
+    },
+    {
+      "frame_number": 272,
+      "angle": 126.43
+    },
+    {
+      "frame_number": 273,
+      "angle": 131.23
+    },
+    {
+      "frame_number": 274,
+      "angle": 141.07
+    },
+    {
+      "frame_number": 275,
+      "angle": 145.79
+    },
+    {
+      "frame_number": 276,
+      "angle": 148.05
+    },
+    {
+      "frame_number": 277,
+      "angle": 146.69
+    },
+    {
+      "frame_number": 278,
+      "angle": 142.47
+    },
+    {
+      "frame_number": 279,
+      "angle": 138.59
+    },
+    {
+      "frame_number": 280,
+      "angle": 145.52
+    },
+    {
+      "frame_number": 281,
+      "angle": 158.7
+    },
+    {
+      "frame_number": 282,
+      "angle": 173.12
+    },
+    {
+      "frame_number": 283,
+      "angle": 179.68
+    },
+    {
+      "frame_number": 284,
+      "angle": 175.25
+    },
+    {
+      "frame_number": 285,
+      "angle": 171.73
+    },
+    {
+      "frame_number": 286,
+      "angle": 147.63
+    },
+    {
+      "frame_number": 287,
+      "angle": 156.16
+    },
+    {
+      "frame_number": 288,
+      "angle": 148.29
+    },
+    {
+      "frame_number": 289,
+      "angle": 136.29
+    },
+    {
+      "frame_number": 290,
+      "angle": 128.68
+    },
+    {
+      "frame_number": 291,
+      "angle": 125.52
+    },
+    {
+      "frame_number": 292,
+      "angle": 126.16
+    },
+    {
+      "frame_number": 293,
+      "angle": 126.12
+    },
+    {
+      "frame_number": 294,
+      "angle": 130.71
+    },
+    {
+      "frame_number": 295,
+      "angle": 140.7
+    },
+    {
+      "frame_number": 296,
+      "angle": 144.89
+    },
+    {
+      "frame_number": 297,
+      "angle": 150.57
+    },
+    {
+      "frame_number": 298,
+      "angle": 150.42
+    },
+    {
+      "frame_number": 299,
+      "angle": 150.76
+    },
+    {
+      "frame_number": 300,
+      "angle": 142.22
+    },
+    {
+      "frame_number": 301,
+      "angle": 138.03
+    },
+    {
+      "frame_number": 302,
+      "angle": 156.04
+    },
+    {
+      "frame_number": 303,
+      "angle": 176.05
+    },
+    {
+      "frame_number": 304,
+      "angle": 176.63
+    },
+    {
+      "frame_number": 305,
+      "angle": 172.75
+    },
+    {
+      "frame_number": 306,
+      "angle": 166.06
+    },
+    {
+      "frame_number": 307,
+      "angle": 176.65
+    },
+    {
+      "frame_number": 308,
+      "angle": 162.06
+    },
+    {
+      "frame_number": 309,
+      "angle": 144.83
+    },
+    {
+      "frame_number": 310,
+      "angle": 142.8
+    },
+    {
+      "frame_number": 311,
+      "angle": 129.88
+    },
+    {
+      "frame_number": 312,
+      "angle": 129.29
+    },
+    {
+      "frame_number": 313,
+      "angle": 128.16
+    },
+    {
+      "frame_number": 314,
+      "angle": 129.05
+    },
+    {
+      "frame_number": 315,
+      "angle": 133.31
+    },
+    {
+      "frame_number": 316,
+      "angle": 142.25
+    },
+    {
+      "frame_number": 317,
+      "angle": 147.36
+    },
+    {
+      "frame_number": 318,
+      "angle": 147.8
+    },
+    {
+      "frame_number": 319,
+      "angle": 149.15
+    },
+    {
+      "frame_number": 320,
+      "angle": 148.91
+    },
+    {
+      "frame_number": 321,
+      "angle": 141.47
+    },
+    {
+      "frame_number": 322,
+      "angle": 138.71
+    },
+    {
+      "frame_number": 323,
+      "angle": 153.98
+    },
+    {
+      "frame_number": 324,
+      "angle": 169.57
+    },
+    {
+      "frame_number": 325,
+      "angle": 178.71
+    },
+    {
+      "frame_number": 326,
+      "angle": 177.12
+    },
+    {
+      "frame_number": 327,
+      "angle": 171.37
+    },
+    {
+      "frame_number": 328,
+      "angle": 171.08
+    },
+    {
+      "frame_number": 329,
+      "angle": 152.79
+    },
+    {
+      "frame_number": 330,
+      "angle": 160.12
+    },
+    {
+      "frame_number": 331,
+      "angle": 146.78
+    },
+    {
+      "frame_number": 332,
+      "angle": 130.2
+    },
+    {
+      "frame_number": 333,
+      "angle": 128.31
+    },
+    {
+      "frame_number": 334,
+      "angle": 128.19
+    },
+    {
+      "frame_number": 335,
+      "angle": 126.73
+    },
+    {
+      "frame_number": 336,
+      "angle": 128.73
+    },
+    {
+      "frame_number": 337,
+      "angle": 136.91
+    },
+    {
+      "frame_number": 338,
+      "angle": 147.82
+    },
+    {
+      "frame_number": 339,
+      "angle": 150.22
+    },
+    {
+      "frame_number": 340,
+      "angle": 151.71
+    },
+    {
+      "frame_number": 341,
+      "angle": 152.29
+    },
+    {
+      "frame_number": 342,
+      "angle": 145.68
+    },
+    {
+      "frame_number": 343,
+      "angle": 140.21
+    },
+    {
+      "frame_number": 344,
+      "angle": 154.53
+    },
+    {
+      "frame_number": 345,
+      "angle": 169.17
+    },
+    {
+      "frame_number": 346,
+      "angle": 179.02
+    },
+    {
+      "frame_number": 347,
+      "angle": 175.45
+    },
+    {
+      "frame_number": 348,
+      "angle": 173.16
+    },
+    {
+      "frame_number": 349,
+      "angle": 168.29
+    },
+    {
+      "frame_number": 350,
+      "angle": 159.67
+    },
+    {
+      "frame_number": 351,
+      "angle": 163.31
+    },
+    {
+      "frame_number": 352,
+      "angle": 151.66
+    },
+    {
+      "frame_number": 353,
+      "angle": 132.44
     }
   ],
   "overstride_frames": [
     {
+      "frame_number": 23,
+      "overstride": true,
+      "angle": 9.66
+    },
+    {
+      "frame_number": 24,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 25,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 26,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 27,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 28,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 29,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 30,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 31,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 32,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 33,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 34,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 35,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 36,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 37,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 38,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 39,
+      "overstride": false,
+      "angle": null
+    },
+    {
+      "frame_number": 40,
+      "overstride": false,
+      "angle": null
+    },
+    {
       "frame_number": 41,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 42,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 43,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 44,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 45,
-      "overstride": false
+      "overstride": false,
+      "angle": 7.03
     },
     {
       "frame_number": 46,
-      "overstride": true
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 47,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 48,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 49,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 50,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 51,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 52,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 53,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 54,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 55,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 56,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 57,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 58,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 59,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 60,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 61,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 62,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 63,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 64,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 65,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 66,
-      "overstride": false
+      "overstride": false,
+      "angle": 7.06
     },
     {
       "frame_number": 67,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 68,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 69,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 70,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 71,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 72,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 73,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 74,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 75,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 76,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 77,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 78,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 79,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 80,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 81,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 82,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 83,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 84,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 85,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 86,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 87,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 88,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 89,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 90,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 91,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 92,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 93,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 94,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 95,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 96,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 97,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 98,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 99,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 100,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 101,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 102,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 103,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 104,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 105,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 106,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 107,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 108,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 109,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 110,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 111,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 112,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 113,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 114,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 115,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 116,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 117,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 118,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 119,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 120,
-      "overstride": true
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 121,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 122,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 123,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 124,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 125,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 126,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 127,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 128,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 129,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 130,
-      "overstride": false
+      "overstride": false,
+      "angle": 4.11
     },
     {
       "frame_number": 131,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 132,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 133,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 134,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 135,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 136,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 137,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 138,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 139,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 140,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 141,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 142,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 143,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 144,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 145,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 146,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 147,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 148,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 149,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 150,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 151,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 152,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 153,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 154,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 155,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 156,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 157,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 158,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 159,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 160,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 161,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 162,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 163,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 164,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 165,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 166,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 167,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 168,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 169,
-      "overstride": false
+      "overstride": false,
+      "angle": 6.12
     },
     {
       "frame_number": 170,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 171,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 172,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 173,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 174,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 175,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 176,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 177,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 178,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 179,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 180,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 181,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 182,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 183,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 184,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 185,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 186,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 187,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 188,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 189,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 190,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 191,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 192,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 193,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 194,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 195,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 196,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 197,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 198,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 199,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 200,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 201,
-      "overstride": true
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 202,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 203,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 204,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 205,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 206,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 207,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 208,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 209,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 210,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 211,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 212,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 213,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 214,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 215,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 216,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 217,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 218,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 219,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 220,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 221,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 222,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 223,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 224,
-      "overstride": true
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 225,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 226,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 227,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 228,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 229,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 230,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 231,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 232,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 233,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 234,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 235,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 236,
-      "overstride": true
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 237,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 238,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 239,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 240,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 241,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 242,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 243,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 244,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 245,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 246,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 247,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 248,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 249,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 250,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 251,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 252,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 253,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 254,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 255,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 256,
-      "overstride": false
+      "overstride": false,
+      "angle": 6.46
     },
     {
       "frame_number": 257,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 258,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 259,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 260,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 261,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 262,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 263,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 264,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 265,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 266,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 267,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 268,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 269,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 270,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 271,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 272,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 273,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 274,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 275,
-      "overstride": false
+      "overstride": true,
+      "angle": 8.22
     },
     {
       "frame_number": 276,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 277,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 278,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 279,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 280,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 281,
-      "overstride": true
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 282,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 283,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 284,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 285,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 286,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 287,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 288,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 289,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 290,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 291,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 292,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 293,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 294,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 295,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 296,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 297,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 298,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 299,
-      "overstride": false
+      "overstride": true,
+      "angle": 8.18
     },
     {
       "frame_number": 300,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 301,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 302,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 303,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 304,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 305,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 306,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 307,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 308,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 309,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 310,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 311,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 312,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 313,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 314,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 315,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 316,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 317,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 318,
-      "overstride": false
+      "overstride": false,
+      "angle": 6.05
     },
     {
       "frame_number": 319,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 320,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 321,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 322,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 323,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 324,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 325,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 326,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 327,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 328,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 329,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 330,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 331,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 332,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 333,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 334,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 335,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 336,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 337,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 338,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 339,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 340,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 341,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 342,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 343,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 344,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 345,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 346,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 347,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 348,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 349,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 350,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 351,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 352,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     },
     {
       "frame_number": 353,
-      "overstride": false
-    },
-    {
-      "frame_number": 354,
-      "overstride": false
-    },
-    {
-      "frame_number": 355,
-      "overstride": false
-    },
-    {
-      "frame_number": 356,
-      "overstride": true
-    },
-    {
-      "frame_number": 357,
-      "overstride": false
-    },
-    {
-      "frame_number": 358,
-      "overstride": false
-    },
-    {
-      "frame_number": 359,
-      "overstride": false
-    },
-    {
-      "frame_number": 360,
-      "overstride": false
-    },
-    {
-      "frame_number": 361,
-      "overstride": false
-    },
-    {
-      "frame_number": 362,
-      "overstride": false
-    },
-    {
-      "frame_number": 363,
-      "overstride": false
-    },
-    {
-      "frame_number": 364,
-      "overstride": false
-    },
-    {
-      "frame_number": 365,
-      "overstride": false
-    },
-    {
-      "frame_number": 366,
-      "overstride": false
-    },
-    {
-      "frame_number": 367,
-      "overstride": false
-    },
-    {
-      "frame_number": 368,
-      "overstride": false
-    },
-    {
-      "frame_number": 369,
-      "overstride": false
-    },
-    {
-      "frame_number": 370,
-      "overstride": false
-    },
-    {
-      "frame_number": 371,
-      "overstride": false
-    },
-    {
-      "frame_number": 372,
-      "overstride": false
-    },
-    {
-      "frame_number": 373,
-      "overstride": false
-    },
-    {
-      "frame_number": 374,
-      "overstride": false
-    },
-    {
-      "frame_number": 375,
-      "overstride": false
-    },
-    {
-      "frame_number": 376,
-      "overstride": false
-    },
-    {
-      "frame_number": 377,
-      "overstride": false
-    },
-    {
-      "frame_number": 378,
-      "overstride": false
-    },
-    {
-      "frame_number": 379,
-      "overstride": false
-    },
-    {
-      "frame_number": 380,
-      "overstride": false
-    },
-    {
-      "frame_number": 381,
-      "overstride": false
-    },
-    {
-      "frame_number": 382,
-      "overstride": false
-    },
-    {
-      "frame_number": 383,
-      "overstride": false
-    },
-    {
-      "frame_number": 384,
-      "overstride": false
-    },
-    {
-      "frame_number": 385,
-      "overstride": false
-    },
-    {
-      "frame_number": 386,
-      "overstride": false
-    },
-    {
-      "frame_number": 387,
-      "overstride": false
-    },
-    {
-      "frame_number": 388,
-      "overstride": false
-    },
-    {
-      "frame_number": 389,
-      "overstride": false
-    },
-    {
-      "frame_number": 390,
-      "overstride": false
-    },
-    {
-      "frame_number": 391,
-      "overstride": false
-    },
-    {
-      "frame_number": 392,
-      "overstride": false
-    },
-    {
-      "frame_number": 393,
-      "overstride": false
-    },
-    {
-      "frame_number": 394,
-      "overstride": false
-    },
-    {
-      "frame_number": 395,
-      "overstride": false
-    },
-    {
-      "frame_number": 396,
-      "overstride": false
-    },
-    {
-      "frame_number": 397,
-      "overstride": false
-    },
-    {
-      "frame_number": 398,
-      "overstride": false
-    },
-    {
-      "frame_number": 399,
-      "overstride": false
-    },
-    {
-      "frame_number": 400,
-      "overstride": false
-    },
-    {
-      "frame_number": 401,
-      "overstride": false
-    },
-    {
-      "frame_number": 402,
-      "overstride": false
-    },
-    {
-      "frame_number": 403,
-      "overstride": false
-    },
-    {
-      "frame_number": 404,
-      "overstride": true
-    },
-    {
-      "frame_number": 405,
-      "overstride": false
-    },
-    {
-      "frame_number": 406,
-      "overstride": false
-    },
-    {
-      "frame_number": 407,
-      "overstride": false
-    },
-    {
-      "frame_number": 408,
-      "overstride": false
-    },
-    {
-      "frame_number": 409,
-      "overstride": false
-    },
-    {
-      "frame_number": 410,
-      "overstride": false
-    },
-    {
-      "frame_number": 411,
-      "overstride": false
-    },
-    {
-      "frame_number": 412,
-      "overstride": false
-    },
-    {
-      "frame_number": 413,
-      "overstride": false
-    },
-    {
-      "frame_number": 414,
-      "overstride": false
-    },
-    {
-      "frame_number": 415,
-      "overstride": false
-    },
-    {
-      "frame_number": 416,
-      "overstride": false
-    },
-    {
-      "frame_number": 417,
-      "overstride": false
-    },
-    {
-      "frame_number": 418,
-      "overstride": false
-    },
-    {
-      "frame_number": 419,
-      "overstride": false
-    },
-    {
-      "frame_number": 420,
-      "overstride": false
-    },
-    {
-      "frame_number": 421,
-      "overstride": false
-    },
-    {
-      "frame_number": 422,
-      "overstride": false
-    },
-    {
-      "frame_number": 423,
-      "overstride": false
-    },
-    {
-      "frame_number": 424,
-      "overstride": false
-    },
-    {
-      "frame_number": 425,
-      "overstride": false
-    },
-    {
-      "frame_number": 426,
-      "overstride": false
-    },
-    {
-      "frame_number": 427,
-      "overstride": false
-    },
-    {
-      "frame_number": 428,
-      "overstride": false
-    },
-    {
-      "frame_number": 429,
-      "overstride": false
-    },
-    {
-      "frame_number": 430,
-      "overstride": false
-    },
-    {
-      "frame_number": 431,
-      "overstride": false
-    },
-    {
-      "frame_number": 432,
-      "overstride": true
-    },
-    {
-      "frame_number": 433,
-      "overstride": false
-    },
-    {
-      "frame_number": 434,
-      "overstride": false
-    },
-    {
-      "frame_number": 435,
-      "overstride": false
-    },
-    {
-      "frame_number": 436,
-      "overstride": false
-    },
-    {
-      "frame_number": 437,
-      "overstride": false
-    },
-    {
-      "frame_number": 438,
-      "overstride": false
-    },
-    {
-      "frame_number": 439,
-      "overstride": false
-    },
-    {
-      "frame_number": 440,
-      "overstride": false
-    },
-    {
-      "frame_number": 441,
-      "overstride": false
-    },
-    {
-      "frame_number": 442,
-      "overstride": false
-    },
-    {
-      "frame_number": 443,
-      "overstride": false
-    },
-    {
-      "frame_number": 444,
-      "overstride": false
-    },
-    {
-      "frame_number": 445,
-      "overstride": false
-    },
-    {
-      "frame_number": 446,
-      "overstride": false
-    },
-    {
-      "frame_number": 447,
-      "overstride": false
-    },
-    {
-      "frame_number": 448,
-      "overstride": false
-    },
-    {
-      "frame_number": 449,
-      "overstride": false
-    },
-    {
-      "frame_number": 450,
-      "overstride": false
-    },
-    {
-      "frame_number": 451,
-      "overstride": false
-    },
-    {
-      "frame_number": 452,
-      "overstride": false
-    },
-    {
-      "frame_number": 453,
-      "overstride": false
-    },
-    {
-      "frame_number": 454,
-      "overstride": false
-    },
-    {
-      "frame_number": 455,
-      "overstride": false
-    },
-    {
-      "frame_number": 456,
-      "overstride": false
-    },
-    {
-      "frame_number": 457,
-      "overstride": false
-    },
-    {
-      "frame_number": 458,
-      "overstride": false
-    },
-    {
-      "frame_number": 459,
-      "overstride": false
-    },
-    {
-      "frame_number": 460,
-      "overstride": false
-    },
-    {
-      "frame_number": 461,
-      "overstride": false
-    },
-    {
-      "frame_number": 462,
-      "overstride": false
-    },
-    {
-      "frame_number": 463,
-      "overstride": false
-    },
-    {
-      "frame_number": 464,
-      "overstride": false
-    },
-    {
-      "frame_number": 465,
-      "overstride": false
-    },
-    {
-      "frame_number": 466,
-      "overstride": false
-    },
-    {
-      "frame_number": 467,
-      "overstride": false
-    },
-    {
-      "frame_number": 468,
-      "overstride": false
-    },
-    {
-      "frame_number": 469,
-      "overstride": false
-    },
-    {
-      "frame_number": 470,
-      "overstride": false
-    },
-    {
-      "frame_number": 471,
-      "overstride": false
-    },
-    {
-      "frame_number": 472,
-      "overstride": false
-    },
-    {
-      "frame_number": 473,
-      "overstride": false
-    },
-    {
-      "frame_number": 474,
-      "overstride": false
-    },
-    {
-      "frame_number": 475,
-      "overstride": false
-    },
-    {
-      "frame_number": 476,
-      "overstride": false
-    },
-    {
-      "frame_number": 477,
-      "overstride": false
-    },
-    {
-      "frame_number": 478,
-      "overstride": false
-    },
-    {
-      "frame_number": 479,
-      "overstride": false
-    },
-    {
-      "frame_number": 480,
-      "overstride": false
-    },
-    {
-      "frame_number": 481,
-      "overstride": false
-    },
-    {
-      "frame_number": 482,
-      "overstride": false
-    },
-    {
-      "frame_number": 483,
-      "overstride": false
-    },
-    {
-      "frame_number": 484,
-      "overstride": false
-    },
-    {
-      "frame_number": 485,
-      "overstride": false
-    },
-    {
-      "frame_number": 486,
-      "overstride": false
-    },
-    {
-      "frame_number": 487,
-      "overstride": false
-    },
-    {
-      "frame_number": 488,
-      "overstride": false
-    },
-    {
-      "frame_number": 489,
-      "overstride": false
-    },
-    {
-      "frame_number": 490,
-      "overstride": false
-    },
-    {
-      "frame_number": 491,
-      "overstride": false
-    },
-    {
-      "frame_number": 492,
-      "overstride": false
-    },
-    {
-      "frame_number": 493,
-      "overstride": false
-    },
-    {
-      "frame_number": 494,
-      "overstride": false
-    },
-    {
-      "frame_number": 495,
-      "overstride": false
-    },
-    {
-      "frame_number": 496,
-      "overstride": false
-    },
-    {
-      "frame_number": 497,
-      "overstride": false
-    },
-    {
-      "frame_number": 498,
-      "overstride": false
-    },
-    {
-      "frame_number": 499,
-      "overstride": false
-    },
-    {
-      "frame_number": 500,
-      "overstride": false
-    },
-    {
-      "frame_number": 501,
-      "overstride": false
-    },
-    {
-      "frame_number": 502,
-      "overstride": false
-    },
-    {
-      "frame_number": 503,
-      "overstride": false
-    },
-    {
-      "frame_number": 504,
-      "overstride": false
-    },
-    {
-      "frame_number": 505,
-      "overstride": false
-    },
-    {
-      "frame_number": 506,
-      "overstride": false
-    },
-    {
-      "frame_number": 507,
-      "overstride": false
-    },
-    {
-      "frame_number": 508,
-      "overstride": false
-    },
-    {
-      "frame_number": 509,
-      "overstride": false
-    },
-    {
-      "frame_number": 510,
-      "overstride": false
-    },
-    {
-      "frame_number": 511,
-      "overstride": false
-    },
-    {
-      "frame_number": 512,
-      "overstride": false
-    },
-    {
-      "frame_number": 513,
-      "overstride": false
-    },
-    {
-      "frame_number": 514,
-      "overstride": false
-    },
-    {
-      "frame_number": 515,
-      "overstride": false
-    },
-    {
-      "frame_number": 516,
-      "overstride": false
-    },
-    {
-      "frame_number": 517,
-      "overstride": false
-    },
-    {
-      "frame_number": 518,
-      "overstride": false
-    },
-    {
-      "frame_number": 519,
-      "overstride": false
-    },
-    {
-      "frame_number": 520,
-      "overstride": false
-    },
-    {
-      "frame_number": 521,
-      "overstride": true
-    },
-    {
-      "frame_number": 522,
-      "overstride": false
-    },
-    {
-      "frame_number": 523,
-      "overstride": false
-    },
-    {
-      "frame_number": 524,
-      "overstride": false
-    },
-    {
-      "frame_number": 525,
-      "overstride": false
-    },
-    {
-      "frame_number": 526,
-      "overstride": false
-    },
-    {
-      "frame_number": 527,
-      "overstride": false
-    },
-    {
-      "frame_number": 528,
-      "overstride": false
-    },
-    {
-      "frame_number": 529,
-      "overstride": false
-    },
-    {
-      "frame_number": 530,
-      "overstride": false
-    },
-    {
-      "frame_number": 531,
-      "overstride": false
-    },
-    {
-      "frame_number": 532,
-      "overstride": false
-    },
-    {
-      "frame_number": 533,
-      "overstride": false
-    },
-    {
-      "frame_number": 534,
-      "overstride": false
-    },
-    {
-      "frame_number": 535,
-      "overstride": false
-    },
-    {
-      "frame_number": 536,
-      "overstride": false
-    },
-    {
-      "frame_number": 537,
-      "overstride": false
-    },
-    {
-      "frame_number": 538,
-      "overstride": false
-    },
-    {
-      "frame_number": 539,
-      "overstride": false
-    },
-    {
-      "frame_number": 540,
-      "overstride": false
-    },
-    {
-      "frame_number": 541,
-      "overstride": false
-    },
-    {
-      "frame_number": 542,
-      "overstride": false
-    },
-    {
-      "frame_number": 543,
-      "overstride": false
-    },
-    {
-      "frame_number": 544,
-      "overstride": false
-    },
-    {
-      "frame_number": 545,
-      "overstride": false
-    },
-    {
-      "frame_number": 546,
-      "overstride": false
-    },
-    {
-      "frame_number": 547,
-      "overstride": false
-    },
-    {
-      "frame_number": 548,
-      "overstride": false
-    },
-    {
-      "frame_number": 549,
-      "overstride": false
-    },
-    {
-      "frame_number": 550,
-      "overstride": false
-    },
-    {
-      "frame_number": 551,
-      "overstride": false
-    },
-    {
-      "frame_number": 552,
-      "overstride": false
-    },
-    {
-      "frame_number": 553,
-      "overstride": false
-    },
-    {
-      "frame_number": 554,
-      "overstride": false
-    },
-    {
-      "frame_number": 555,
-      "overstride": false
-    },
-    {
-      "frame_number": 556,
-      "overstride": false
-    },
-    {
-      "frame_number": 557,
-      "overstride": false
-    },
-    {
-      "frame_number": 558,
-      "overstride": false
-    },
-    {
-      "frame_number": 559,
-      "overstride": false
-    },
-    {
-      "frame_number": 560,
-      "overstride": false
-    },
-    {
-      "frame_number": 561,
-      "overstride": false
-    },
-    {
-      "frame_number": 562,
-      "overstride": false
-    },
-    {
-      "frame_number": 563,
-      "overstride": false
-    },
-    {
-      "frame_number": 564,
-      "overstride": false
-    },
-    {
-      "frame_number": 565,
-      "overstride": false
-    },
-    {
-      "frame_number": 566,
-      "overstride": false
-    },
-    {
-      "frame_number": 567,
-      "overstride": false
-    },
-    {
-      "frame_number": 568,
-      "overstride": false
-    },
-    {
-      "frame_number": 569,
-      "overstride": false
-    },
-    {
-      "frame_number": 570,
-      "overstride": false
-    },
-    {
-      "frame_number": 571,
-      "overstride": false
-    },
-    {
-      "frame_number": 572,
-      "overstride": false
-    },
-    {
-      "frame_number": 573,
-      "overstride": false
-    },
-    {
-      "frame_number": 574,
-      "overstride": false
-    },
-    {
-      "frame_number": 575,
-      "overstride": false
-    },
-    {
-      "frame_number": 576,
-      "overstride": false
-    },
-    {
-      "frame_number": 577,
-      "overstride": false
-    },
-    {
-      "frame_number": 578,
-      "overstride": false
-    },
-    {
-      "frame_number": 579,
-      "overstride": false
-    },
-    {
-      "frame_number": 580,
-      "overstride": false
-    },
-    {
-      "frame_number": 581,
-      "overstride": false
-    },
-    {
-      "frame_number": 582,
-      "overstride": false
-    },
-    {
-      "frame_number": 583,
-      "overstride": false
-    },
-    {
-      "frame_number": 584,
-      "overstride": false
-    },
-    {
-      "frame_number": 585,
-      "overstride": false
-    },
-    {
-      "frame_number": 586,
-      "overstride": false
-    },
-    {
-      "frame_number": 587,
-      "overstride": false
-    },
-    {
-      "frame_number": 588,
-      "overstride": false
-    },
-    {
-      "frame_number": 589,
-      "overstride": false
-    },
-    {
-      "frame_number": 590,
-      "overstride": false
-    },
-    {
-      "frame_number": 591,
-      "overstride": false
-    },
-    {
-      "frame_number": 592,
-      "overstride": false
-    },
-    {
-      "frame_number": 593,
-      "overstride": false
-    },
-    {
-      "frame_number": 594,
-      "overstride": false
-    },
-    {
-      "frame_number": 595,
-      "overstride": false
-    },
-    {
-      "frame_number": 596,
-      "overstride": false
-    },
-    {
-      "frame_number": 597,
-      "overstride": true
-    },
-    {
-      "frame_number": 598,
-      "overstride": false
-    },
-    {
-      "frame_number": 599,
-      "overstride": false
-    },
-    {
-      "frame_number": 600,
-      "overstride": false
-    },
-    {
-      "frame_number": 601,
-      "overstride": false
-    },
-    {
-      "frame_number": 602,
-      "overstride": false
-    },
-    {
-      "frame_number": 603,
-      "overstride": false
-    },
-    {
-      "frame_number": 604,
-      "overstride": false
-    },
-    {
-      "frame_number": 605,
-      "overstride": false
-    },
-    {
-      "frame_number": 606,
-      "overstride": false
-    },
-    {
-      "frame_number": 607,
-      "overstride": false
-    },
-    {
-      "frame_number": 608,
-      "overstride": false
-    },
-    {
-      "frame_number": 609,
-      "overstride": false
-    },
-    {
-      "frame_number": 610,
-      "overstride": false
-    },
-    {
-      "frame_number": 611,
-      "overstride": false
-    },
-    {
-      "frame_number": 612,
-      "overstride": false
-    },
-    {
-      "frame_number": 613,
-      "overstride": false
-    },
-    {
-      "frame_number": 614,
-      "overstride": false
-    },
-    {
-      "frame_number": 615,
-      "overstride": false
-    },
-    {
-      "frame_number": 616,
-      "overstride": false
-    },
-    {
-      "frame_number": 617,
-      "overstride": false
-    },
-    {
-      "frame_number": 618,
-      "overstride": false
-    },
-    {
-      "frame_number": 619,
-      "overstride": false
-    },
-    {
-      "frame_number": 620,
-      "overstride": false
-    },
-    {
-      "frame_number": 621,
-      "overstride": false
-    },
-    {
-      "frame_number": 622,
-      "overstride": false
-    },
-    {
-      "frame_number": 623,
-      "overstride": false
-    },
-    {
-      "frame_number": 624,
-      "overstride": false
-    },
-    {
-      "frame_number": 625,
-      "overstride": false
-    },
-    {
-      "frame_number": 626,
-      "overstride": false
-    },
-    {
-      "frame_number": 627,
-      "overstride": false
-    },
-    {
-      "frame_number": 628,
-      "overstride": false
-    },
-    {
-      "frame_number": 629,
-      "overstride": false
-    },
-    {
-      "frame_number": 630,
-      "overstride": false
-    },
-    {
-      "frame_number": 631,
-      "overstride": false
-    },
-    {
-      "frame_number": 632,
-      "overstride": false
-    },
-    {
-      "frame_number": 633,
-      "overstride": false
-    },
-    {
-      "frame_number": 634,
-      "overstride": false
-    },
-    {
-      "frame_number": 635,
-      "overstride": false
-    },
-    {
-      "frame_number": 636,
-      "overstride": false
-    },
-    {
-      "frame_number": 637,
-      "overstride": false
-    },
-    {
-      "frame_number": 638,
-      "overstride": false
-    },
-    {
-      "frame_number": 639,
-      "overstride": false
-    },
-    {
-      "frame_number": 640,
-      "overstride": false
-    },
-    {
-      "frame_number": 641,
-      "overstride": false
-    },
-    {
-      "frame_number": 642,
-      "overstride": false
-    },
-    {
-      "frame_number": 643,
-      "overstride": false
-    },
-    {
-      "frame_number": 644,
-      "overstride": false
-    },
-    {
-      "frame_number": 645,
-      "overstride": false
-    },
-    {
-      "frame_number": 646,
-      "overstride": false
-    },
-    {
-      "frame_number": 647,
-      "overstride": false
-    },
-    {
-      "frame_number": 648,
-      "overstride": false
-    },
-    {
-      "frame_number": 649,
-      "overstride": false
-    },
-    {
-      "frame_number": 650,
-      "overstride": false
-    },
-    {
-      "frame_number": 651,
-      "overstride": false
-    },
-    {
-      "frame_number": 652,
-      "overstride": false
-    },
-    {
-      "frame_number": 653,
-      "overstride": false
-    },
-    {
-      "frame_number": 654,
-      "overstride": false
-    },
-    {
-      "frame_number": 655,
-      "overstride": false
-    },
-    {
-      "frame_number": 656,
-      "overstride": false
-    },
-    {
-      "frame_number": 657,
-      "overstride": false
-    },
-    {
-      "frame_number": 658,
-      "overstride": false
-    },
-    {
-      "frame_number": 659,
-      "overstride": false
-    },
-    {
-      "frame_number": 660,
-      "overstride": false
-    },
-    {
-      "frame_number": 661,
-      "overstride": false
-    },
-    {
-      "frame_number": 662,
-      "overstride": false
-    },
-    {
-      "frame_number": 663,
-      "overstride": false
-    },
-    {
-      "frame_number": 664,
-      "overstride": false
-    },
-    {
-      "frame_number": 665,
-      "overstride": false
-    },
-    {
-      "frame_number": 666,
-      "overstride": false
-    },
-    {
-      "frame_number": 667,
-      "overstride": false
-    },
-    {
-      "frame_number": 668,
-      "overstride": false
-    },
-    {
-      "frame_number": 669,
-      "overstride": false
-    },
-    {
-      "frame_number": 670,
-      "overstride": false
-    },
-    {
-      "frame_number": 671,
-      "overstride": false
-    },
-    {
-      "frame_number": 672,
-      "overstride": false
-    },
-    {
-      "frame_number": 673,
-      "overstride": false
-    },
-    {
-      "frame_number": 674,
-      "overstride": false
-    },
-    {
-      "frame_number": 675,
-      "overstride": true
-    },
-    {
-      "frame_number": 676,
-      "overstride": false
-    },
-    {
-      "frame_number": 677,
-      "overstride": false
-    },
-    {
-      "frame_number": 678,
-      "overstride": false
-    },
-    {
-      "frame_number": 679,
-      "overstride": false
-    },
-    {
-      "frame_number": 680,
-      "overstride": false
-    },
-    {
-      "frame_number": 681,
-      "overstride": false
-    },
-    {
-      "frame_number": 682,
-      "overstride": false
-    },
-    {
-      "frame_number": 683,
-      "overstride": false
-    },
-    {
-      "frame_number": 684,
-      "overstride": false
-    },
-    {
-      "frame_number": 685,
-      "overstride": false
-    },
-    {
-      "frame_number": 686,
-      "overstride": false
-    },
-    {
-      "frame_number": 687,
-      "overstride": false
-    },
-    {
-      "frame_number": 688,
-      "overstride": false
-    },
-    {
-      "frame_number": 689,
-      "overstride": false
-    },
-    {
-      "frame_number": 690,
-      "overstride": false
-    },
-    {
-      "frame_number": 691,
-      "overstride": false
-    },
-    {
-      "frame_number": 692,
-      "overstride": false
-    },
-    {
-      "frame_number": 693,
-      "overstride": false
-    },
-    {
-      "frame_number": 694,
-      "overstride": false
-    },
-    {
-      "frame_number": 695,
-      "overstride": false
-    },
-    {
-      "frame_number": 696,
-      "overstride": false
-    },
-    {
-      "frame_number": 697,
-      "overstride": false
-    },
-    {
-      "frame_number": 698,
-      "overstride": false
-    },
-    {
-      "frame_number": 699,
-      "overstride": false
-    },
-    {
-      "frame_number": 700,
-      "overstride": false
-    },
-    {
-      "frame_number": 701,
-      "overstride": false
-    },
-    {
-      "frame_number": 702,
-      "overstride": false
-    },
-    {
-      "frame_number": 703,
-      "overstride": false
-    },
-    {
-      "frame_number": 704,
-      "overstride": false
-    },
-    {
-      "frame_number": 705,
-      "overstride": false
-    },
-    {
-      "frame_number": 706,
-      "overstride": false
-    },
-    {
-      "frame_number": 707,
-      "overstride": false
-    },
-    {
-      "frame_number": 708,
-      "overstride": false
-    },
-    {
-      "frame_number": 709,
-      "overstride": false
-    },
-    {
-      "frame_number": 710,
-      "overstride": false
-    },
-    {
-      "frame_number": 711,
-      "overstride": false
-    },
-    {
-      "frame_number": 712,
-      "overstride": false
-    },
-    {
-      "frame_number": 713,
-      "overstride": false
-    },
-    {
-      "frame_number": 714,
-      "overstride": false
-    },
-    {
-      "frame_number": 715,
-      "overstride": false
-    },
-    {
-      "frame_number": 716,
-      "overstride": false
-    },
-    {
-      "frame_number": 717,
-      "overstride": false
-    },
-    {
-      "frame_number": 718,
-      "overstride": false
-    },
-    {
-      "frame_number": 719,
-      "overstride": false
-    },
-    {
-      "frame_number": 720,
-      "overstride": false
-    },
-    {
-      "frame_number": 721,
-      "overstride": false
-    },
-    {
-      "frame_number": 722,
-      "overstride": false
-    },
-    {
-      "frame_number": 723,
-      "overstride": false
-    },
-    {
-      "frame_number": 724,
-      "overstride": false
-    },
-    {
-      "frame_number": 725,
-      "overstride": false
-    },
-    {
-      "frame_number": 726,
-      "overstride": false
-    },
-    {
-      "frame_number": 727,
-      "overstride": false
-    },
-    {
-      "frame_number": 728,
-      "overstride": false
-    },
-    {
-      "frame_number": 729,
-      "overstride": false
-    },
-    {
-      "frame_number": 730,
-      "overstride": false
-    },
-    {
-      "frame_number": 731,
-      "overstride": false
-    },
-    {
-      "frame_number": 732,
-      "overstride": false
-    },
-    {
-      "frame_number": 733,
-      "overstride": false
-    },
-    {
-      "frame_number": 734,
-      "overstride": false
-    },
-    {
-      "frame_number": 735,
-      "overstride": false
-    },
-    {
-      "frame_number": 736,
-      "overstride": false
-    },
-    {
-      "frame_number": 737,
-      "overstride": false
-    },
-    {
-      "frame_number": 738,
-      "overstride": false
-    },
-    {
-      "frame_number": 739,
-      "overstride": false
-    },
-    {
-      "frame_number": 740,
-      "overstride": false
-    },
-    {
-      "frame_number": 741,
-      "overstride": false
-    },
-    {
-      "frame_number": 742,
-      "overstride": false
-    },
-    {
-      "frame_number": 743,
-      "overstride": false
-    },
-    {
-      "frame_number": 744,
-      "overstride": true
-    },
-    {
-      "frame_number": 745,
-      "overstride": false
-    },
-    {
-      "frame_number": 746,
-      "overstride": false
-    },
-    {
-      "frame_number": 747,
-      "overstride": false
-    },
-    {
-      "frame_number": 748,
-      "overstride": false
-    },
-    {
-      "frame_number": 749,
-      "overstride": false
-    },
-    {
-      "frame_number": 750,
-      "overstride": false
-    },
-    {
-      "frame_number": 751,
-      "overstride": false
-    },
-    {
-      "frame_number": 752,
-      "overstride": false
-    },
-    {
-      "frame_number": 753,
-      "overstride": false
-    },
-    {
-      "frame_number": 754,
-      "overstride": false
-    },
-    {
-      "frame_number": 755,
-      "overstride": false
-    },
-    {
-      "frame_number": 756,
-      "overstride": false
-    },
-    {
-      "frame_number": 757,
-      "overstride": false
-    },
-    {
-      "frame_number": 758,
-      "overstride": false
-    },
-    {
-      "frame_number": 759,
-      "overstride": false
+      "overstride": false,
+      "angle": null
     }
   ],
   "success_frames": {
     "posture": [
-      1,
-      600,
-      400,
-      200
+      200,
+      0
     ],
-    "overstride": [
-      41,
-      600,
-      400,
-      200
-    ]
+    "overstride": []
   }
 }

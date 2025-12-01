@@ -56,8 +56,8 @@ MIN_TRK_CONF = 0.5                  # confiança mínima de tracking
 # Lógica de análise
 MIN_VIS = 0.30                      # visibilidade mínima de um landmark para ser considerado confiável
 BACK_ANGLE_BAD_THRESH = 110.0       # threshold para angulo das costas
-WINDOW_SECONDS = 1.4                # janela de segundos para captura do overstride
-COOLDOWN_SECONDS = 0.35             # tempo mínimo entre detecções consecutivas do calcanhar, evitar pegar o pe no meio da esteira
+WINDOW_SECONDS = 0.8                # janela de segundos para captura do overstride
+COOLDOWN_SECONDS = 0.2             # tempo mínimo entre detecções consecutivas do calcanhar, evitar pegar o pe no meio da esteira
 
 # PONTO DE CONTATO DO CALCANHAR: 2/8 DO PÉ
 CONTACT_RATIO = 2.0 / 8.0           # define o ponto de contato calcanhar com a esteira, sem pegar a ponta do pé pelo mediapipe
@@ -353,43 +353,22 @@ def process_frames_sequential(meta):
                                 # para nao dividir nada por 0
                                 angle_deg = 0.0
                             
-                            # Store overstride data for this frame
+                            # Store overstride data for this frame with angle
                             frame_data['overstride_frames'].append({
                                 'frame_number': i,
-                                'overstride': True
+                                'overstride': angle_deg > 8.0,
+                                'angle': round(angle_deg, 2)
                             })
-
-                            # ----------------Desenhos no frame--------------
-                            cpt = (int(contact_px[0]), int(contact_px[1]))
-                            cv2.circle(image, cpt, 8, (0, 0, 255), -1)
-
-                            top_point = (cpt[0], max(0, cpt[1] - int(h * 0.85)))
-                            cv2.line(image, cpt, top_point, (255, 0, 0), 2)
-
-                            knee_pt = (int(knee_px[0]), int(knee_px[1]))
-                            cv2.line(image, cpt, knee_pt, (0, 255, 255), 2)
-
-                            cv2.putText(image, f"{angle_deg:.0f} deg",
-                                        (cpt[0], max(0, cpt[1] - 10)),
-                                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255,255,255), 2, cv2.LINE_AA)
-
-                            print(f"[HEEL] frame={i} lowest_y={lowest_heel_y:.4f} angle={angle_deg:.2f}° (ratio=2/8)")
-                            save_img(annotated_path('min_heel', i), image)
+                            
+                            # Don't save frames during processing - will save only best/worst in collection phase
+                            if angle_deg > 8.0:
+                                print(f"[HEEL] frame={i} lowest_y={lowest_heel_y:.4f} angle={angle_deg:.2f}° (ratio=2/8) - ERROR")
+                            else:
+                                print(f"[HEEL] frame={i} lowest_y={lowest_heel_y:.4f} angle={angle_deg:.2f}° (ratio=2/8) - SUCCESS")
 
                             # inicia cooldown para não duplicar detecções do mesmo pico
                             detection_cooldown = cooldown_frames
-                        else:
-                            # Not a peak overstride frame
-                            frame_data['overstride_frames'].append({
-                                'frame_number': i,
-                                'overstride': False
-                            })
-                            # Store success frame
-                            if len(frame_data['success_frames']['overstride']) == 0:
-                                success_dir = os.path.join(OUT_DIR, 'success_frames')
-                                os.makedirs(success_dir, exist_ok=True)
-                                save_img(os.path.join(success_dir, f'overstride_success_{i:06d}.jpg'), image)
-                                frame_data['success_frames']['overstride'].append(i)
+                        
 
                 # decrementa cooldown ao fim do frame
                 if detection_cooldown > 0:
@@ -571,25 +550,20 @@ def worker_chunk(args):
                             else:
                                 angle_deg = 0.0
                             
-                            # Store overstride data for this frame
+                            # Store overstride data for this frame with angle
                             if i >= effective_start:
                                 local_frame_data['overstride_frames'].append({
                                     'frame_number': i,
-                                    'overstride': True
+                                    'overstride': angle_deg > 8.0,
+                                    'angle': round(angle_deg, 2)
                                 })
 
+                            # Don't save frames during processing - will save only best/worst in collection phase
                             if i >= effective_start:
-                                cpt = (int(contact_px[0]), int(contact_px[1]))
-                                cv2.circle(image, cpt, 8, (0, 0, 255), -1)
-
-                                top_point = (cpt[0], max(0, cpt[1] - int(h * 0.70)))
-                                cv2.line(image, cpt, top_point, (255, 0, 0), 2)
-
-                                knee_pt = (int(knee_px[0]), int(knee_px[1]))
-                                cv2.line(image, cpt, knee_pt, (0, 255, 255), 2)
-
-                                local_logs.append(f"[HEEL] frame={i} lowest_y={lowest_heel_y:.4f} angle={angle_deg:.2f}° (ratio=2/8)")
-                                save_img(annotated_path('min_heel', i), image)
+                                if angle_deg > 8.0:
+                                    local_logs.append(f"[HEEL] frame={i} lowest_y={lowest_heel_y:.4f} angle={angle_deg:.2f}° (ratio=2/8) - ERROR")
+                                else:
+                                    local_logs.append(f"[HEEL] frame={i} lowest_y={lowest_heel_y:.4f} angle={angle_deg:.2f}° (ratio=2/8) - SUCCESS")
 
                             detection_cooldown = cooldown_frames
                         else:
@@ -597,14 +571,9 @@ def worker_chunk(args):
                             if i >= effective_start:
                                 local_frame_data['overstride_frames'].append({
                                     'frame_number': i,
-                                    'overstride': False
+                                    'overstride': False,
+                                    'angle': None
                                 })
-                                # Store success frame
-                                if len(local_frame_data['success_frames']['overstride']) == 0:
-                                    success_dir = os.path.join(OUT_DIR, 'success_frames')
-                                    os.makedirs(success_dir, exist_ok=True)
-                                    save_img(os.path.join(success_dir, f'overstride_success_{i:06d}.jpg'), image)
-                                    local_frame_data['success_frames']['overstride'].append(i)
 
                 if detection_cooldown > 0:
                     detection_cooldown -= 1
@@ -925,8 +894,25 @@ def collect_analysis_results(meta: Dict[str, Any], video_path: str = None) -> Di
         posture_files = [f for f in os.listdir(posture_dir) if f.endswith('.jpg')]
         posture_issues_count = len(posture_files)
         
-        # Find worst frame (highest frame number or use severity calculation)
-        if posture_files:
+        # Find worst frame: frame with the smallest angle (worst posture)
+        # Get all frames with errors and their angles
+        posture_angles_list = frame_data.get('posture_angles', [])
+        
+        # Filter only frames with errors (angle <= BACK_ANGLE_BAD_THRESH)
+        error_frames = [
+            item for item in posture_angles_list 
+            if item.get('angle', 999) <= BACK_ANGLE_BAD_THRESH
+        ]
+        
+        if error_frames:
+            # Find the frame with the minimum angle (worst posture)
+            worst_frame_data = min(error_frames, key=lambda x: x.get('angle', 999))
+            posture_worst_frame = worst_frame_data['frame_number']
+            worst_angle = worst_frame_data['angle']
+            posture_image_path = f"out/postura_incorreta/frame_{posture_worst_frame:06d}.jpg"
+            print(f"[POSTURE] Worst frame selected: frame_{posture_worst_frame:06d} with angle {worst_angle}°")
+        elif posture_files:
+            # Fallback: if no angle data available, use highest frame number
             frame_numbers = []
             for file in posture_files:
                 try:
@@ -941,23 +927,192 @@ def collect_analysis_results(meta: Dict[str, Any], video_path: str = None) -> Di
     
     # Collect overstride issues
     overstride_dir = os.path.join(OUT_DIR, 'min_heel')
+    
+    # Get all overstride frames with angles from frame_data
+    overstride_frames_list = frame_data.get('overstride_frames', [])
+    
+    # Filter frames with error (angle > 8) and success (angle <= 8 or None)
+    error_frames = [
+        item for item in overstride_frames_list 
+        if item.get('overstride', False) and item.get('angle') is not None and item.get('angle', 0) > 8.0
+    ]
+    success_frames = [
+        item for item in overstride_frames_list 
+        if not item.get('overstride', True) or (item.get('angle') is not None and item.get('angle', 0) <= 8.0)
+    ]
+    
+    # Count only frames with angle > 8
+    overstride_issues_count = len(error_frames)
+    
+    # Clear existing error frames directory and save only the worst frame
     if os.path.exists(overstride_dir):
-        overstride_files = [f for f in os.listdir(overstride_dir) if f.endswith('.jpg')]
-        overstride_issues_count = len(overstride_files)
+        # Remove all existing files
+        for file in os.listdir(overstride_dir):
+            try:
+                os.remove(os.path.join(overstride_dir, file))
+            except:
+                pass
+    
+    # Find worst frame: frame with the highest angle (worst overstride) and save it
+    overstride_worst_frame = 0
+    overstride_image_path = ""
+    worst_angle = 0.0
+    if error_frames:
+        worst_frame_data = max(error_frames, key=lambda x: x.get('angle', 0))
+        overstride_worst_frame = worst_frame_data['frame_number']
+        worst_angle = worst_frame_data['angle']
         
-        # Find worst frame
-        if overstride_files:
-            frame_numbers = []
-            for file in overstride_files:
-                try:
-                    frame_num = int(file.split('_')[1].split('.')[0])
-                    frame_numbers.append(frame_num)
-                except (IndexError, ValueError):
-                    continue
+        # Extract and save the worst frame with annotations
+        if video_path and os.path.exists(video_path):
+            cap = cv2.VideoCapture(video_path)
+            if cap.isOpened():
+                cap.set(cv2.CAP_PROP_POS_FRAMES, overstride_worst_frame)
+                ret, frame = cap.read()
+                if ret:
+                    # Process with MediaPipe to get landmarks for drawing
+                    rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                    rgb.flags.writeable = False
+                    with mp_pose.Pose(
+                        static_image_mode=True,
+                        model_complexity=MODEL_COMPLEXITY,
+                        min_detection_confidence=MIN_DET_CONF,
+                        min_tracking_confidence=MIN_TRK_CONF
+                    ) as pose:
+                        results = pose.process(rgb)
+                        rgb.flags.writeable = True
+                        frame = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
+                        
+                        if results.pose_landmarks:
+                            h, w, _ = frame.shape
+                            lm = results.pose_landmarks.landmark
+                            heel_idx = mp_pose.PoseLandmark.RIGHT_HEEL.value
+                            foot_idx = mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value
+                            knee_idx = mp_pose.PoseLandmark.RIGHT_KNEE.value
+                            
+                            heel_lm = lm[heel_idx]
+                            fidx_lm = lm[foot_idx]
+                            knee_lm = lm[knee_idx]
+                            
+                            if is_visible(heel_lm) and is_visible(fidx_lm) and is_visible(knee_lm):
+                                heel_px = to_pixel(heel_lm, w, h)
+                                fidx_px = to_pixel(fidx_lm, w, h)
+                                knee_px = to_pixel(knee_lm, w, h)
+                                contact_px = heel_px + (fidx_px - heel_px) * CONTACT_RATIO
+                                
+                                # Draw annotations
+                                cpt = (int(contact_px[0]), int(contact_px[1]))
+                                cv2.circle(frame, cpt, 8, (0, 0, 255), -1)
+                                top_point = (cpt[0], max(0, cpt[1] - int(h * 0.85)))
+                                cv2.line(frame, cpt, top_point, (255, 0, 0), 2)
+                                knee_pt = (int(knee_px[0]), int(knee_px[1]))
+                                cv2.line(frame, cpt, knee_pt, (0, 255, 255), 2)
+                                cv2.putText(frame, f"{worst_angle:.0f} deg",
+                                            (cpt[0], max(0, cpt[1] - 10)),
+                                            cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255,255,255), 2, cv2.LINE_AA)
+                    
+                    os.makedirs(overstride_dir, exist_ok=True)
+                    save_img(annotated_path('min_heel', overstride_worst_frame), frame)
+                    overstride_image_path = f"out/min_heel/frame_{overstride_worst_frame:06d}.jpg"
+                    print(f"[OVERSTRIDE] Worst error frame saved: frame_{overstride_worst_frame:06d} with angle {worst_angle}°")
+                cap.release()
+        else:
+            # Fallback: use frames directory if video not available
+            if overstride_worst_frame > 0:
+                frame_path_check = frame_path(overstride_worst_frame)
+                if os.path.exists(frame_path_check):
+                    frame = cv2.imread(frame_path_check)
+                    if frame is not None:
+                        # Process with MediaPipe to get landmarks for drawing
+                        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                        rgb.flags.writeable = False
+                        with mp_pose.Pose(
+                            static_image_mode=True,
+                            model_complexity=MODEL_COMPLEXITY,
+                            min_detection_confidence=MIN_DET_CONF,
+                            min_tracking_confidence=MIN_TRK_CONF
+                        ) as pose:
+                            results = pose.process(rgb)
+                            rgb.flags.writeable = True
+                            frame = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
+                            
+                            if results.pose_landmarks:
+                                h, w, _ = frame.shape
+                                lm = results.pose_landmarks.landmark
+                                heel_idx = mp_pose.PoseLandmark.RIGHT_HEEL.value
+                                foot_idx = mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value
+                                knee_idx = mp_pose.PoseLandmark.RIGHT_KNEE.value
+                                
+                                heel_lm = lm[heel_idx]
+                                fidx_lm = lm[foot_idx]
+                                knee_lm = lm[knee_idx]
+                                
+                                if is_visible(heel_lm) and is_visible(fidx_lm) and is_visible(knee_lm):
+                                    heel_px = to_pixel(heel_lm, w, h)
+                                    fidx_px = to_pixel(fidx_lm, w, h)
+                                    knee_px = to_pixel(knee_lm, w, h)
+                                    contact_px = heel_px + (fidx_px - heel_px) * CONTACT_RATIO
+                                    
+                                    # Draw annotations
+                                    cpt = (int(contact_px[0]), int(contact_px[1]))
+                                    cv2.circle(frame, cpt, 8, (0, 0, 255), -1)
+                                    top_point = (cpt[0], max(0, cpt[1] - int(h * 0.85)))
+                                    cv2.line(frame, cpt, top_point, (255, 0, 0), 2)
+                                    knee_pt = (int(knee_px[0]), int(knee_px[1]))
+                                    cv2.line(frame, cpt, knee_pt, (0, 255, 255), 2)
+                                    cv2.putText(frame, f"{worst_angle:.0f} deg",
+                                                (cpt[0], max(0, cpt[1] - 10)),
+                                                cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255,255,255), 2, cv2.LINE_AA)
+                        
+                        os.makedirs(overstride_dir, exist_ok=True)
+                        save_img(annotated_path('min_heel', overstride_worst_frame), frame)
+                        overstride_image_path = f"out/min_heel/frame_{overstride_worst_frame:06d}.jpg"
+                        print(f"[OVERSTRIDE] Worst error frame saved: frame_{overstride_worst_frame:06d} with angle {worst_angle}°")
+    
+    # Find best success frame: frame with the lowest angle (best overstride) and save it
+    overstride_success_image_path = ""
+    success_frames_dir = os.path.join(OUT_DIR, 'success_frames')
+    
+    # Remove old overstride success frames
+    if os.path.exists(success_frames_dir):
+        old_files = [f for f in os.listdir(success_frames_dir) if f.startswith('overstride_success_')]
+        for old_file in old_files:
+            try:
+                os.remove(os.path.join(success_frames_dir, old_file))
+            except:
+                pass
+    
+    if success_frames:
+        # Filter only frames with valid angles (not None)
+        valid_success_frames = [item for item in success_frames if item.get('angle') is not None]
+        if valid_success_frames:
+            best_frame_data = min(valid_success_frames, key=lambda x: x.get('angle', 999))
+            overstride_success_frame_num = best_frame_data['frame_number']
+            best_angle = best_frame_data['angle']
             
-            if frame_numbers:
-                overstride_worst_frame = max(frame_numbers)
-                overstride_image_path = f"out/min_heel/frame_{overstride_worst_frame:06d}.jpg"
+            # Extract frame from video to save as success
+            if video_path and os.path.exists(video_path):
+                cap = cv2.VideoCapture(video_path)
+                if cap.isOpened():
+                    cap.set(cv2.CAP_PROP_POS_FRAMES, overstride_success_frame_num)
+                    ret, frame = cap.read()
+                    if ret:
+                        os.makedirs(success_frames_dir, exist_ok=True)
+                        filename = f'overstride_success_{overstride_success_frame_num:06d}.jpg'
+                        save_img(os.path.join(success_frames_dir, filename), frame)
+                        overstride_success_image_path = f"out/success_frames/{filename}"
+                        print(f"[OVERSTRIDE] Best success frame saved: frame_{overstride_success_frame_num:06d} with angle {best_angle}°")
+                    cap.release()
+            else:
+                # Fallback: use frames directory if video not available
+                frame_path_check = frame_path(overstride_success_frame_num)
+                if os.path.exists(frame_path_check):
+                    image = cv2.imread(frame_path_check)
+                    if image is not None:
+                        os.makedirs(success_frames_dir, exist_ok=True)
+                        filename = f'overstride_success_{overstride_success_frame_num:06d}.jpg'
+                        save_img(os.path.join(success_frames_dir, filename), image)
+                        overstride_success_image_path = f"out/success_frames/{filename}"
+                        print(f"[OVERSTRIDE] Best success frame saved: frame_{overstride_success_frame_num:06d} with angle {best_angle}°")
     
     # Collect visibility issues
     visibility_dir = os.path.join(OUT_DIR, 'baixa_visibilidade')
@@ -992,10 +1147,11 @@ def collect_analysis_results(meta: Dict[str, Any], video_path: str = None) -> Di
         if posture_success_files:
             posture_success_image_path = f"out/success_frames/{posture_success_files[0]}"
         
-        # Find overstride success image
-        overstride_success_files = [f for f in os.listdir(success_frames_dir) if f.startswith('overstride_success_')]
-        if overstride_success_files:
-            overstride_success_image_path = f"out/success_frames/{overstride_success_files[0]}"
+        # Find overstride success image (if not already set above)
+        if not overstride_success_image_path:
+            overstride_success_files = [f for f in os.listdir(success_frames_dir) if f.startswith('overstride_success_')]
+            if overstride_success_files:
+                overstride_success_image_path = f"out/success_frames/{overstride_success_files[0]}"
     
     # Build result structure in the requested format
     result = {
@@ -1074,47 +1230,6 @@ async def analyze_video(file: UploadFile = File(...)):
                 os.unlink(temp_file.name)
             except:
                 pass
-
-@app.get("/health")
-async def health_check():
-    """
-    Health check endpoint.
-    """
-    return {"status": "healthy", "message": "MovUp API is running"}
-
-@app.post("/api/save_report")
-async def save_report(report_data: dict):
-    """
-    API endpoint to save report data to the backend.
-    """
-    try:
-        # Generate a unique report ID
-        import uuid
-        report_id = str(uuid.uuid4())
-        
-        # Add metadata
-        report_data["report_id"] = report_id
-        report_data["saved_at"] = datetime.now().isoformat()
-        
-        # In a real implementation, you would save this to a database
-        # For now, we'll just save to a JSON file
-        import json
-        reports_dir = "saved_reports"
-        os.makedirs(reports_dir, exist_ok=True)
-        
-        report_file = os.path.join(reports_dir, f"report_{report_id}.json")
-        with open(report_file, 'w', encoding='utf-8') as f:
-            json.dump(report_data, f, indent=2, ensure_ascii=False)
-        
-        return {
-            "status": "success",
-            "message": "Report saved successfully",
-            "report_id": report_id,
-            "saved_at": report_data["saved_at"]
-        }
-        
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Failed to save report: {str(e)}")
 
 @app.get("/api/worst_frame/{error_type}/{filename}")
 async def get_worst_frame_image(error_type: str, filename: str):
